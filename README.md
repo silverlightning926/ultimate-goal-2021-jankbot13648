@@ -1,17 +1,19 @@
-# Road Runner Quickstart
+# Ultimate Goal Code
+## Jankbot - FTC #7760
 
-An example FTC project using [Road Runner](https://github.com/acmerobotics/road-runner). **Note:** Road Runner is in alpha and many of its APIs are incubating.
+This is the repository that holds the code for the 2020 Ultimate Goal Season for FTC Team #7760 - Jankbot.
 
-## Installation
+⚠️ Code Is Stil Under Development ⚠️
 
-For more detailed instructions on getting Road Runner setup in your own project, see the [Road Runner README](https://github.com/acmerobotics/road-runner#core).
+### Mechanisms
+#### Drivebase 
+The drivebase is currently a 4-wheel drive with mecanum wheels. The drivebase currently is fitted with three odometery pods: a vertical left one, a vertical right one, and horzontal one. Using these encoders the robot finds its 2D location on the field relative to its starting postion. 
 
-1. Download or clone this repo with `git clone https://github.com/acmerobotics/road-runner-quickstart`.
+#### Shooter 
+The shooter is driven by to motors and is used to shoot the game piece rings when and where needed
 
-1. Open the project in Android Studio and build `TeamCode` like any other `ftc_app` project.
+#### Intake
+The intake is a mechanism that when runs can intake rings and put them in place for the shooter to output
 
-1. If you have trouble with multidex, enable proguard by changing `useProguard` to `true` in `build.common.gradle`.
-
-## Documentation
-
-Check out the new [online quickstart documentation](https://acme-robotics.gitbook.io/road-runner/quickstart/introduction).
+#### Wobble Goal Arm
+The wobble goal arm is used to manipulate the wobble goal game piece
