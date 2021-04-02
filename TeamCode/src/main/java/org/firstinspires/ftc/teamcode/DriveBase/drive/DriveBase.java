@@ -34,7 +34,10 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.teamcode.Constants;
+import org.firstinspires.ftc.teamcode.DriveBase.util.AxesSigns;
+import org.firstinspires.ftc.teamcode.DriveBase.util.BNO055IMUUtil;
 import org.firstinspires.ftc.teamcode.DriveBase.util.DashboardUtil;
 import org.firstinspires.ftc.teamcode.DriveBase.util.LynxModuleUtil;
 
@@ -130,10 +133,6 @@ public class DriveBase extends MecanumDrive {
             module.setBulkCachingMode(LynxModule.BulkCachingMode.AUTO);
         }
 
-        // TODO: if your hub is mounted vertically, remap the IMU axes so that the z-axis points
-        // upward (normal to the floor) using a command like the following:
-        // BNO055IMUUtil.remapAxes(imu, AxesOrder.XYZ, AxesSigns.NPN);
-
         leftFront = hardwareMap.get(DcMotorEx.class, Constants.FRONT_LEFT_DRIVE_NAME);
         leftRear = hardwareMap.get(DcMotorEx.class, Constants.REAR_LEFT_DRIVE_NAME);
         rightRear = hardwareMap.get(DcMotorEx.class, Constants.REAR_RIGHT_DRIVE_NAME);
@@ -157,12 +156,9 @@ public class DriveBase extends MecanumDrive {
             setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, MOTOR_VELO_PID);
         }
 
-        // TODO: reverse any motors using DcMotor.setDirection()
         rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
         rightRear.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        // TODO: if desired, use setLocalizer() to change the localization method
-        // for instance, setLocalizer(new ThreeTrackingWheelLocalizer(...));
         setLocalizer(new StandardTrackingWheelLocalizer(hardwareMap));
     }
 
