@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.Intake;
 import org.firstinspires.ftc.teamcode.Shooter;
 import org.firstinspires.ftc.teamcode.WobbleGoal;
-import org.firstinspires.ftc.teamcode.drive.DriveBase;
+import org.firstinspires.ftc.teamcode.DriveBase.drive.DriveBase;
 
 @TeleOp(name = "TeleOp - Main")
 public class TeleOpMain extends LinearOpMode {
@@ -29,6 +29,9 @@ public class TeleOpMain extends LinearOpMode {
         telemetry.update();
 
         waitForStart();
+
+        telemetry.clearAll();
+        telemetry.update();
 
         if(isStopRequested()) return;
 
