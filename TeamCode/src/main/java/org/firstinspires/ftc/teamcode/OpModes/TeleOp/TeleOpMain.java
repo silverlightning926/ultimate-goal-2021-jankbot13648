@@ -18,12 +18,8 @@ public class TeleOpMain extends LinearOpMode {
     Intake intake;
     WobbleGoal wobbleGoal;
 
-    NanoClock clock;
-
     @Override
     public void runOpMode() throws InterruptedException {
-
-        clock = NanoClock.system();
 
         driveBase = new DriveBase(hardwareMap);
         shooter = new Shooter(hardwareMap);
