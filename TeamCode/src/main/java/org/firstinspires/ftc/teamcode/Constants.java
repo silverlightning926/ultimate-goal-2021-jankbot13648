@@ -23,7 +23,7 @@ public class Constants {
     public static String VERTICAL_RIGHT_NAME = FRONT_RIGHT_DRIVE_NAME;
     public static String HORIZONTAL_NAME = REAR_LEFT_DRIVE_NAME;
 
-    public static Pose2d STARTING_POSE = new Pose2d(48 - 16.875, 0, 0);
+    //public static Pose2d STARTING_POSE = new Pose2d(48 - 16.875, 0, 0);
     public static Vector2d GOAL_VECTOR2D = new Vector2d(36, 144);
 
     // Shooter Motor Names
@@ -45,8 +45,8 @@ public class Constants {
     public static String LEFT_WALL_NAME = "lw";
     public static String RIGHT_WALL_NAME = "rw";
 
-    public static double LEFT_WALL_POS_OUT = 0.35;
-    public static double RIGHT_WALL_POS_OUT = 0.85;
+    public static double LEFT_WALL_POS_OUT = 0.05;
+    public static double RIGHT_WALL_POS_OUT = 0.9;
 
     public static double LEFT_WALL_POS_IN = 0.3;
     public static double RIGHT_WALL_POS_IN = 0.6;
