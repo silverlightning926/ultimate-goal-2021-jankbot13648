@@ -1,7 +1,14 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.acmerobotics.dashboard.config.Config;
+import com.acmerobotics.roadrunner.geometry.Pose2d;
+import com.acmerobotics.roadrunner.geometry.Vector2d;
+
+import org.firstinspires.ftc.teamcode.DriveBase.drive.DriveConstants;
+
+@Config
 public class Constants {
-    public static String CAMERA_NAME = "WEBCAM";
+    public static String CAMERA_NAME = "Webcam 1";
     public static int CAMERA_RESOLUTION_WIDTH = 1280;
     public static int CAMERA_RESOLUTION_LENGTH = 720;
 
@@ -16,8 +23,12 @@ public class Constants {
     public static String VERTICAL_RIGHT_NAME = FRONT_RIGHT_DRIVE_NAME;
     public static String HORIZONTAL_NAME = REAR_LEFT_DRIVE_NAME;
 
+    public static Pose2d STARTING_POSE = new Pose2d(48 - 16.875, 0, 0);
+    public static Vector2d GOAL_VECTOR2D = new Vector2d(36, 144);
+
     // Shooter Motor Names
     public static double SHOOTER_VELOCITY = 217;
+    public static double POWER_SHOT_VELOCITY = 175;
 
     public static String SHOOTER_1_NAME = "s1";
     public static String SHOOTER_2_NAME = "s2";
