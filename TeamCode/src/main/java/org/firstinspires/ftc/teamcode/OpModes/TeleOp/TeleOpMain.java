@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.OpModes.TeleOp;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
+import com.acmerobotics.roadrunner.util.NanoClock;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.Intake;
@@ -17,8 +18,12 @@ public class TeleOpMain extends LinearOpMode {
     Intake intake;
     WobbleGoal wobbleGoal;
 
+    NanoClock clock;
+
     @Override
     public void runOpMode() throws InterruptedException {
+
+        clock = NanoClock.system();
 
         driveBase = new DriveBase(hardwareMap);
         shooter = new Shooter(hardwareMap);
@@ -56,7 +61,20 @@ public class TeleOpMain extends LinearOpMode {
 
             driveBase.update();
 
-            shooter.Shoot(gamepad1.a);
+            if(gamepad1.a)
+            {
+                for(int i = 0; i <3; i++)
+                {
+                    shooter.Kick();
+
+                    sleep(200);
+
+                    shooter.Unkick();
+
+                    sleep(200);
+                }
+            }
+
             intake.SetIntake(gamepad1.right_trigger, gamepad1.left_trigger);
             wobbleGoal.MoveWobbleGoalPosition(gamepad2.dpad_left, gamepad2.dpad_up, gamepad2.dpad_right);
             wobbleGoal.WobbleGoalManipulatorHandler(gamepad2.x, gamepad2.b);
