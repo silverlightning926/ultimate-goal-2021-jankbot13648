@@ -14,15 +14,12 @@ public class Shooter {
 
     Servo kicker;
 
-    double currentTime = 0;
-
     public Shooter(HardwareMap hardwareMap)
     {
         shooterMotor1 = hardwareMap.get(DcMotorEx.class, Constants.SHOOTER_1_NAME);
         shooterMotor2 = hardwareMap.get(DcMotorEx.class, Constants.SHOOTER_2_NAME);
 
         kicker = hardwareMap.get(Servo.class, Constants.KICKER_NAME);
-        kicker.setPosition(Constants.KICKER_OPEN_POS);
 
         shooterMotor1.setDirection(DcMotorEx.Direction.REVERSE);
         shooterMotor2.setDirection(DcMotorEx.Direction.REVERSE);
@@ -34,10 +31,10 @@ public class Shooter {
         shooterMotor2.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
     }
 
-    public void SetShooter()
+    public void SetShooter(double shooterSpeed)
     {
-        shooterMotor1.setVelocity(Constants.SHOOTER_VELOCITY, AngleUnit.DEGREES);
-        shooterMotor2.setVelocity(Constants.SHOOTER_VELOCITY, AngleUnit.DEGREES);;
+        shooterMotor1.setVelocity(shooterSpeed, AngleUnit.DEGREES);
+        shooterMotor2.setVelocity(shooterSpeed, AngleUnit.DEGREES);;
     }
 
     public void Kick()
