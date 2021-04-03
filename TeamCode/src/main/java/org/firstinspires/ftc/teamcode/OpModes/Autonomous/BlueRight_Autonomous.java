@@ -28,7 +28,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
         telemetry.addLine("System Initialization Complete");
         telemetry.update();
 
-        driveBase.setPoseEstimate(Constants.STARTING_POSE);
+        //driveBase.setPoseEstimate(Constants.STARTING_POSE);
 
         waitForStart();
 
