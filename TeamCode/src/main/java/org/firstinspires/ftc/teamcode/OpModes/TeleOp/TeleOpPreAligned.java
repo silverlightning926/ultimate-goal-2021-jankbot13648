@@ -17,8 +17,8 @@ import org.firstinspires.ftc.teamcode.Shooter;
 import org.firstinspires.ftc.teamcode.WobbleGoal;
 import org.firstinspires.ftc.teamcode.DriveBase.drive.DriveBase;
 
-@TeleOp(name = "TeleOp - Main")
-public class TeleOpMain extends LinearOpMode {
+@TeleOp(name = "TeleOp - Pre Aligned")
+public class TeleOpPreAligned extends LinearOpMode {
 
     DriveBase driveBase;
     Shooter shooter;
@@ -42,8 +42,6 @@ public class TeleOpMain extends LinearOpMode {
         telemetry.update();
 
         if(isStopRequested()) return;
-
-        driveBase.setPoseEstimate(PoseStorage.currentPose);
 
         shooter.Unkick();
         shooter.SetShooter(Constants.SHOOTER_VELOCITY);
@@ -111,3 +109,4 @@ public class TeleOpMain extends LinearOpMode {
         }
     }
 }
+
