@@ -2,9 +2,14 @@ package org.firstinspires.ftc.teamcode.OpModes.TeleOp;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
+import com.acmerobotics.roadrunner.trajectory.Trajectory;
+import com.acmerobotics.roadrunner.trajectory.TrajectoryBuilder;
 import com.acmerobotics.roadrunner.util.NanoClock;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import org.firstinspires.ftc.teamcode.Constants;
+import org.firstinspires.ftc.teamcode.DriveBase.drive.PoseStorage;
 import org.firstinspires.ftc.teamcode.Intake;
 import org.firstinspires.ftc.teamcode.Shooter;
 import org.firstinspires.ftc.teamcode.WobbleGoal;
@@ -36,7 +41,10 @@ public class TeleOpMain extends LinearOpMode {
 
         if(isStopRequested()) return;
 
-        shooter.SetShooter();
+        driveBase.setPoseEstimate(PoseStorage.currentPose);
+
+        shooter.Unkick();
+        shooter.SetShooter(Constants.SHOOTER_VELOCITY);
 
         while (!isStopRequested() && opModeIsActive())
         {
@@ -59,6 +67,15 @@ public class TeleOpMain extends LinearOpMode {
 
             if(gamepad1.a)
             {
+                /*poseEstimate = driveBase.getPoseEstimate();
+
+                double angleToGoal = Math.atan2(Constants.GOAL_VECTOR2D.getX() - poseEstimate.getX(), Constants.GOAL_VECTOR2D.getY() - poseEstimate.getY());
+                Trajectory aimToGoalTrajectory = driveBase.trajectoryBuilder(new Pose2d())
+                    .lineToLinearHeading(new Pose2d(poseEstimate.getX(), poseEstimate.getY(), angleToGoal))
+                    .build();
+
+                driveBase.followTrajectory(aimToGoalTrajectory);*/
+
                 for(int i = 0; i <3; i++)
                 {
                     shooter.Kick();
