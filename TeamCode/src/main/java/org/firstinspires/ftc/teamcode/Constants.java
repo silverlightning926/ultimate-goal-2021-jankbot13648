@@ -45,6 +45,12 @@ public class Constants {
     public static String LEFT_WALL_NAME = "lw";
     public static String RIGHT_WALL_NAME = "rw";
 
+    public static String LEFT_FUNNEL_NAME = "lf";
+    public static String RIGHT_FUNNEL_NAME = "rf";
+
+    public static double LEFT_FUNNEL_RELEASE_POS = 0.5;
+    public static double RIGHT_FUNNEL_RELEASE_POS = 0.5;
+
     public static double LEFT_WALL_POS_OUT = 0.05;
     public static double RIGHT_WALL_POS_OUT = 0.9;
 

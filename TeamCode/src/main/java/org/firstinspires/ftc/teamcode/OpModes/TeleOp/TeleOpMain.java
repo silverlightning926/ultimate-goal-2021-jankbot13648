@@ -83,8 +83,6 @@ public class TeleOpMain extends LinearOpMode {
                 );
             }
 
-
-
             driveBase.update();
 
             if(gamepad1.a)

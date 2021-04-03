@@ -12,6 +12,9 @@ public class Intake {
     public Servo leftWall;
     public Servo rightWall;
 
+    public Servo leftFunnel;
+    public Servo rightFunnel;
+
     public Intake(HardwareMap hardwareMap)
     {
         intake1 = hardwareMap.get(DcMotorEx.class, Constants.INTAKE_TOP_NAME);
@@ -19,6 +22,9 @@ public class Intake {
 
         leftWall = hardwareMap.get(Servo.class, Constants.LEFT_WALL_NAME);
         rightWall = hardwareMap.get(Servo.class, Constants.RIGHT_WALL_NAME);
+
+        leftFunnel = hardwareMap.get(Servo.class, Constants.LEFT_FUNNEL_NAME);
+        rightFunnel = hardwareMap.get(Servo.class, Constants.RIGHT_FUNNEL_NAME);
 
         intake1.setDirection(DcMotorEx.Direction.FORWARD);
         intake2.setDirection(DcMotorEx.Direction.FORWARD);
@@ -57,5 +63,11 @@ public class Intake {
     {
         leftWall.setPosition(leftWallPos);
         rightWall.setPosition(rightWallPos);
+    }
+
+    public void ReleaseWalls()
+    {
+        leftFunnel.setPosition(Constants.LEFT_FUNNEL_RELEASE_POS);
+        rightFunnel.setPosition(Constants.RIGHT_FUNNEL_RELEASE_POS);
     }
 }
