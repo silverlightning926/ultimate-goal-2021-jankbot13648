@@ -68,18 +68,28 @@ public class JimsTest02 extends LinearOpMode {
     public void runOpMode() {
         //  Builds a ringlocation that stores the found stack
         RingLocation lastReconizedLocation = new RingLocation();
+        int count = 0;
 
         ringWebCam = new RingWebCam();
         ringWebCam.setHardwareMap(hardwareMap);
         ringWebCam.init();
-
 
         waitForStart();
         while(opModeIsActive()) {
             RingLocation location = ringWebCam.findStack(telemetry);
             if(0 != location.mDetected)
             {
+                count = 0;
                 lastReconizedLocation = location;
+            }
+
+            else{
+                count++;
+
+                if(count > 20)
+                {
+                    lastReconizedLocation = new RingLocation();
+                }
             }
             telemetry.addData("stack", String.format("%d", lastReconizedLocation.mDetected));
             telemetry.update();

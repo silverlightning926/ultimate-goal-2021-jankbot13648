@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.util.NanoClock;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -29,12 +30,15 @@ public class Shooter {
 
         shooterMotor1.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
         shooterMotor2.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+
+        shooterMotor1.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, Constants.SHOOTER_PID_COEFFICIENTS);
+        shooterMotor2.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, Constants.SHOOTER_PID_COEFFICIENTS);
     }
 
     public void SetShooter(double shooterSpeed)
     {
         shooterMotor1.setVelocity(shooterSpeed, AngleUnit.DEGREES);
-        shooterMotor2.setVelocity(shooterSpeed, AngleUnit.DEGREES);;
+        shooterMotor2.setVelocity(shooterSpeed, AngleUnit.DEGREES);
     }
 
     public void Kick()

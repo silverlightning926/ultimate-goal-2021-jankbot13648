@@ -44,7 +44,6 @@ public class TeleOpPreAligned extends LinearOpMode {
         if(isStopRequested()) return;
 
         shooter.Unkick();
-        shooter.SetShooter(Constants.SHOOTER_VELOCITY);
 
         while (!isStopRequested() && opModeIsActive())
         {
@@ -81,15 +80,24 @@ public class TeleOpPreAligned extends LinearOpMode {
                 );
             }
 
+            //double angleToGoal = Math.atan2(36 + poseEstimate.getY(), 144 - poseEstimate.getX());
+
             driveBase.update();
+
+            telemetry.addData("Current X", -poseEstimate.getY());
+            telemetry.addData("Current Y", poseEstimate.getX());
+            telemetry.addData("Current Heading", poseEstimate.getHeading());
+            telemetry.addData("Distance To X", 36 + poseEstimate.getY());
+            telemetry.addData("Distance To Y", 144 - poseEstimate.getX());
+            telemetry.addData("Aim Angle", Math.atan2(36 + poseEstimate.getY(), 144 - poseEstimate.getX()));
+
+            telemetry.update();
 
             if(gamepad1.a)
             {
-                poseEstimate = driveBase.getPoseEstimate();
+                //poseEstimate = driveBase.getPoseEstimate();
 
-                double angleToGoal = Math.atan2(Constants.GOAL_VECTOR2D.getX() - poseEstimate.getX(), Constants.GOAL_VECTOR2D.getY() - poseEstimate.getY());
-
-                driveBase.turn(angleToGoal);
+                //driveBase.turn((angleToGoal - poseEstimate.getHeading())%(2*Math.PI));
 
                 for(int i = 0; i <3; i++)
                 {
@@ -103,6 +111,7 @@ public class TeleOpPreAligned extends LinearOpMode {
                 }
             }
 
+            shooter.SetShooter(Constants.SHOOTER_VELOCITY);
             intake.SetIntake(gamepad1.right_trigger, gamepad1.left_trigger);
             wobbleGoal.MoveWobbleGoalPosition(gamepad2.dpad_left, gamepad2.dpad_up, gamepad2.dpad_right);
             wobbleGoal.WobbleGoalManipulatorHandler(gamepad2.x, gamepad2.b);

@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.OpModes.TeleOp;
 
+import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.roadrunner.control.PIDCoefficients;
 import com.acmerobotics.roadrunner.control.PIDFController;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
@@ -33,6 +34,19 @@ public class TeleOpMain extends LinearOpMode {
         intake = new Intake(hardwareMap);
         wobbleGoal = new WobbleGoal(hardwareMap);
 
+        Trajectory traj1 = driveBase.trajectoryBuilder(new Pose2d())
+                .strafeLeft(6.5)
+                .build();
+
+        Trajectory traj2 = driveBase.trajectoryBuilder(traj1.end())
+                .strafeLeft(7.5)
+                .build();
+
+        Trajectory traj3 = driveBase.trajectoryBuilder(traj2.end())
+                .strafeLeft(7.5)
+                .build();
+
+
         telemetry.addLine("System Initialization Complete");
         telemetry.update();
 
@@ -41,12 +55,11 @@ public class TeleOpMain extends LinearOpMode {
         telemetry.clearAll();
         telemetry.update();
 
+        shooter.SetShooter(Constants.SHOOTER_VELOCITY);
+
         if(isStopRequested()) return;
 
-        driveBase.setPoseEstimate(PoseStorage.currentPose);
-
         shooter.Unkick();
-        shooter.SetShooter(Constants.SHOOTER_VELOCITY);
 
         while (!isStopRequested() && opModeIsActive())
         {
@@ -89,9 +102,13 @@ public class TeleOpMain extends LinearOpMode {
             {
                 poseEstimate = driveBase.getPoseEstimate();
 
-                double angleToGoal = Math.atan2(Constants.GOAL_VECTOR2D.getX() - poseEstimate.getX(), Constants.GOAL_VECTOR2D.getY() - poseEstimate.getY());
+                telemetry.addData("Current X", poseEstimate.getX());
+                telemetry.addData("Current Y", poseEstimate.getY());
+                telemetry.update();
 
-                driveBase.turn(angleToGoal);
+                //double angleToGoal = Math.atan2(Constants.GOAL_VECTOR2D.getX() - poseEstimate.getX(), Constants.GOAL_VECTOR2D.getY() - poseEstimate.getY());
+
+                //driveBase.turn(angleToGoal);
 
                 for(int i = 0; i <3; i++)
                 {
@@ -103,6 +120,49 @@ public class TeleOpMain extends LinearOpMode {
 
                     sleep(200);
                 }
+            }
+
+
+            if(gamepad1.left_bumper)
+            {
+                shooter.SetShooter(Constants.POWER_SHOT_VELOCITY);
+
+                driveBase.followTrajectory(traj1);
+
+                // Kick 1
+                shooter.Kick();
+
+                sleep(200);
+
+                shooter.Unkick();
+
+                sleep(200);
+
+                // Move 1
+
+                driveBase.followTrajectory(traj2);
+
+                // Kick 2
+                shooter.Kick();
+
+                sleep(200);
+
+                shooter.Unkick();
+
+                sleep(200);
+
+                // Move 2
+
+                driveBase.followTrajectory(traj3);
+
+                shooter.Kick();
+
+                sleep(200);
+
+                shooter.Unkick();
+
+                sleep(200);
+
             }
 
             intake.SetIntake(gamepad1.right_trigger, gamepad1.left_trigger);

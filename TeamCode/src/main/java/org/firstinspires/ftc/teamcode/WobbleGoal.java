@@ -39,6 +39,13 @@ public class WobbleGoal {
         }
     }
 
+    public void GoToWobbleGoalPosition(double position)
+    {
+
+        wobbleGoal1.setPosition(position);
+        wobbleGoal2.setPosition(position);
+    }
+
     public void WobbleGoalManipulatorHandler(boolean wobbleGoalOpenButton, boolean wobbleGoalCloseButton)
     {
         if(wobbleGoalOpenButton)
@@ -50,5 +57,10 @@ public class WobbleGoal {
         {
             wobbleGoalManipulatorServo.setPosition(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS);
         }
+    }
+
+    public void GoToPosWobbleGoalManipulatorHandler(double position)
+    {
+        wobbleGoalManipulatorServo.setPosition(position);
     }
 }
