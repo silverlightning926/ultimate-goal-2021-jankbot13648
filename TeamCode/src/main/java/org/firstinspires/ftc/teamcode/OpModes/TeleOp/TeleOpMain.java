@@ -47,9 +47,11 @@ public class TeleOpMain extends LinearOpMode {
                 .strafeLeft(7.5)
                 .build();
 
+        driveBase.setPoseEstimate(PoseStorage.currentPose);
+
         telemetry.addLine("System Initialization Complete");
         telemetry.update();
-
+        
         waitForStart();
 
         telemetry.clearAll();

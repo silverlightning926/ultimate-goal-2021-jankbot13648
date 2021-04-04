@@ -196,9 +196,12 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(traj12);
 
+            PoseStorage.currentPose = new Pose2d(
+                    driveBase.getPoseEstimate().getX(),
+                    driveBase.getPoseEstimate().getY(),
+                    driveBase.getPoseEstimate().getHeading() + Math.toRadians(270));
+
             requestOpModeStop();
         }
-
-        PoseStorage.currentPose = driveBase.getPoseEstimate();
     }
 }

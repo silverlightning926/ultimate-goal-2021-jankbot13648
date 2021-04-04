@@ -20,6 +20,8 @@ import org.firstinspires.ftc.teamcode.DriveBase.drive.DriveBase;
 @TeleOp(name = "TeleOp - Pre Aligned")
 public class TeleOpPreAligned extends LinearOpMode {
 
+    // Created Systems
+
     DriveBase driveBase;
     Shooter shooter;
     Intake intake;
@@ -28,18 +30,37 @@ public class TeleOpPreAligned extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
+        //Initialized Systems
         driveBase = new DriveBase(hardwareMap);
         shooter = new Shooter(hardwareMap);
         intake = new Intake(hardwareMap);
         wobbleGoal = new WobbleGoal(hardwareMap);
 
+        // Created Powershot Trajectory
+        Trajectory traj1 = driveBase.trajectoryBuilder(new Pose2d())
+                .strafeLeft(6.5)
+                .build();
+
+        Trajectory traj2 = driveBase.trajectoryBuilder(traj1.end())
+                .strafeLeft(7.5)
+                .build();
+
+        Trajectory traj3 = driveBase.trajectoryBuilder(traj2.end())
+                .strafeLeft(7.5)
+                .build();
+
         telemetry.addLine("System Initialization Complete");
         telemetry.update();
 
+        driveBase.setPoseEstimate(new Pose2d(0,0, Math.toRadians(270)));
+
+        // Wait For Start
         waitForStart();
 
         telemetry.clearAll();
         telemetry.update();
+
+        shooter.SetShooter(Constants.SHOOTER_VELOCITY);
 
         if(isStopRequested()) return;
 
@@ -80,18 +101,7 @@ public class TeleOpPreAligned extends LinearOpMode {
                 );
             }
 
-            //double angleToGoal = Math.atan2(36 + poseEstimate.getY(), 144 - poseEstimate.getX());
-
             driveBase.update();
-
-            telemetry.addData("Current X", -poseEstimate.getY());
-            telemetry.addData("Current Y", poseEstimate.getX());
-            telemetry.addData("Current Heading", poseEstimate.getHeading());
-            telemetry.addData("Distance To X", 36 + poseEstimate.getY());
-            telemetry.addData("Distance To Y", 144 - poseEstimate.getX());
-            telemetry.addData("Aim Angle", Math.atan2(36 + poseEstimate.getY(), 144 - poseEstimate.getX()));
-
-            telemetry.update();
 
             if(gamepad1.a)
             {
@@ -107,7 +117,49 @@ public class TeleOpPreAligned extends LinearOpMode {
                 }
             }
 
-            shooter.SetShooter(Constants.SHOOTER_VELOCITY);
+
+            if(gamepad1.left_bumper)
+            {
+                shooter.SetShooter(Constants.POWER_SHOT_VELOCITY);
+
+                driveBase.followTrajectory(traj1);
+
+                // Kick 1
+                shooter.Kick();
+
+                sleep(200);
+
+                shooter.Unkick();
+
+                sleep(200);
+
+                // Move 1
+
+                driveBase.followTrajectory(traj2);
+
+                // Kick 2
+                shooter.Kick();
+
+                sleep(200);
+
+                shooter.Unkick();
+
+                sleep(200);
+
+                // Move 2
+
+                driveBase.followTrajectory(traj3);
+
+                shooter.Kick();
+
+                sleep(200);
+
+                shooter.Unkick();
+
+                sleep(200);
+
+            }
+
             intake.SetIntake(gamepad1.right_trigger, gamepad1.left_trigger);
             wobbleGoal.MoveWobbleGoalPosition(gamepad2.dpad_left, gamepad2.dpad_up, gamepad2.dpad_right);
             wobbleGoal.WobbleGoalManipulatorHandler(gamepad2.x, gamepad2.b);

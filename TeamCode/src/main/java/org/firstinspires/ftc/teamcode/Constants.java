@@ -23,7 +23,6 @@ public class Constants {
     public static String VERTICAL_RIGHT_NAME = FRONT_RIGHT_DRIVE_NAME;
     public static String HORIZONTAL_NAME = REAR_LEFT_DRIVE_NAME;
 
-    public static Pose2d STARTING_POSE = new Pose2d(0, -30.504595145407027);
     public static Vector2d GOAL_VECTOR2D = new Vector2d(36, 144);
 
     // Shooter Motor Names
