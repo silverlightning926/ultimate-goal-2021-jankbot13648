@@ -95,10 +95,6 @@ public class TeleOpPreAligned extends LinearOpMode {
 
             if(gamepad1.a)
             {
-                //poseEstimate = driveBase.getPoseEstimate();
-
-                //driveBase.turn((angleToGoal - poseEstimate.getHeading())%(2*Math.PI));
-
                 for(int i = 0; i <3; i++)
                 {
                     shooter.Kick();

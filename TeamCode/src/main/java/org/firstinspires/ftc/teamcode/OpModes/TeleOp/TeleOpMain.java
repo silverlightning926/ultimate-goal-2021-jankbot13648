@@ -34,6 +34,7 @@ public class TeleOpMain extends LinearOpMode {
         intake = new Intake(hardwareMap);
         wobbleGoal = new WobbleGoal(hardwareMap);
 
+        // Powershot Trajectory
         Trajectory traj1 = driveBase.trajectoryBuilder(new Pose2d())
                 .strafeLeft(6.5)
                 .build();
@@ -45,7 +46,6 @@ public class TeleOpMain extends LinearOpMode {
         Trajectory traj3 = driveBase.trajectoryBuilder(traj2.end())
                 .strafeLeft(7.5)
                 .build();
-
 
         telemetry.addLine("System Initialization Complete");
         telemetry.update();
@@ -100,16 +100,6 @@ public class TeleOpMain extends LinearOpMode {
 
             if(gamepad1.a)
             {
-                poseEstimate = driveBase.getPoseEstimate();
-
-                telemetry.addData("Current X", poseEstimate.getX());
-                telemetry.addData("Current Y", poseEstimate.getY());
-                telemetry.update();
-
-                //double angleToGoal = Math.atan2(Constants.GOAL_VECTOR2D.getX() - poseEstimate.getX(), Constants.GOAL_VECTOR2D.getY() - poseEstimate.getY());
-
-                //driveBase.turn(angleToGoal);
-
                 for(int i = 0; i <3; i++)
                 {
                     shooter.Kick();
