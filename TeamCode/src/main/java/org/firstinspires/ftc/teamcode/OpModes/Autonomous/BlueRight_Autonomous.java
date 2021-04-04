@@ -85,7 +85,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
 
         Trajectory traj12 = driveBase.trajectoryBuilder(traj11.end())
-                .lineToSplineHeading(new Pose2d(101.42439-5, 20.53, 1.602))
+                .lineToSplineHeading(new Pose2d(94.42439, 20.53, 1.602))
                 .build();
 
         wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS);
@@ -126,13 +126,6 @@ public class BlueRight_Autonomous extends LinearOpMode {
             {}
 
             wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
-
-            timer.reset();
-
-            while (timer.seconds() < 0.75 && opModeIsActive())
-            {}
-
-            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
             timer.reset();
 
@@ -202,11 +195,6 @@ public class BlueRight_Autonomous extends LinearOpMode {
             intake.SetWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_OUT);
 
             driveBase.followTrajectory(traj12);
-
-            timer.reset();
-
-            while (timer.seconds() < 0.5 && opModeIsActive())
-            {}
 
             requestOpModeStop();
         }
