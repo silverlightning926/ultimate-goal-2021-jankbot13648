@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.Systems.Shooter;
 import org.firstinspires.ftc.teamcode.Systems.Vision;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
 
-@Autonomous(name = "THIS IS THE AUTONOMOUS!!")
+@Autonomous(name = "BLUE - RIGHT")
 public class BlueRight_Autonomous extends LinearOpMode {
 
     DriveBase driveBase;
@@ -43,7 +43,51 @@ public class BlueRight_Autonomous extends LinearOpMode {
         telemetry.update();
 
         // 0 Ring Trajectories Start----------------------------------------------------------------
-        
+
+        Trajectory traj1_0ring = driveBase.trajectoryBuilder(new Pose2d())
+                .lineToSplineHeading(new Pose2d(60, 0, Math.toRadians(10)))
+                .build();
+
+        // Shoot
+
+        // Set Wobble Goal Position [1]
+
+        Trajectory traj2_0ring = driveBase.trajectoryBuilder(traj1_0ring.end())
+                .lineToSplineHeading(new Pose2d(61, 24, 1.6292))
+                .build();
+
+        // Open Wobble Goal Manipulator
+        // Wait
+
+        Trajectory traj3_0ring = driveBase.trajectoryBuilder(traj2_0ring.end())
+                .back(6)
+                .build();
+
+        // Set Wobble Goal Position [2]
+
+        Trajectory traj4_0ring = driveBase.trajectoryBuilder(traj3_0ring.end())
+                .lineToSplineHeading(new Pose2d(31.785, 18.014, 4.6716))
+                .build();
+
+        // Close Wobble Goal Manipulator
+        // Wait
+
+        // Set Wobble Goal Position [1]
+
+        Trajectory traj5_0ring = driveBase.trajectoryBuilder(traj4_0ring.end())
+                .lineToSplineHeading(new Pose2d(55, 18.8, 1.6292))
+                .build();
+
+        // Open Wobble Goal Manipulator
+
+        Trajectory traj6_0ring = driveBase.trajectoryBuilder(traj5_0ring.end())
+                .back(10)
+                .build();
+
+        Trajectory traj7_0ring = driveBase.trajectoryBuilder(traj6_0ring.end())
+                .lineToSplineHeading(new Pose2d(70, 0, 0))
+                .build();
+
         // 0 Ring Trajectories End------------------------------------------------------------------
 
         // 4 Ring Trajectories Start----------------------------------------------------------------
@@ -112,14 +156,89 @@ public class BlueRight_Autonomous extends LinearOpMode {
         }*/
 
         wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
-        //TODO: Turn On The Shooter
-        //shooter.SetShooter(Constants.SHOOTER_VELOCITY);
+        shooter.SetShooter(Constants.SHOOTER_VELOCITY);
         intake.ReleaseWalls();
         intake.SetWallPosition(0.5, 0.3);
 
         while (!isStopRequested() && ringPosition.equals(Vision.SkystoneDeterminationPipeline.RingPosition.NONE))
         {
+            telemetry.addData("Path", "1");
+            telemetry.update();
+            driveBase.followTrajectory(traj1_0ring);
 
+            intake.SetWallPosition(Constants.LEFT_WALL_POS_IN, Constants.RIGHT_WALL_POS_IN);
+
+            for(int i = 0; i < 2; i++)
+            {
+                shooter.Kick();
+
+                sleep(300);
+
+                shooter.Unkick();
+
+                sleep(300);
+            }
+
+            shooter.Kick();
+
+            sleep(300);
+
+            shooter.Unkick();
+
+            telemetry.addData("Path", "2");
+            telemetry.update();
+            driveBase.followTrajectory(traj2_0ring);
+
+            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+            timer.reset();
+            while (timer.seconds() < 0.5 && opModeIsActive());
+            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
+            timer.reset();
+            while (timer.seconds() < 0.50 && opModeIsActive());
+
+            telemetry.addData("Path", "3");
+            telemetry.update();
+            driveBase.followTrajectory(traj3_0ring);
+
+            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+
+            telemetry.addData("Path", "4");
+            telemetry.update();
+            driveBase.followTrajectory(traj4_0ring);
+
+            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS);
+
+            timer.reset();
+            while (timer.seconds() < 0.50 && opModeIsActive());
+
+            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
+
+            telemetry.addData("Path", "5");
+            telemetry.update();
+            driveBase.followTrajectory(traj5_0ring);
+
+            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+            timer.reset();
+            while (timer.seconds() < 0.5 && opModeIsActive());
+            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
+            timer.reset();
+            while (timer.seconds() < 0.50 && opModeIsActive());
+
+            telemetry.addData("Path", "6");
+            telemetry.update();
+            driveBase.followTrajectory(traj6_0ring);
+
+            telemetry.addData("Path", "7");
+            telemetry.update();
+            driveBase.followTrajectory(traj7_0ring);
+
+            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
+            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS);
+            timer.reset();
+            while (timer.seconds() < 0.5 && opModeIsActive());
+
+            PoseStorage.currentPose = new Pose2d(70, 0, Math.toRadians(90));
+            requestOpModeStop();
         }
 
         while (!isStopRequested() && ringPosition.equals(Vision.SkystoneDeterminationPipeline.RingPosition.FOUR))
@@ -218,9 +337,9 @@ public class BlueRight_Autonomous extends LinearOpMode {
             driveBase.followTrajectory(traj11_4ring);
 
             PoseStorage.currentPose = new Pose2d(94.42439, 17.0, Math.toRadians(180));
+            requestOpModeStop();
         }
 
-        requestOpModeStop();
         FtcDashboard.getInstance().stopCameraStream();
     }
 }
