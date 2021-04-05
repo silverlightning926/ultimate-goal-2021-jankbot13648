@@ -30,7 +30,11 @@ public class TeleOpMain extends LinearOpMode {
         wobbleGoal = new WobbleGoal(hardwareMap);
 
         // Powershot Trajectory
-        Trajectory traj1 = driveBase.trajectoryBuilder(driveBase.getPoseEstimate())
+        Trajectory traj1 = driveBase.trajectoryBuilder(new Pose2d(
+                driveBase.getPoseEstimate().getX(),
+                driveBase.getPoseEstimate().getY(),
+                driveBase.getPoseEstimate().getHeading() + PoseStorage.currentPose.getHeading()
+        ))
                 .strafeLeft(6.5)
                 .build();
 
