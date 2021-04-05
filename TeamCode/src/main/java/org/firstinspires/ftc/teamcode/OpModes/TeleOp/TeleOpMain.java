@@ -1,22 +1,17 @@
 package org.firstinspires.ftc.teamcode.OpModes.TeleOp;
 
-import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
-import com.acmerobotics.roadrunner.control.PIDCoefficients;
-import com.acmerobotics.roadrunner.control.PIDFController;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
-import com.acmerobotics.roadrunner.trajectory.TrajectoryBuilder;
-import com.acmerobotics.roadrunner.util.NanoClock;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Constants;
-import org.firstinspires.ftc.teamcode.DriveBase.drive.PoseStorage;
-import org.firstinspires.ftc.teamcode.Intake;
-import org.firstinspires.ftc.teamcode.Shooter;
-import org.firstinspires.ftc.teamcode.WobbleGoal;
-import org.firstinspires.ftc.teamcode.DriveBase.drive.DriveBase;
+import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.PoseStorage;
+import org.firstinspires.ftc.teamcode.Systems.Intake;
+import org.firstinspires.ftc.teamcode.Systems.Shooter;
+import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
+import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
 
 @TeleOp(name = "TeleOp - Main")
 public class TeleOpMain extends LinearOpMode {
