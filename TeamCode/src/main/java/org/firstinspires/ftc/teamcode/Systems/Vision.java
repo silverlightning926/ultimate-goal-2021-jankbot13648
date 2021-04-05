@@ -23,14 +23,14 @@ public class Vision
     int cameraMonitorViewId;
     OpenCvCamera camera;
 
-    public SkystoneDeterminationPipeline pipeline;
+    public RingDeterminationPipeline pipeline;
 
     public Vision(HardwareMap hardwareMap)
     {
         cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcamName = hardwareMap.get(WebcamName.class, Constants.CAMERA_NAME);
         camera = OpenCvCameraFactory.getInstance().createWebcam(webcamName, cameraMonitorViewId);
-        pipeline = new SkystoneDeterminationPipeline();
+        pipeline = new RingDeterminationPipeline();
         camera.setPipeline(pipeline);
 
         camera.openCameraDeviceAsync(() -> {
@@ -39,7 +39,7 @@ public class Vision
         });
     }
 
-    public static class SkystoneDeterminationPipeline extends OpenCvPipeline
+    public static class RingDeterminationPipeline extends OpenCvPipeline
     {
         /*
          * An enum to define the skystone position

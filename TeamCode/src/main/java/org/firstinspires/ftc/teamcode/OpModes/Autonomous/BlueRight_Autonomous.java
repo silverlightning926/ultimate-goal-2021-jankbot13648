@@ -26,7 +26,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
     ElapsedTime timer;
 
-    Vision.SkystoneDeterminationPipeline.RingPosition ringPosition;
+    Vision.RingDeterminationPipeline.RingPosition ringPosition;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -160,7 +160,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
         intake.ReleaseWalls();
         intake.SetWallPosition(0.5, 0.3);
 
-        while (!isStopRequested() && ringPosition.equals(Vision.SkystoneDeterminationPipeline.RingPosition.NONE))
+        while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.NONE))
         {
             telemetry.addData("Path", "1");
             telemetry.update();
@@ -241,7 +241,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
             requestOpModeStop();
         }
 
-        while (!isStopRequested() && ringPosition.equals(Vision.SkystoneDeterminationPipeline.RingPosition.FOUR))
+        while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.FOUR))
         {
             driveBase.followTrajectory(traj1_4ring);
 
