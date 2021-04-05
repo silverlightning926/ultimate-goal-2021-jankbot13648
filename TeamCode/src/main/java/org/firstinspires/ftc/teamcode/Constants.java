@@ -27,7 +27,7 @@ public class Constants {
     public static Vector2d GOAL_VECTOR2D = new Vector2d(132.989966, 0);
 
     // Shooter Motor Names
-    public static double SHOOTER_VELOCITY = 225;
+    public static double SHOOTER_VELOCITY = 195;
     public static double POWER_SHOT_VELOCITY = 217 * (8.0/10.0);
 
     public static String SHOOTER_1_NAME = "s1";

@@ -4,16 +4,23 @@ import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
+import com.acmerobotics.roadrunner.trajectory.constraints.AngularVelocityConstraint;
+import com.acmerobotics.roadrunner.trajectory.constraints.MecanumVelocityConstraint;
+import com.acmerobotics.roadrunner.trajectory.constraints.MinVelocityConstraint;
+import com.acmerobotics.roadrunner.trajectory.constraints.ProfileAccelerationConstraint;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
+import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.PoseStorage;
 import org.firstinspires.ftc.teamcode.Systems.Intake;
 import org.firstinspires.ftc.teamcode.Systems.Shooter;
 import org.firstinspires.ftc.teamcode.Systems.Vision;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
+
+import java.util.Arrays;
 
 @Autonomous(name = "BLUE - RIGHT")
 public class BlueRight_Autonomous extends LinearOpMode {
@@ -87,7 +94,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
                 .build();
 
         Trajectory traj2_4ring = driveBase.trajectoryBuilder(traj1_4ring.end())
-                .lineToConstantHeading(new Vector2d(57.5, -8))
+                .lineToConstantHeading(new Vector2d(55.5, -8))
                 .build();
 
         Trajectory traj3_4ring = driveBase.trajectoryBuilder(traj2_4ring.end())
@@ -103,27 +110,37 @@ public class BlueRight_Autonomous extends LinearOpMode {
                 .build();
 
         Trajectory traj6_4ring = driveBase.trajectoryBuilder(traj5_4ring.end())
-                .lineToSplineHeading(new Pose2d(31.785, 18.014, 4.6716))
+                .lineToSplineHeading(new Pose2d(26.585, 21.25, 4.6716))
                 .build();
 
         Trajectory traj7_4ring = driveBase.trajectoryBuilder(traj6_4ring.end())
-                .lineToSplineHeading(new Pose2d(20.059586793191045, 5.124632812288327, Math.toRadians(357.66438090824806)))
+                .lineToSplineHeading(new Pose2d(18.059586793191045, 5.124632812288327, Math.toRadians(357.66438090824806)))
                 .build();
 
         Trajectory traj8_4ring = driveBase.trajectoryBuilder(traj7_4ring.end())
-                .lineToSplineHeading(new Pose2d(41.108323, 2.523665520064312, 5.85648))
+                .lineToSplineHeading(new Pose2d(35.108323, 2.523665520064312, 5.85648), new MinVelocityConstraint(
+                        Arrays.asList(
+                                new AngularVelocityConstraint(25),
+                                new MecanumVelocityConstraint(25, DriveConstants.TRACK_WIDTH)
+                        )),
+                        new ProfileAccelerationConstraint(DriveConstants.MAX_ACCEL)
+                )
                 .build();
 
         Trajectory traj09_4ring = driveBase.trajectoryBuilder(traj8_4ring.end())
-                .lineToSplineHeading(new Pose2d(56.321, 9.896, 6.05))
+                .lineToSplineHeading(new Pose2d(41.321, 20.0, 0.0))
                 .build();
 
         Trajectory traj10_4ring = driveBase.trajectoryBuilder(traj09_4ring.end())
-                .lineToSplineHeading(new Pose2d(98.42439, 17.0, Math.toRadians(90)))
+                .lineToSplineHeading(new Pose2d(56.321, 20, 5.85))
                 .build();
 
         Trajectory traj11_4ring = driveBase.trajectoryBuilder(traj10_4ring.end())
-                .lineToSplineHeading(new Pose2d(94.42439, 17.0, Math.toRadians(90)))
+                .lineToSplineHeading(new Pose2d(98.42439, 15.0, Math.toRadians(90)))
+                .build();
+
+        Trajectory traj12_4ring = driveBase.trajectoryBuilder(traj11_4ring.end())
+                .lineToSplineHeading(new Pose2d(92.42439, 17.0, Math.toRadians(90)))
                 .build();
 
         // 4 Ring Trajectories End------------------------------------------------------------------
@@ -134,6 +151,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
         {
             ringPosition = vision.pipeline.position;
             telemetry.addData("Amount Of Rings", ringPosition);
+            //telemetry.addData("Analysis", vision.pipeline.getAnalysis());
             telemetry.update();
 
         }
@@ -145,7 +163,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
             telemetry.update();
         }*/
 
-        wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
+        wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
         shooter.SetShooter(Constants.SHOOTER_VELOCITY);
         intake.ReleaseWalls();
         intake.SetWallPosition(0.5, 0.3);
@@ -250,16 +268,16 @@ public class BlueRight_Autonomous extends LinearOpMode {
             {
                 shooter.Kick();
 
-                sleep(300);
+                sleep(275);
 
                 shooter.Unkick();
 
-                sleep(300);
+                sleep(275);
             }
 
             shooter.Kick();
 
-            sleep(300);
+            sleep(275);
 
             shooter.Unkick();
 
@@ -269,7 +287,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             timer.reset();
 
-            while (timer.seconds() < 0.50 && opModeIsActive());
+            while (timer.seconds() < 0.25 && opModeIsActive());
 
             wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
 
@@ -289,7 +307,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             timer.reset();
 
-            while (timer.seconds() < 0.25 && opModeIsActive());
+            while (timer.seconds() < 0.75 && opModeIsActive());
 
             wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
@@ -297,33 +315,36 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             intake.SetIntake(1, 0);
 
+            intake.SetWallPosition(Constants.LEFT_WALL_POS_IN, Constants.RIGHT_WALL_POS_IN);
+
             driveBase.followTrajectory(traj8_4ring);
-
-            intake.SetIntake(0,0);
-            shooter.SetShooter(Constants.SHOOTER_VELOCITY*1.05);
-
             driveBase.followTrajectory(traj09_4ring);
+
+            shooter.SetShooter(Constants.SHOOTER_VELOCITY*1.01);
+
+            driveBase.followTrajectory(traj10_4ring);
+            intake.SetIntake(0,0);
 
             for(int i = 0; i < 2; i++)
             {
                 shooter.Kick();
 
-                sleep(300);
+                sleep(250);
 
                 shooter.Unkick();
 
-                sleep(300);
+                sleep(250);
             }
 
             shooter.Kick();
 
-            sleep(300);
+            sleep(250);
 
             shooter.Unkick();
 
-            intake.SetWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
+            intake.SetWallPosition(0.5, 0.3);
 
-            driveBase.followTrajectory(traj10_4ring);
+            driveBase.followTrajectory(traj11_4ring);
 
             wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
 
@@ -331,7 +352,9 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             while (timer.seconds() < 0.5 && opModeIsActive());
 
-            driveBase.followTrajectory(traj11_4ring);
+            intake.SetWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
+
+            driveBase.followTrajectory(traj12_4ring);
 
             PoseStorage.currentPose = new Pose2d(94.42439, 17.0, Math.toRadians(180));
             requestOpModeStop();
