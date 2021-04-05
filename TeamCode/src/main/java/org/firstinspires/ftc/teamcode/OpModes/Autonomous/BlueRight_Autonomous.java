@@ -237,7 +237,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
             telemetry.update();
             driveBase.followTrajectory(traj11_4ring);
 
-            PoseStorage.currentPose = new Pose2d(94.42439, 17.0, Math.toRadians(270));
+            PoseStorage.currentPose = new Pose2d(94.42439, 17.0, Math.toRadians(180));
         }
 
         requestOpModeStop();
