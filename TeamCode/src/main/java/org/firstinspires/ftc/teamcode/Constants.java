@@ -9,12 +9,9 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 @Config
 public class Constants {
 
-    public static final String VUFORIA_LICENSE_KEY
-            = "AdcmR0H/////AAABmX5FCuasR0WJvaW+WfKBZZY4Mkmr39mE5zeNXTSqAfbDNYf8W53AS1tK2Fgrwh1kN/CVmyZnbLlKxrnI9kDObs2/9mddaFBkwb7TCKrCo4Cy/kqF85YWtWYekU3EqHzuMNvw1OonPzQJ7kjgBhszai3nQKg5bN2dd8NBPFpScozkSlvIUrWFvbj20K1K7kQ3JjgMreeSNldB12C+ZeeeUi9IVDBqfkcBOszPh0HvSMBGX3IkIkac56/UcTFbaa/GNWTwZtrVshjnypXm15Y1d62Ehg9G8wNHFMwhvzHqfGvLA++K7x/dCtB+iaPE7WNxom4RaE+UYJ8kDjbpjrbtiXPuqUN9+SbCwQK6IN86vAer";
-
     public static String CAMERA_NAME = "Webcam 1";
     public static int CAMERA_RESOLUTION_WIDTH = 1280;
-    public static int CAMERA_RESOLUTION_LENGTH = 720;
+    public static int CAMERA_RESOLUTION_HEIGHT = 720;
 
     // Drive Base Motor Names
     public static String FRONT_LEFT_DRIVE_NAME = "fl";
