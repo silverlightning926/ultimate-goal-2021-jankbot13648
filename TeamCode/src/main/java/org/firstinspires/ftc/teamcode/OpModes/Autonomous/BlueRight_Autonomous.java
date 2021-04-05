@@ -8,12 +8,12 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.Constants;
-import org.firstinspires.ftc.teamcode.DriveBase.drive.DriveBase;
-import org.firstinspires.ftc.teamcode.DriveBase.drive.PoseStorage;
-import org.firstinspires.ftc.teamcode.Intake;
-import org.firstinspires.ftc.teamcode.Shooter;
-import org.firstinspires.ftc.teamcode.Vision;
-import org.firstinspires.ftc.teamcode.WobbleGoal;
+import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
+import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.PoseStorage;
+import org.firstinspires.ftc.teamcode.Systems.Intake;
+import org.firstinspires.ftc.teamcode.Systems.Shooter;
+import org.firstinspires.ftc.teamcode.Systems.Vision;
+import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
 
 @Autonomous(name = "THIS IS THE AUTONOMOUS!!")
 public class BlueRight_Autonomous extends LinearOpMode {
@@ -41,6 +41,10 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
         telemetry.addLine("System Initialization Complete");
         telemetry.update();
+
+        // 0 Ring Trajectories Start----------------------------------------------------------------
+        
+        // 0 Ring Trajectories End------------------------------------------------------------------
 
         // 4 Ring Trajectories Start----------------------------------------------------------------
 
@@ -114,18 +118,16 @@ public class BlueRight_Autonomous extends LinearOpMode {
         intake.SetWallPosition(0.5, 0.3);
 
         while (!isStopRequested() && ringPosition.equals(Vision.SkystoneDeterminationPipeline.RingPosition.NONE))
-        {}
+        {
+
+        }
 
         while (!isStopRequested() && ringPosition.equals(Vision.SkystoneDeterminationPipeline.RingPosition.FOUR))
         {
-            telemetry.addData("Current Trajectory", "Trajectory 1");
-            telemetry.update();
             driveBase.followTrajectory(traj1_4ring);
 
             intake.SetWallPosition(Constants.LEFT_WALL_POS_IN, Constants.RIGHT_WALL_POS_IN);
 
-            telemetry.addData("Current Trajectory", "Trajectory 2");
-            telemetry.update();
             driveBase.followTrajectory(traj2_4ring);
 
             for(int i = 0; i < 2; i++)
@@ -145,62 +147,45 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             shooter.Unkick();
 
-            telemetry.addData("Current Trajectory", "Trajectory 3");
-            telemetry.update();
             driveBase.followTrajectory(traj3_4ring);
 
             wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
             timer.reset();
 
-            while (timer.seconds() < 0.50 && opModeIsActive())
-            {}
+            while (timer.seconds() < 0.50 && opModeIsActive());
 
             wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
 
             timer.reset();
 
-            while (timer.seconds() < 0.25 && opModeIsActive())
-            {}
+            while (timer.seconds() < 0.25 && opModeIsActive());
 
             wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
-            telemetry.addData("Current Trajectory", "Trajectory 4");
-            telemetry.update();
             driveBase.followTrajectory(traj4_4ring);
 
-            telemetry.addData("Current Trajectory", "Trajectory 5");
-            telemetry.update();
             driveBase.followTrajectory(traj5_4ring);
 
-            telemetry.addData("Current Trajectory", "Trajectory 6");
-            telemetry.update();
             driveBase.followTrajectory(traj6_4ring);
 
             wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS);
 
             timer.reset();
 
-            while (timer.seconds() < 0.25 && opModeIsActive())
-            {}
+            while (timer.seconds() < 0.25 && opModeIsActive());
 
             wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
-            telemetry.addData("Current Trajectory", "Trajectory 7");
-            telemetry.update();
             driveBase.followTrajectory(traj7_4ring);
 
             intake.SetIntake(1, 0);
 
-            telemetry.addData("Current Trajectory", "Trajectory 8");
-            telemetry.update();
             driveBase.followTrajectory(traj8_4ring);
 
             intake.SetIntake(0,0);
             shooter.SetShooter(Constants.SHOOTER_VELOCITY*1.05);
 
-            telemetry.addData("Current Trajectory", "Trajectory 10");
-            telemetry.update();
             driveBase.followTrajectory(traj09_4ring);
 
             for(int i = 0; i < 2; i++)
@@ -222,19 +207,14 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             intake.SetWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
 
-            telemetry.addData("Current Trajectory", "Trajectory 11");
-            telemetry.update();
             driveBase.followTrajectory(traj10_4ring);
 
             wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
 
             timer.reset();
 
-            while (timer.seconds() < 0.5 && opModeIsActive())
-            {}
+            while (timer.seconds() < 0.5 && opModeIsActive());
 
-            telemetry.addData("Current Trajectory", "Trajectory 12");
-            telemetry.update();
             driveBase.followTrajectory(traj11_4ring);
 
             PoseStorage.currentPose = new Pose2d(94.42439, 17.0, Math.toRadians(180));
