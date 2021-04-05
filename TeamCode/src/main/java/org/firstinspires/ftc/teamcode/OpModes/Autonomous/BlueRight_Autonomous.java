@@ -48,37 +48,21 @@ public class BlueRight_Autonomous extends LinearOpMode {
                 .lineToSplineHeading(new Pose2d(60, 0, Math.toRadians(10)))
                 .build();
 
-        // Shoot
-
-        // Set Wobble Goal Position [1]
-
         Trajectory traj2_0ring = driveBase.trajectoryBuilder(traj1_0ring.end())
                 .lineToSplineHeading(new Pose2d(61, 24, 1.6292))
                 .build();
-
-        // Open Wobble Goal Manipulator
-        // Wait
 
         Trajectory traj3_0ring = driveBase.trajectoryBuilder(traj2_0ring.end())
                 .back(6)
                 .build();
 
-        // Set Wobble Goal Position [2]
-
         Trajectory traj4_0ring = driveBase.trajectoryBuilder(traj3_0ring.end())
                 .lineToSplineHeading(new Pose2d(31.785, 18.014, 4.6716))
                 .build();
 
-        // Close Wobble Goal Manipulator
-        // Wait
-
-        // Set Wobble Goal Position [1]
-
         Trajectory traj5_0ring = driveBase.trajectoryBuilder(traj4_0ring.end())
                 .lineToSplineHeading(new Pose2d(55, 18.8, 1.6292))
                 .build();
-
-        // Open Wobble Goal Manipulator
 
         Trajectory traj6_0ring = driveBase.trajectoryBuilder(traj5_0ring.end())
                 .back(10)
@@ -89,6 +73,12 @@ public class BlueRight_Autonomous extends LinearOpMode {
                 .build();
 
         // 0 Ring Trajectories End------------------------------------------------------------------
+
+        // 1 Ring Trajectories Start----------------------------------------------------------------
+
+
+
+        // 1 Ring Trajectories End------------------------------------------------------------------
 
         // 4 Ring Trajectories Start----------------------------------------------------------------
 
@@ -238,6 +228,13 @@ public class BlueRight_Autonomous extends LinearOpMode {
             while (timer.seconds() < 0.5 && opModeIsActive());
 
             PoseStorage.currentPose = new Pose2d(70, 0, Math.toRadians(90));
+            requestOpModeStop();
+        }
+
+        while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.ONE))
+        {
+            // Follow Trajectories
+
             requestOpModeStop();
         }
 
