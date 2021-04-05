@@ -100,6 +100,16 @@ public class TeleOpPreAligned extends LinearOpMode {
 
             if(gamepad1.a)
             {
+                double xDistance = Constants.GOAL_VECTOR2D.getY() + driveBase.getPoseEstimate().getY();
+                double yDistance = Constants.GOAL_VECTOR2D.getX() - driveBase.getPoseEstimate().getX();
+
+                double aimAngle = Math.atan2(xDistance, yDistance) + 90 + 5;
+
+                telemetry.addData("Aim Angle", aimAngle);
+                telemetry.update();
+
+                driveBase.turnTo(Math.toRadians(aimAngle));
+
                 for(int i = 0; i <3; i++)
                 {
                     shooter.Kick();
