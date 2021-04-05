@@ -111,8 +111,7 @@ public class TeleOpMain extends LinearOpMode {
 
                 driveBase.turnTo(Math.toRadians(aimAngle));
 
-
-                for(int i = 0; i <3; i++)
+                for(int i = 0; i <2; i++)
                 {
                     shooter.Kick();
 
@@ -122,6 +121,14 @@ public class TeleOpMain extends LinearOpMode {
 
                     sleep(200);
                 }
+
+                intake.SetWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_OUT);
+
+                shooter.Kick();
+
+                sleep(200);
+
+                shooter.Unkick();
             }
 
 
@@ -138,7 +145,7 @@ public class TeleOpMain extends LinearOpMode {
 
                 shooter.Unkick();
 
-                sleep(200);
+                //sleep(200);
 
                 // Move 1
 
@@ -151,7 +158,7 @@ public class TeleOpMain extends LinearOpMode {
 
                 shooter.Unkick();
 
-                sleep(200);
+                //sleep(200);
 
                 // Move 2
 
@@ -163,7 +170,7 @@ public class TeleOpMain extends LinearOpMode {
 
                 shooter.Unkick();
 
-                sleep(200);
+                //sleep(200);
 
             }
 
