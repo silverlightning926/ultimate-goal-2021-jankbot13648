@@ -32,7 +32,7 @@ public class TeleOpPreAligned extends LinearOpMode {
         wobbleGoal = new WobbleGoal(hardwareMap);
 
         // Created Powershot Trajectory
-        Trajectory traj1 = driveBase.trajectoryBuilder(new Pose2d())
+        Trajectory traj1 = driveBase.trajectoryBuilder(driveBase.getPoseEstimate())
                 .strafeLeft(6.5)
                 .build();
 
@@ -47,7 +47,7 @@ public class TeleOpPreAligned extends LinearOpMode {
         telemetry.addLine("System Initialization Complete");
         telemetry.update();
 
-        driveBase.setPoseEstimate(new Pose2d(0,0, Math.toRadians(270)));
+        driveBase.setPoseEstimate(new Pose2d(0,0, Math.toRadians(90)));
 
         // Wait For Start
         waitForStart();
