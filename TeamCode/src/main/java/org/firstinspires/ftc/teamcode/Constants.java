@@ -53,17 +53,17 @@ public class Constants {
     public static double LEFT_FUNNEL_RELEASE_POS = 0.5;
     public static double RIGHT_FUNNEL_RELEASE_POS = 0.5;
 
-    public static double LEFT_WALL_POS_OUT = 0.05;
+    public static double LEFT_WALL_POS_OUT = 0.75;
     public static double RIGHT_WALL_POS_OUT = 0.9;
 
-    public static double LEFT_WALL_POS_IN = 0.3;
+    public static double LEFT_WALL_POS_IN = 0.45;
     public static double RIGHT_WALL_POS_IN = 0.6;
 
     // Wobble Goal Constants
     public static String WOBBLE_GOAL_SERVO1_NAME = "wg1";
     public static String WOBBLE_GOAL_SERVO2_NAME = "wg2";
 
-    public static double[] WOBBLE_GOAL_POSITION_VALUES = {0.2, 0.5, 0.75};
+    public static double[] WOBBLE_GOAL_POSITION_VALUES = {0.2, 0.5, 0.7};
 
     public static String WOBBLE_GOAL_MANIPULATOR_SERVO = "wgm";
     public static double WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS = 1.0;

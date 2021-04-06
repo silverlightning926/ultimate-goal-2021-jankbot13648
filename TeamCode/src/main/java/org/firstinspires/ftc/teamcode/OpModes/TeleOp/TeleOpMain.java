@@ -104,7 +104,7 @@ public class TeleOpMain extends LinearOpMode {
                 double xDistance = Constants.GOAL_VECTOR2D.getY() + driveBase.getPoseEstimate().getY();
                 double yDistance = Constants.GOAL_VECTOR2D.getX() - driveBase.getPoseEstimate().getX();
 
-                double aimAngle = Math.atan2(xDistance, yDistance) + PoseStorage.currentPose.getHeading() + 5;
+                double aimAngle = Math.atan2(xDistance, yDistance) + PoseStorage.currentPose.getHeading() + 90 - 6.5;
 
                 telemetry.addData("Aim Angle", aimAngle);
                 telemetry.update();
@@ -131,10 +131,48 @@ public class TeleOpMain extends LinearOpMode {
                 shooter.Unkick();
             }
 
+            if(gamepad1.b)
+            {
+                for(int i = 0; i <2; i++)
+                {
+                    shooter.Kick();
 
-            if(gamepad1.left_bumper)
+                    sleep(200);
+
+                    shooter.Unkick();
+
+                    sleep(200);
+                }
+
+                intake.SetWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_OUT);
+
+                shooter.Kick();
+
+                sleep(200);
+
+                shooter.Unkick();
+            }
+
+
+            if(gamepad1.dpad_up)
             {
                 shooter.SetShooter(Constants.POWER_SHOT_VELOCITY);
+
+                traj1 = driveBase.trajectoryBuilder(new Pose2d(
+                        driveBase.getPoseEstimate().getX(),
+                        driveBase.getPoseEstimate().getY(),
+                        driveBase.getPoseEstimate().getHeading()
+                ))
+                        .strafeLeft(6.5)
+                        .build();
+
+                traj2 = driveBase.trajectoryBuilder(traj1.end())
+                        .strafeLeft(7.5)
+                        .build();
+
+                traj3 = driveBase.trajectoryBuilder(traj2.end())
+                        .strafeLeft(7.5)
+                        .build();
 
                 driveBase.followTrajectory(traj1);
 
@@ -171,6 +209,8 @@ public class TeleOpMain extends LinearOpMode {
                 shooter.Unkick();
 
                 //sleep(200);
+
+                shooter.SetShooter(Constants.SHOOTER_VELOCITY);
 
             }
 

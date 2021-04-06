@@ -65,8 +65,8 @@ public class Vision
         static final int REGION_WIDTH = 85;
         static final int REGION_HEIGHT = 150;
 
-        final int FOUR_RING_THRESHOLD = 150;
-        final int ONE_RING_THRESHOLD = 140;
+        final int FOUR_RING_THRESHOLD = 170;
+        final int ONE_RING_THRESHOLD = 147;
 
         Point region1_pointA = new Point(
                 REGION1_TOPLEFT_ANCHOR_POINT.x,
