@@ -52,26 +52,45 @@ public class BlueRight_Autonomous extends LinearOpMode {
         // 0 Ring Trajectories Start----------------------------------------------------------------
 
         Trajectory traj1_0ring = driveBase.trajectoryBuilder(new Pose2d())
-                .lineToSplineHeading(new Pose2d(60, 0, Math.toRadians(10)))
+                .lineToSplineHeading(new Pose2d(60, 0, Math.toRadians(355)))
                 .build();
 
         Trajectory traj2_0ring = driveBase.trajectoryBuilder(traj1_0ring.end())
                 .lineToSplineHeading(new Pose2d(61, 24, 1.6292))
                 .build();
 
-        Trajectory traj3_0ring = driveBase.trajectoryBuilder(traj2_0ring.end())
+
+        Trajectory traj2_1_0ring = driveBase.trajectoryBuilder(traj2_0ring.end())
+                .lineToSplineHeading(new Pose2d(55, 18, 1.6292))
+                .build();
+
+        Trajectory traj3_0ring = driveBase.trajectoryBuilder(traj2_1_0ring.end())
                 .back(6)
                 .build();
 
         Trajectory traj4_0ring = driveBase.trajectoryBuilder(traj3_0ring.end())
-                .lineToSplineHeading(new Pose2d(31.785, 18.014, 4.6716))
+                .lineToSplineHeading(new Pose2d(30, 19.75, 4.6716))
                 .build();
 
-        Trajectory traj5_0ring = driveBase.trajectoryBuilder(traj4_0ring.end())
+        Trajectory traj4_1_0ring = driveBase.trajectoryBuilder(traj4_0ring.end())
+                .lineToSplineHeading(new Pose2d(26.585, 19.25, 4.6716))
+                .build();
+
+        Trajectory traj4_2_0ring = driveBase.trajectoryBuilder(traj4_1_0ring.end())
+                .lineToSplineHeading(new Pose2d(26.585, 12.25, 4.6716))
+                .build();
+
+
+        Trajectory traj5_0ring = driveBase.trajectoryBuilder(traj4_2_0ring.end())
                 .lineToSplineHeading(new Pose2d(55, 18.8, 1.6292))
                 .build();
 
-        Trajectory traj6_0ring = driveBase.trajectoryBuilder(traj5_0ring.end())
+
+        Trajectory traj5_1_0ring = driveBase.trajectoryBuilder(traj5_0ring.end())
+                .lineToSplineHeading(new Pose2d(49, 18.8, 1.6292))
+                .build();
+
+        Trajectory traj6_0ring = driveBase.trajectoryBuilder(traj5_1_0ring.end())
                 .back(10)
                 .build();
 
@@ -176,6 +195,9 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             intake.SetWallPosition(Constants.LEFT_WALL_POS_IN, Constants.RIGHT_WALL_POS_IN);
 
+            timer.reset();
+            while (timer.seconds() < 1.0 && opModeIsActive());
+
             for(int i = 0; i < 2; i++)
             {
                 shooter.Kick();
@@ -198,11 +220,15 @@ public class BlueRight_Autonomous extends LinearOpMode {
             driveBase.followTrajectory(traj2_0ring);
 
             wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+
             timer.reset();
             while (timer.seconds() < 0.5 && opModeIsActive());
+
             wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
             timer.reset();
             while (timer.seconds() < 0.50 && opModeIsActive());
+
+            driveBase.followTrajectory(traj2_1_0ring);
 
             telemetry.addData("Path", "3");
             telemetry.update();
@@ -214,10 +240,14 @@ public class BlueRight_Autonomous extends LinearOpMode {
             telemetry.update();
             driveBase.followTrajectory(traj4_0ring);
 
+            driveBase.followTrajectory(traj4_1_0ring);
+
             wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS);
 
             timer.reset();
-            while (timer.seconds() < 0.50 && opModeIsActive());
+            while (timer.seconds() < 0.75 && opModeIsActive());
+
+            driveBase.followTrajectory(traj4_2_0ring);
 
             wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
@@ -232,6 +262,8 @@ public class BlueRight_Autonomous extends LinearOpMode {
             timer.reset();
             while (timer.seconds() < 0.50 && opModeIsActive());
 
+            driveBase.followTrajectory(traj5_1_0ring);
+
             telemetry.addData("Path", "6");
             telemetry.update();
             driveBase.followTrajectory(traj6_0ring);
@@ -245,7 +277,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
             timer.reset();
             while (timer.seconds() < 0.5 && opModeIsActive());
 
-            PoseStorage.currentPose = new Pose2d(70, 0, Math.toRadians(90));
+            PoseStorage.currentPose = new Pose2d(70, 0, Math.toRadians(0));
             requestOpModeStop();
         }
 
