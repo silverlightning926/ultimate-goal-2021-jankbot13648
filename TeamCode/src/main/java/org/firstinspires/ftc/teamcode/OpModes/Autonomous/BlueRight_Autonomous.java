@@ -102,6 +102,60 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
         // 1 Ring Trajectories Start----------------------------------------------------------------
 
+        Trajectory traj1_1ring = driveBase.trajectoryBuilder(new Pose2d())
+                .lineToConstantHeading(new Vector2d(30, -18))
+                .build();
+
+        Trajectory traj2_1ring = driveBase.trajectoryBuilder(traj1_1ring.end())
+                .lineToConstantHeading(new Vector2d(55.5, -8))
+                .build();
+
+        Trajectory traj3_1ring = driveBase.trajectoryBuilder(traj2_1ring.end())
+                .lineToSplineHeading(new Pose2d(85.7,-5.2 , 1.6292))
+                .build();
+
+        Trajectory traj4_1ring = driveBase.trajectoryBuilder(traj3_1ring.end())
+                .back(6)
+                .build();
+
+        Trajectory traj5_1ring = driveBase.trajectoryBuilder(traj4_1ring.end())
+                .lineToSplineHeading(new Pose2d(35.785, 22.014, 4.6716))
+                .build();
+
+        Trajectory traj6_1ring = driveBase.trajectoryBuilder(traj5_1ring.end())
+                .lineToSplineHeading(new Pose2d(26.585, 21.25, 4.6716))
+                .build();
+
+        Trajectory traj7_1ring = driveBase.trajectoryBuilder(traj6_1ring.end())
+                .lineToSplineHeading(new Pose2d(18.059586793191045, 5.124632812288327, Math.toRadians(357.66438090824806)))
+                .build();
+
+        Trajectory traj8_1ring = driveBase.trajectoryBuilder(traj7_1ring.end())
+                .lineToSplineHeading(new Pose2d(35.108323, 2.523665520064312, 5.85648), new MinVelocityConstraint(
+                                Arrays.asList(
+                                        new AngularVelocityConstraint(25),
+                                        new MecanumVelocityConstraint(25, DriveConstants.TRACK_WIDTH)
+                                )),
+                        new ProfileAccelerationConstraint(DriveConstants.MAX_ACCEL)
+                )
+                .build();
+
+        Trajectory traj09_1ring = driveBase.trajectoryBuilder(traj8_1ring.end())
+                .lineToSplineHeading(new Pose2d(41.321, 20.0, 0.0))
+                .build();
+
+        Trajectory traj10_1ring = driveBase.trajectoryBuilder(traj09_1ring.end())
+                .lineToSplineHeading(new Pose2d(56.321, 20, 5.85))
+                .build();
+
+        Trajectory traj11_1ring = driveBase.trajectoryBuilder(traj10_1ring.end())
+                .lineToSplineHeading(new Pose2d(65.42439, -9.0, Math.toRadians(90)))
+                .build();
+
+        Trajectory traj12_1ring = driveBase.trajectoryBuilder(traj11_1ring.end())
+                .lineToSplineHeading(new Pose2d(92.42439, 17.0, Math.toRadians(90)))
+                .build();
+
 
 
         // 1 Ring Trajectories End------------------------------------------------------------------
@@ -284,8 +338,107 @@ public class BlueRight_Autonomous extends LinearOpMode {
         while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.ONE))
         {
             // Follow Trajectories
+            driveBase.followTrajectory(traj1_1ring);
 
+            intake.SetWallPosition(Constants.LEFT_WALL_POS_IN, Constants.RIGHT_WALL_POS_IN);
+
+            driveBase.followTrajectory(traj2_1ring);
+
+            for(int i = 0; i < 2; i++)
+            {
+                shooter.Kick();
+
+                sleep(275);
+
+                shooter.Unkick();
+
+                sleep(275);
+            }
+
+            shooter.Kick();
+
+            sleep(275);
+
+            shooter.Unkick();
+
+            driveBase.followTrajectory(traj3_1ring);
+
+            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+
+            timer.reset();
+
+            while (timer.seconds() < 0.25 && opModeIsActive());
+
+            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
+
+            timer.reset();
+
+            while (timer.seconds() < 0.25 && opModeIsActive());
+
+            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+
+            driveBase.followTrajectory(traj4_1ring);
+
+            driveBase.followTrajectory(traj5_1ring);
+
+            driveBase.followTrajectory(traj6_1ring);
+
+            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS);
+
+            timer.reset();
+
+            while (timer.seconds() < 0.75 && opModeIsActive());
+
+            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
+
+            driveBase.followTrajectory(traj7_1ring);
+
+            intake.SetIntake(1, 0);
+
+            intake.SetWallPosition(Constants.LEFT_WALL_POS_IN, Constants.RIGHT_WALL_POS_IN);
+
+            driveBase.followTrajectory(traj8_1ring);
+            driveBase.followTrajectory(traj09_1ring);
+
+            shooter.SetShooter(Constants.SHOOTER_VELOCITY*1.01);
+
+            driveBase.followTrajectory(traj10_1ring);
+            intake.SetIntake(0,0);
+
+            for(int i = 0; i < 2; i++)
+            {
+                shooter.Kick();
+
+                sleep(250);
+
+                shooter.Unkick();
+
+                sleep(250);
+            }
+
+            shooter.Kick();
+
+            sleep(250);
+
+            shooter.Unkick();
+
+            intake.SetWallPosition(0.5, 0.3);
+
+            driveBase.followTrajectory(traj11_1ring);
+
+            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
+
+            timer.reset();
+
+            while (timer.seconds() < 0.5 && opModeIsActive());
+
+            intake.SetWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
+
+            driveBase.followTrajectory(traj12_1ring);
+
+            PoseStorage.currentPose = new Pose2d(94.42439, 17.0, Math.toRadians(180));
             requestOpModeStop();
+
         }
 
         while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.FOUR))
