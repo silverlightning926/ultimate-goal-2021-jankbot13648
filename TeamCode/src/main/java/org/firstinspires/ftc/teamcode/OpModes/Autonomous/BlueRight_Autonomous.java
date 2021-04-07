@@ -216,7 +216,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
         // 4 Ring Trajectories End------------------------------------------------------------------
 
-        wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS);
+        wobbleGoal.SetWobbleGoalManipulatorClose();
 
         while (!isStarted())
         {
@@ -234,9 +234,9 @@ public class BlueRight_Autonomous extends LinearOpMode {
             telemetry.update();
         }*/
 
-        wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
+        wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
         shooter.SetShooter(Constants.SHOOTER_VELOCITY);
-        intake.ReleaseWalls();
+        intake.ReleaseFunnels();
         intake.SetWallPosition(0.1, 0.3);
 
         while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.NONE))
@@ -245,7 +245,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
             telemetry.update();
             driveBase.followTrajectory(traj1_0ring);
 
-            intake.SetWallPosition(Constants.LEFT_WALL_POS_IN, Constants.RIGHT_WALL_POS_IN);
+            intake.SetWallPosIn();
 
             timer.reset();
             while (timer.seconds() < 1.0 && opModeIsActive());
@@ -271,12 +271,13 @@ public class BlueRight_Autonomous extends LinearOpMode {
             telemetry.update();
             driveBase.followTrajectory(traj2_0ring);
 
-            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+            wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
             timer.reset();
             while (timer.seconds() < 0.5 && opModeIsActive());
 
-            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
+            wobbleGoal.SetWobbleGoalManipulatorOpen();
+
             timer.reset();
             while (timer.seconds() < 0.50 && opModeIsActive());
 
@@ -286,7 +287,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
             telemetry.update();
             driveBase.followTrajectory(traj3_0ring);
 
-            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+            wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
             telemetry.addData("Path", "4");
             telemetry.update();
@@ -294,23 +295,23 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(traj4_1_0ring);
 
-            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS);
+            wobbleGoal.SetWobbleGoalManipulatorClose();
 
             timer.reset();
             while (timer.seconds() < 0.75 && opModeIsActive());
 
             driveBase.followTrajectory(traj4_2_0ring);
 
-            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
+            wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
             telemetry.addData("Path", "5");
             telemetry.update();
             driveBase.followTrajectory(traj5_0ring);
 
-            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+            wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
             timer.reset();
             while (timer.seconds() < 0.5 && opModeIsActive());
-            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
+            wobbleGoal.SetWobbleGoalManipulatorOpen();
             timer.reset();
             while (timer.seconds() < 0.50 && opModeIsActive());
 
@@ -324,8 +325,8 @@ public class BlueRight_Autonomous extends LinearOpMode {
             telemetry.update();
             driveBase.followTrajectory(traj7_0ring);
 
-            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
-            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS);
+            wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
+            wobbleGoal.SetWobbleGoalManipulatorOpen();
             timer.reset();
             while (timer.seconds() < 0.5 && opModeIsActive());
 
@@ -338,7 +339,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
             // Follow Trajectories
             driveBase.followTrajectory(traj1_1ring);
 
-            intake.SetWallPosition(Constants.LEFT_WALL_POS_IN, Constants.RIGHT_WALL_POS_IN);
+            intake.SetWallPosIn();
 
             driveBase.followTrajectory(traj2_1ring);
 
@@ -361,19 +362,19 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(traj3_1ring);
 
-            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+            wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
             timer.reset();
 
             while (timer.seconds() < 0.25 && opModeIsActive());
 
-            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
+            wobbleGoal.SetWobbleGoalManipulatorOpen();
 
             timer.reset();
 
             while (timer.seconds() < 0.25 && opModeIsActive());
 
-            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+            wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
             driveBase.followTrajectory(traj4_1ring);
 
@@ -381,19 +382,19 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(traj6_1ring);
 
-            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS);
+            wobbleGoal.SetWobbleGoalManipulatorOpen();
 
             timer.reset();
 
             while (timer.seconds() < 0.75 && opModeIsActive());
 
-            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
+            wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
             driveBase.followTrajectory(traj7_1ring);
 
             intake.SetIntake(1, 0);
 
-            intake.SetWallPosition(Constants.LEFT_WALL_POS_IN, Constants.RIGHT_WALL_POS_IN);
+            intake.SetWallPosIn();
 
             driveBase.followTrajectory(traj8_1ring);
             driveBase.followTrajectory(traj09_1ring);
@@ -424,7 +425,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(traj11_1ring);
 
-            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
+            wobbleGoal.SetWobbleGoalManipulatorOpen();
 
             timer.reset();
 
@@ -443,7 +444,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
         {
             driveBase.followTrajectory(traj1_4ring);
 
-            intake.SetWallPosition(Constants.LEFT_WALL_POS_IN, Constants.RIGHT_WALL_POS_IN);
+            intake.SetWallPosIn();
 
             driveBase.followTrajectory(traj2_4ring);
 
@@ -466,19 +467,19 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(traj3_4ring);
 
-            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+            wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
             timer.reset();
 
             while (timer.seconds() < 0.25 && opModeIsActive());
 
-            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
+            wobbleGoal.SetWobbleGoalManipulatorOpen();
 
             timer.reset();
 
             while (timer.seconds() < 0.25 && opModeIsActive());
 
-            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+            wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
             timer.reset();
             while (timer.seconds() < 0.45 && opModeIsActive());
@@ -490,19 +491,19 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(traj6_4ring);
 
-            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS);
+            wobbleGoal.SetWobbleGoalManipulatorOpen();
 
             timer.reset();
 
             while (timer.seconds() < 0.75 && opModeIsActive());
 
-            wobbleGoal.GoToWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
+            wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
             driveBase.followTrajectory(traj7_4ring);
 
             intake.SetIntake(1, 0);
 
-            intake.SetWallPosition(Constants.LEFT_WALL_POS_IN, Constants.RIGHT_WALL_POS_IN);
+            intake.SetWallPosIn();
 
             driveBase.followTrajectory(traj8_4ring);
             driveBase.followTrajectory(traj09_4ring);
@@ -533,7 +534,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(traj11_4ring);
 
-            wobbleGoal.GoToPosWobbleGoalManipulatorHandler(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
+            wobbleGoal.SetWobbleGoalManipulatorOpen();
 
             timer.reset();
 

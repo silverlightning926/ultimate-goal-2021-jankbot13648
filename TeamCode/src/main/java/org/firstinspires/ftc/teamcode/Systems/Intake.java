@@ -44,7 +44,7 @@ public class Intake {
         {
             intake1.setPower(intakeSpeed);
             intake2.setPower(intakeSpeed);
-            SetWallPosition(Constants.LEFT_WALL_POS_IN, Constants.RIGHT_WALL_POS_IN);
+            SetWallPosIn();
         }
 
         else {
@@ -59,7 +59,19 @@ public class Intake {
         rightWall.setPosition(rightWallPos);
     }
 
-    public void ReleaseWalls()
+    public void SetWallPosDown()
+    {
+        leftWall.setPosition(Constants.LEFT_WALL_POS_OUT);
+        rightWall.setPosition(Constants.RIGHT_WALL_POS_OUT);
+    }
+
+    public void SetWallPosIn()
+    {
+        leftWall.setPosition(Constants.LEFT_WALL_POS_IN);
+        rightWall.setPosition(Constants.RIGHT_WALL_POS_IN);
+    }
+
+    public void ReleaseFunnels()
     {
         leftFunnel.setPosition(Constants.LEFT_FUNNEL_RELEASE_POS);
         rightFunnel.setPosition(Constants.RIGHT_FUNNEL_RELEASE_POS);

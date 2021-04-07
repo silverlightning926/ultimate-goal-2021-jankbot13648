@@ -93,7 +93,7 @@ public class TeleOpMain extends LinearOpMode {
                     sleep(200);
                 }
 
-                intake.SetWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_OUT);
+                intake.SetWallPosDown();
 
                 shooter.Kick();
 
@@ -202,8 +202,8 @@ public class TeleOpMain extends LinearOpMode {
             }
 
             intake.SetIntake(gamepad1.right_trigger, gamepad1.left_trigger);
-            wobbleGoal.MoveWobbleGoalPosition(gamepad2.dpad_left, gamepad2.dpad_up, gamepad2.dpad_right);
-            wobbleGoal.WobbleGoalManipulatorHandler(gamepad2.x, gamepad2.b);
+            wobbleGoal.MoveWobbleGoalPosition(gamepad2.dpad_left, gamepad2.dpad_right);
+            wobbleGoal.MoveWobbleGoalManipulator(gamepad2.x, gamepad2.b);
         }
     }
 }

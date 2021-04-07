@@ -20,18 +20,12 @@ public class WobbleGoal {
         wobbleGoalManipulatorServo = hardwareMap.get(Servo.class, Constants.WOBBLE_GOAL_MANIPULATOR_SERVO);
     }
 
-    public void MoveWobbleGoalPosition(boolean wobbleGoalUpButton, boolean wobbleGoalMiddleButton, boolean wobbleGoalDownButton)
+    public void MoveWobbleGoalPosition(boolean wobbleGoalUpButton, boolean wobbleGoalDownButton)
     {
         if(wobbleGoalUpButton)
         {
             wobbleGoal1.setPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
             wobbleGoal2.setPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
-        }
-
-        else if (wobbleGoalMiddleButton)
-        {
-            wobbleGoal1.setPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
-            wobbleGoal2.setPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
         }
 
         else if(wobbleGoalDownButton)
@@ -41,28 +35,32 @@ public class WobbleGoal {
         }
     }
 
-    public void GoToWobbleGoalPosition(double position)
+    public void SetWobbleGoalPosition(double position)
     {
-
         wobbleGoal1.setPosition(position);
         wobbleGoal2.setPosition(position);
     }
 
-    public void WobbleGoalManipulatorHandler(boolean wobbleGoalOpenButton, boolean wobbleGoalCloseButton)
+    public void MoveWobbleGoalManipulator(boolean wobbleGoalOpenButton, boolean wobbleGoalCloseButton)
     {
         if(wobbleGoalOpenButton)
         {
-            wobbleGoalManipulatorServo.setPosition(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
+            SetWobbleGoalManipulatorOpen();
         }
 
         else if(wobbleGoalCloseButton)
         {
-            wobbleGoalManipulatorServo.setPosition(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS);
+            SetWobbleGoalManipulatorClose();
         }
     }
 
-    public void GoToPosWobbleGoalManipulatorHandler(double position)
+    public void SetWobbleGoalManipulatorOpen()
     {
-        wobbleGoalManipulatorServo.setPosition(position);
+        wobbleGoalManipulatorServo.setPosition(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
+    }
+
+    public void SetWobbleGoalManipulatorClose()
+    {
+        wobbleGoalManipulatorServo.setPosition(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS);
     }
 }
