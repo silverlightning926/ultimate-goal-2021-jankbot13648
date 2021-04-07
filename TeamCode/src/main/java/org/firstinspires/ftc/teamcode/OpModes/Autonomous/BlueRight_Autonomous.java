@@ -74,36 +74,36 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             sleep(500);
 
-            driveBase.followTrajectory(traj2_1_0ring);
-
             driveBase.followTrajectory(traj3_0ring);
-
-            wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
             driveBase.followTrajectory(traj4_0ring);
 
-            driveBase.followTrajectory(traj4_1_0ring);
+            wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+
+            driveBase.followTrajectory(traj5_0ring);
+
+            driveBase.followTrajectory(traj6_0ring);
 
             wobbleGoal.setWobbleGoalManipulatorClose();
 
             sleep(750);
 
-            driveBase.followTrajectory(traj4_2_0ring);
+            driveBase.followTrajectory(traj7_0ring);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
-            driveBase.followTrajectory(traj5_0ring);
+            driveBase.followTrajectory(traj8_0ring);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
             sleep(500);
             wobbleGoal.setWobbleGoalManipulatorOpen();
             sleep(500);
 
-            driveBase.followTrajectory(traj5_1_0ring);
+            driveBase.followTrajectory(traj9_0ring);
 
-            driveBase.followTrajectory(traj6_0ring);
+            driveBase.followTrajectory(traj10_0ring);
 
-            driveBase.followTrajectory(traj7_0ring);
+            driveBase.followTrajectory(traj11_0ring);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
             wobbleGoal.setWobbleGoalManipulatorOpen();
