@@ -123,7 +123,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
                 .build();
 
         Trajectory traj6_1ring = driveBase.trajectoryBuilder(traj5_1ring.end())
-                .lineToSplineHeading(new Pose2d(28.25, 20, 4.6716))
+                .lineToSplineHeading(new Pose2d(26.585, 21.25, 4.6716))
                 .build();
 
         Trajectory traj7_1ring = driveBase.trajectoryBuilder(traj6_1ring.end())
