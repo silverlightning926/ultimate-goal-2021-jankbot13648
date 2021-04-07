@@ -56,8 +56,6 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
         while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.NONE))
         {
-            telemetry.addData("Path", "1");
-            telemetry.update();
             driveBase.followTrajectory(traj1_0ring);
 
             intake.setWallPosIn();
@@ -66,8 +64,6 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             Shoot();
 
-            telemetry.addData("Path", "2");
-            telemetry.update();
             driveBase.followTrajectory(traj2_0ring);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
@@ -80,14 +76,10 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(traj2_1_0ring);
 
-            telemetry.addData("Path", "3");
-            telemetry.update();
             driveBase.followTrajectory(traj3_0ring);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
-            telemetry.addData("Path", "4");
-            telemetry.update();
             driveBase.followTrajectory(traj4_0ring);
 
             driveBase.followTrajectory(traj4_1_0ring);
@@ -100,8 +92,6 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
-            telemetry.addData("Path", "5");
-            telemetry.update();
             driveBase.followTrajectory(traj5_0ring);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
@@ -111,12 +101,8 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(traj5_1_0ring);
 
-            telemetry.addData("Path", "6");
-            telemetry.update();
             driveBase.followTrajectory(traj6_0ring);
 
-            telemetry.addData("Path", "7");
-            telemetry.update();
             driveBase.followTrajectory(traj7_0ring);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
