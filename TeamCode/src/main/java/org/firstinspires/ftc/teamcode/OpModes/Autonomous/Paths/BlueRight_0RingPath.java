@@ -28,39 +28,39 @@ public class BlueRight_0RingPath {
             .build();
 
 
-    public static Trajectory traj2_1_0ring = BuildTrajectory(traj2_0ring.end())
+    public static Trajectory traj3_0ring = BuildTrajectory(traj2_0ring.end())
             .lineToSplineHeading(new Pose2d(55, 18, 1.6292))
             .build();
 
-    public static Trajectory traj3_0ring = BuildTrajectory(traj2_1_0ring.end())
+    public static Trajectory traj4_0ring = BuildTrajectory(traj3_0ring.end())
             .back(6)
             .build();
 
-    public static Trajectory traj4_0ring = BuildTrajectory(traj3_0ring.end())
+    public static Trajectory traj5_0ring = BuildTrajectory(traj4_0ring.end())
             .lineToSplineHeading(new Pose2d(30, 19.75, 4.6716))
             .build();
 
-    public static Trajectory traj4_1_0ring = BuildTrajectory(traj4_0ring.end())
+    public static Trajectory traj6_0ring = BuildTrajectory(traj5_0ring.end())
             .lineToSplineHeading(new Pose2d(26.585, 19.25, 4.6716))
             .build();
 
-    public static Trajectory traj4_2_0ring = BuildTrajectory(traj4_1_0ring.end())
+    public static Trajectory traj7_0ring = BuildTrajectory(traj6_0ring.end())
             .lineToSplineHeading(new Pose2d(26.585, 12.25, 4.6716))
             .build();
 
-    public static Trajectory traj5_0ring = BuildTrajectory(traj4_2_0ring.end())
+    public static Trajectory traj8_0ring = BuildTrajectory(traj7_0ring.end())
             .lineToSplineHeading(new Pose2d(55, 18.8, 1.6292))
             .build();
 
-    public static Trajectory traj5_1_0ring = BuildTrajectory(traj5_0ring.end())
+    public static Trajectory traj9_0ring = BuildTrajectory(traj8_0ring.end())
             .lineToSplineHeading(new Pose2d(49, 18.8, 1.6292))
             .build();
 
-    public static Trajectory traj6_0ring = BuildTrajectory(traj5_1_0ring.end())
+    public static Trajectory traj10_0ring = BuildTrajectory(traj9_0ring.end())
             .lineToSplineHeading(new Pose2d(40, 0, 0))
             .build();
 
-    public static Trajectory traj7_0ring = BuildTrajectory(traj6_0ring.end())
+    public static Trajectory traj11_0ring = BuildTrajectory(traj10_0ring.end())
             .lineToSplineHeading(new Pose2d(70, 0, 0))
             .build();
 
