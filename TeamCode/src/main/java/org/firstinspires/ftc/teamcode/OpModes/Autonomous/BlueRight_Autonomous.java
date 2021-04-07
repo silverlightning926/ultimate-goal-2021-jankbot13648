@@ -4,7 +4,6 @@ import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.PoseStorage;
@@ -12,8 +11,6 @@ import org.firstinspires.ftc.teamcode.Systems.Intake;
 import org.firstinspires.ftc.teamcode.Systems.Shooter;
 import org.firstinspires.ftc.teamcode.Systems.Vision;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
-
-import java.util.Arrays;
 
 import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.BlueRight_0RingPath.*;
 import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.BlueRight_1RingPath.*;
@@ -28,20 +25,16 @@ public class BlueRight_Autonomous extends LinearOpMode {
     WobbleGoal wobbleGoal;
     Vision vision;
 
-    ElapsedTime timer;
-
     Vision.RingDeterminationPipeline.RingPosition ringPosition;
 
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() {
 
         driveBase = new DriveBase(hardwareMap);
         shooter = new Shooter(hardwareMap);
         intake = new Intake(hardwareMap);
         wobbleGoal = new WobbleGoal(hardwareMap);
         vision = new Vision(hardwareMap);
-
-        timer = new ElapsedTime();
 
         wobbleGoal.SetWobbleGoalManipulatorClose();
 
@@ -54,15 +47,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
             telemetry.addData("Amount Of Rings", ringPosition);
             telemetry.addData("Analysis", vision.pipeline.getAnalysis());
             telemetry.update();
-
         }
-
-        // For Testing Vision Rings
-        /*while (!isStopRequested() && opModeIsActive())
-        {
-            telemetry.addData("Amount Of Rings", ringPosition);
-            telemetry.update();
-        }*/
 
         wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
         shooter.SetShooter(Constants.SHOOTER_VELOCITY);
@@ -77,7 +62,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             intake.SetWallPosIn();
 
-            WaitForSeconds(1.0);
+            sleep(1000);
 
             for(int i = 0; i < 2; i++)
             {
@@ -102,11 +87,11 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
-            WaitForSeconds(0.5);
+            sleep(500);
 
             wobbleGoal.SetWobbleGoalManipulatorOpen();
 
-            WaitForSeconds(0.50);
+            sleep(500);
 
             driveBase.followTrajectory(traj2_1_0ring);
 
@@ -124,7 +109,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             wobbleGoal.SetWobbleGoalManipulatorClose();
 
-            WaitForSeconds(0.75);
+            sleep(750);
 
             driveBase.followTrajectory(traj4_2_0ring);
 
@@ -135,9 +120,9 @@ public class BlueRight_Autonomous extends LinearOpMode {
             driveBase.followTrajectory(traj5_0ring);
 
             wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
-            WaitForSeconds(0.5);
+            sleep(500);
             wobbleGoal.SetWobbleGoalManipulatorOpen();
-            WaitForSeconds(0.50);
+            sleep(500);
 
             driveBase.followTrajectory(traj5_1_0ring);
 
@@ -151,7 +136,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
             wobbleGoal.SetWobbleGoalManipulatorOpen();
-            WaitForSeconds(0.5);
+            sleep(500);
 
             PoseStorage.currentPose = new Pose2d(70, 0, Math.toRadians(90));
             requestOpModeStop();
@@ -187,11 +172,11 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
-            WaitForSeconds(0.25);
+            sleep(250);
 
             wobbleGoal.SetWobbleGoalManipulatorOpen();
 
-            WaitForSeconds(0.25);
+            sleep(250);
 
             wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
@@ -203,7 +188,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             wobbleGoal.SetWobbleGoalManipulatorOpen();
 
-            WaitForSeconds(0.75);
+            sleep(750);
 
             wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
@@ -244,7 +229,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             wobbleGoal.SetWobbleGoalManipulatorOpen();
 
-            WaitForSeconds(0.5);
+            sleep(500);
 
             intake.SetWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
 
@@ -284,15 +269,15 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
-            WaitForSeconds(0.25);
+            sleep(250);
 
             wobbleGoal.SetWobbleGoalManipulatorOpen();
 
-            WaitForSeconds(0.25);
+            sleep(250);
 
             wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
-            WaitForSeconds(0.45);
+            sleep(450);
 
 
             driveBase.followTrajectory(traj4_4ring);
@@ -303,7 +288,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             wobbleGoal.SetWobbleGoalManipulatorOpen();
 
-            WaitForSeconds(0.75);
+            sleep(750);
 
             wobbleGoal.SetWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
@@ -344,7 +329,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             wobbleGoal.SetWobbleGoalManipulatorOpen();
 
-            WaitForSeconds(0.5);
+            sleep(500);
 
             intake.SetWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
 
@@ -355,10 +340,5 @@ public class BlueRight_Autonomous extends LinearOpMode {
         }
 
         FtcDashboard.getInstance().stopCameraStream();
-    }
-
-    private void WaitForSeconds(double v) {
-        timer.reset();
-        while (timer.seconds() < v && opModeIsActive()) ;
     }
 }
