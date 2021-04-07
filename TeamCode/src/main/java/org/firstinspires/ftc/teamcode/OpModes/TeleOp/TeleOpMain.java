@@ -81,7 +81,6 @@ public class TeleOpMain extends LinearOpMode {
 
             if(gamepad1.a)
             {
-                driveBase.setWeightedDrivePower(new Pose2d(0,0,0));
 
                 for(int i = 0; i <2; i++)
                 {
