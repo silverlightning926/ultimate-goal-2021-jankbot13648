@@ -40,28 +40,20 @@ public class Intake {
 
     public void SetIntake(double intakeSpeed, double reverseIntakeSpeed)
     {
-        if(reverseIntakeSpeed < 0.05)
+        if(reverseIntakeSpeed < 0.1 && intakeSpeed > 0.1)
         {
             intake1.setPower(intakeSpeed);
             intake2.setPower(intakeSpeed);
+            SetWallPosition(Constants.LEFT_WALL_POS_IN, Constants.RIGHT_WALL_POS_IN);
         }
 
         else {
             intake1.setPower(-reverseIntakeSpeed);
             intake2.setPower(-reverseIntakeSpeed);
         }
-
-        if(intakeSpeed != 0)
-        {
-            SetWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_OUT);
-        }
-
-        else{
-            SetWallPosition(Constants.LEFT_WALL_POS_IN, Constants.RIGHT_WALL_POS_IN);
-        }
     }
 
-    public void SetWallPosition(double leftWallPos , double rightWallPos)
+    public void SetWallPosition(double leftWallPos, double rightWallPos)
     {
         leftWall.setPosition(leftWallPos);
         rightWall.setPosition(rightWallPos);

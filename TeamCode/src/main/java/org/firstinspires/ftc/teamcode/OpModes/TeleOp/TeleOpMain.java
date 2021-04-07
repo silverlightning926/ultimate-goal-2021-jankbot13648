@@ -81,7 +81,6 @@ public class TeleOpMain extends LinearOpMode {
 
             if(gamepad1.a)
             {
-                intake.SetWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_OUT);
 
                 for(int i = 0; i <2; i++)
                 {
