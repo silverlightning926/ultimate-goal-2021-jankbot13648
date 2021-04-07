@@ -47,38 +47,6 @@ public class TeleOpMain extends LinearOpMode {
 
         while (!isStopRequested() && opModeIsActive())
         {
-            /*if(gamepad1.a)
-            {
-                double xDistance = Constants.GOAL_VECTOR2D.getY() + driveBase.getPoseEstimate().getY();
-                double yDistance = Constants.GOAL_VECTOR2D.getX() - driveBase.getPoseEstimate().getX();
-
-                double aimAngle = Math.atan2(xDistance, yDistance) + PoseStorage.currentPose.getHeading() + 90 - 6.5;
-
-                telemetry.addData("Aim Angle", aimAngle);
-                telemetry.update();
-
-                driveBase.turnTo(Math.toRadians(aimAngle));
-
-                for(int i = 0; i <2; i++)
-                {
-                    shooter.Kick();
-
-                    sleep(200);
-
-                    shooter.Unkick();
-
-                    sleep(200);
-                }
-
-                intake.SetWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_OUT);
-
-                shooter.Kick();
-
-                sleep(200);
-
-                shooter.Unkick();
-            }*/
-
             if(gamepad1.a)
             {
                 intake.setWallPosDown();
@@ -127,9 +95,14 @@ public class TeleOpMain extends LinearOpMode {
 
             if(gamepad1.dpad_up)
             {
+                /**
+                 * @todo Align Powershots Automatically
+                 * @body Use odometry to align with the first powershot and start the sequence automatically
+                 */
+
                 shooter.setShooter(Constants.POWER_SHOT_VELOCITY);
 
-                Trajectory traj1 = driveBase.trajectoryBuilder(new Pose2d(
+                Trajectory powerShot_traj1 = driveBase.trajectoryBuilder(new Pose2d(
                         driveBase.getPoseEstimate().getX(),
                         driveBase.getPoseEstimate().getY(),
                         driveBase.getPoseEstimate().getHeading()
@@ -137,41 +110,15 @@ public class TeleOpMain extends LinearOpMode {
                         .strafeLeft(6.5)
                         .build();
 
-                Trajectory traj2 = driveBase.trajectoryBuilder(traj1.end())
+                Trajectory powerShot_traj2 = driveBase.trajectoryBuilder(powerShot_traj1.end())
                         .strafeLeft(7.5)
                         .build();
 
-                Trajectory traj3 = driveBase.trajectoryBuilder(traj2.end())
+                Trajectory powerShot_traj3 = driveBase.trajectoryBuilder(powerShot_traj2.end())
                         .strafeLeft(7.5)
                         .build();
 
-                driveBase.followTrajectory(traj1);
-
-                // Kick 1
-                shooter.kick();
-
-                sleep(200);
-
-                shooter.unKick();
-
-                //sleep(200);
-
-                // Move 1
-
-                driveBase.followTrajectory(traj2);
-
-                // Kick 2
-                shooter.kick();
-
-                sleep(200);
-
-                shooter.unKick();
-
-                //sleep(200);
-
-                // Move 2
-
-                driveBase.followTrajectory(traj3);
+                driveBase.followTrajectory(powerShot_traj1);
 
                 shooter.kick();
 
@@ -179,7 +126,21 @@ public class TeleOpMain extends LinearOpMode {
 
                 shooter.unKick();
 
-                //sleep(200);
+                driveBase.followTrajectory(powerShot_traj2);
+
+                shooter.kick();
+
+                sleep(200);
+
+                shooter.unKick();
+
+                driveBase.followTrajectory(powerShot_traj3);
+
+                shooter.kick();
+
+                sleep(200);
+
+                shooter.unKick();
 
                 shooter.setShooter(Constants.SHOOTER_VELOCITY);
 
@@ -192,6 +153,12 @@ public class TeleOpMain extends LinearOpMode {
     }
 
     private void Shoot() {
+
+        /**
+         * @todo Add Auto Aim
+         * @body Turn the drive-base to correct heading automatically before shooting
+         */
+
         for (int i = 0; i < 2; i++) {
             shooter.kick();
 
