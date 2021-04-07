@@ -20,7 +20,7 @@ public class WobbleGoal {
         wobbleGoalManipulatorServo = hardwareMap.get(Servo.class, Constants.WOBBLE_GOAL_MANIPULATOR_SERVO);
     }
 
-    public void MoveWobbleGoalPosition(boolean wobbleGoalUpButton, boolean wobbleGoalDownButton)
+    public void moveWobbleGoalPosition(boolean wobbleGoalUpButton, boolean wobbleGoalDownButton)
     {
         if(wobbleGoalUpButton)
         {
@@ -35,31 +35,31 @@ public class WobbleGoal {
         }
     }
 
-    public void SetWobbleGoalPosition(double position)
+    public void setWobbleGoalPosition(double position)
     {
         wobbleGoal1.setPosition(position);
         wobbleGoal2.setPosition(position);
     }
 
-    public void MoveWobbleGoalManipulator(boolean wobbleGoalOpenButton, boolean wobbleGoalCloseButton)
+    public void moveWobbleGoalManipulator(boolean wobbleGoalOpenButton, boolean wobbleGoalCloseButton)
     {
         if(wobbleGoalOpenButton)
         {
-            SetWobbleGoalManipulatorOpen();
+            setWobbleGoalManipulatorOpen();
         }
 
         else if(wobbleGoalCloseButton)
         {
-            SetWobbleGoalManipulatorClose();
+            setWobbleGoalManipulatorClose();
         }
     }
 
-    public void SetWobbleGoalManipulatorOpen()
+    public void setWobbleGoalManipulatorOpen()
     {
         wobbleGoalManipulatorServo.setPosition(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS);
     }
 
-    public void SetWobbleGoalManipulatorClose()
+    public void setWobbleGoalManipulatorClose()
     {
         wobbleGoalManipulatorServo.setPosition(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS);
     }

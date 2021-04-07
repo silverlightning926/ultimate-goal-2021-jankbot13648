@@ -39,18 +39,18 @@ public class Shooter {
         shooterMotor2.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, Constants.SHOOTER_PID_COEFFICIENTS);
     }
 
-    public void SetShooter(double shooterSpeed)
+    public void setShooter(double shooterSpeed)
     {
         shooterMotor1.setVelocity(shooterSpeed, AngleUnit.DEGREES);
         shooterMotor2.setVelocity(shooterSpeed, AngleUnit.DEGREES);
     }
 
-    public void Kick()
+    public void kick()
     {
         kicker.setPosition(Constants.KICKER_KICK_POS);
     }
 
-    public void UnKick()
+    public void unKick()
     {
         kicker.setPosition(Constants.KICKER_OPEN_POS);
     }

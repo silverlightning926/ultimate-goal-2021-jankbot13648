@@ -39,11 +39,11 @@ public class TeleOpMain extends LinearOpMode {
         telemetry.clearAll();
         telemetry.update();
 
-        shooter.SetShooter(Constants.SHOOTER_VELOCITY);
+        shooter.setShooter(Constants.SHOOTER_VELOCITY);
 
         if(isStopRequested()) return;
 
-        shooter.UnKick();
+        shooter.unKick();
 
         while (!isStopRequested() && opModeIsActive())
         {
@@ -81,7 +81,7 @@ public class TeleOpMain extends LinearOpMode {
 
             if(gamepad1.a)
             {
-                intake.SetWallPosDown();
+                intake.setWallPosDown();
 
                 Shoot();
             }
@@ -127,7 +127,7 @@ public class TeleOpMain extends LinearOpMode {
 
             if(gamepad1.dpad_up)
             {
-                shooter.SetShooter(Constants.POWER_SHOT_VELOCITY);
+                shooter.setShooter(Constants.POWER_SHOT_VELOCITY);
 
                 Trajectory traj1 = driveBase.trajectoryBuilder(new Pose2d(
                         driveBase.getPoseEstimate().getX(),
@@ -148,11 +148,11 @@ public class TeleOpMain extends LinearOpMode {
                 driveBase.followTrajectory(traj1);
 
                 // Kick 1
-                shooter.Kick();
+                shooter.kick();
 
                 sleep(200);
 
-                shooter.UnKick();
+                shooter.unKick();
 
                 //sleep(200);
 
@@ -161,11 +161,11 @@ public class TeleOpMain extends LinearOpMode {
                 driveBase.followTrajectory(traj2);
 
                 // Kick 2
-                shooter.Kick();
+                shooter.kick();
 
                 sleep(200);
 
-                shooter.UnKick();
+                shooter.unKick();
 
                 //sleep(200);
 
@@ -173,39 +173,39 @@ public class TeleOpMain extends LinearOpMode {
 
                 driveBase.followTrajectory(traj3);
 
-                shooter.Kick();
+                shooter.kick();
 
                 sleep(200);
 
-                shooter.UnKick();
+                shooter.unKick();
 
                 //sleep(200);
 
-                shooter.SetShooter(Constants.SHOOTER_VELOCITY);
+                shooter.setShooter(Constants.SHOOTER_VELOCITY);
 
             }
 
-            intake.SetIntake(gamepad1.right_trigger, gamepad1.left_trigger);
-            wobbleGoal.MoveWobbleGoalPosition(gamepad2.dpad_left, gamepad2.dpad_right);
-            wobbleGoal.MoveWobbleGoalManipulator(gamepad2.x, gamepad2.b);
+            intake.setIntake(gamepad1.right_trigger, gamepad1.left_trigger);
+            wobbleGoal.moveWobbleGoalPosition(gamepad2.dpad_left, gamepad2.dpad_right);
+            wobbleGoal.moveWobbleGoalManipulator(gamepad2.x, gamepad2.b);
         }
     }
 
     private void Shoot() {
         for (int i = 0; i < 2; i++) {
-            shooter.Kick();
+            shooter.kick();
 
             sleep(250);
 
-            shooter.UnKick();
+            shooter.unKick();
 
             sleep(250);
         }
 
-        shooter.Kick();
+        shooter.kick();
 
         sleep(250);
 
-        shooter.UnKick();
+        shooter.unKick();
     }
 }

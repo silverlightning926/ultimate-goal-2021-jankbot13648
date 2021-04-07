@@ -38,13 +38,13 @@ public class Intake {
         intake2.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
     }
 
-    public void SetIntake(double intakeSpeed, double reverseIntakeSpeed)
+    public void setIntake(double intakeSpeed, double reverseIntakeSpeed)
     {
         if(reverseIntakeSpeed < 0.1 && intakeSpeed > 0.1)
         {
             intake1.setPower(intakeSpeed);
             intake2.setPower(intakeSpeed);
-            SetWallPosIn();
+            setWallPosIn();
         }
 
         else {
@@ -53,25 +53,25 @@ public class Intake {
         }
     }
 
-    public void SetWallPosition(double leftWallPos, double rightWallPos)
+    public void setWallPosition(double leftWallPos, double rightWallPos)
     {
         leftWall.setPosition(leftWallPos);
         rightWall.setPosition(rightWallPos);
     }
 
-    public void SetWallPosDown()
+    public void setWallPosDown()
     {
         leftWall.setPosition(Constants.LEFT_WALL_POS_OUT);
         rightWall.setPosition(Constants.RIGHT_WALL_POS_OUT);
     }
 
-    public void SetWallPosIn()
+    public void setWallPosIn()
     {
         leftWall.setPosition(Constants.LEFT_WALL_POS_IN);
         rightWall.setPosition(Constants.RIGHT_WALL_POS_IN);
     }
 
-    public void ReleaseFunnels()
+    public void releaseFunnels()
     {
         leftFunnel.setPosition(Constants.LEFT_FUNNEL_RELEASE_POS);
         rightFunnel.setPosition(Constants.RIGHT_FUNNEL_RELEASE_POS);
