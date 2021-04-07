@@ -29,6 +29,9 @@ public class Shooter {
         shooterMotor2.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
         shooterMotor1.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
 
+        shooterMotor1.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+        shooterMotor2.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
+
         shooterMotor1.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
         shooterMotor2.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
 

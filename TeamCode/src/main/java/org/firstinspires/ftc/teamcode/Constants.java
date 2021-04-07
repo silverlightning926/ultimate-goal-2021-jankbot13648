@@ -38,7 +38,7 @@ public class Constants {
     public static double KICKER_OPEN_POS = 0.35;
     public static double KICKER_KICK_POS = 0.05;
 
-    public static PIDFCoefficients SHOOTER_PID_COEFFICIENTS = new PIDFCoefficients(10, 3, 0, 0);
+    public static PIDFCoefficients SHOOTER_PID_COEFFICIENTS = new PIDFCoefficients(10, 1, 2, 0);
 
     // Intake Constants
     public static String INTAKE_TOP_NAME = "i1";
@@ -63,7 +63,7 @@ public class Constants {
     public static String WOBBLE_GOAL_SERVO1_NAME = "wg1";
     public static String WOBBLE_GOAL_SERVO2_NAME = "wg2";
 
-    public static double[] WOBBLE_GOAL_POSITION_VALUES = {0.2, 0.5, 0.7};
+    public static double[] WOBBLE_GOAL_POSITION_VALUES = {0.25, 0.5, 0.68};
 
     public static String WOBBLE_GOAL_MANIPULATOR_SERVO = "wgm";
     public static double WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS = 1.0;
