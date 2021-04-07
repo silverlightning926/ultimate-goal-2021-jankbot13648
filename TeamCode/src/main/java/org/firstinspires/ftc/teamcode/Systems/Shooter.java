@@ -50,7 +50,7 @@ public class Shooter {
         kicker.setPosition(Constants.KICKER_KICK_POS);
     }
 
-    public void Unkick()
+    public void UnKick()
     {
         kicker.setPosition(Constants.KICKER_OPEN_POS);
     }

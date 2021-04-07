@@ -43,7 +43,7 @@ public class TeleOpMain extends LinearOpMode {
 
         if(isStopRequested()) return;
 
-        shooter.Unkick();
+        shooter.UnKick();
 
         while (!isStopRequested() && opModeIsActive())
         {
@@ -81,25 +81,9 @@ public class TeleOpMain extends LinearOpMode {
 
             if(gamepad1.a)
             {
-
-                for(int i = 0; i <2; i++)
-                {
-                    shooter.Kick();
-
-                    sleep(200);
-
-                    shooter.Unkick();
-
-                    sleep(200);
-                }
-
                 intake.SetWallPosDown();
 
-                shooter.Kick();
-
-                sleep(200);
-
-                shooter.Unkick();
+                Shoot();
             }
 
             else
@@ -168,7 +152,7 @@ public class TeleOpMain extends LinearOpMode {
 
                 sleep(200);
 
-                shooter.Unkick();
+                shooter.UnKick();
 
                 //sleep(200);
 
@@ -181,7 +165,7 @@ public class TeleOpMain extends LinearOpMode {
 
                 sleep(200);
 
-                shooter.Unkick();
+                shooter.UnKick();
 
                 //sleep(200);
 
@@ -193,7 +177,7 @@ public class TeleOpMain extends LinearOpMode {
 
                 sleep(200);
 
-                shooter.Unkick();
+                shooter.UnKick();
 
                 //sleep(200);
 
@@ -205,5 +189,23 @@ public class TeleOpMain extends LinearOpMode {
             wobbleGoal.MoveWobbleGoalPosition(gamepad2.dpad_left, gamepad2.dpad_right);
             wobbleGoal.MoveWobbleGoalManipulator(gamepad2.x, gamepad2.b);
         }
+    }
+
+    private void Shoot() {
+        for (int i = 0; i < 2; i++) {
+            shooter.Kick();
+
+            sleep(250);
+
+            shooter.UnKick();
+
+            sleep(250);
+        }
+
+        shooter.Kick();
+
+        sleep(250);
+
+        shooter.UnKick();
     }
 }

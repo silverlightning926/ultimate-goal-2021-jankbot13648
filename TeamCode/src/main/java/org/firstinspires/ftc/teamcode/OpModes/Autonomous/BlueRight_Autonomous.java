@@ -64,22 +64,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             sleep(1000);
 
-            for(int i = 0; i < 2; i++)
-            {
-                shooter.Kick();
-
-                sleep(300);
-
-                shooter.Unkick();
-
-                sleep(300);
-            }
-
-            shooter.Kick();
-
-            sleep(300);
-
-            shooter.Unkick();
+            Shoot();
 
             telemetry.addData("Path", "2");
             telemetry.update();
@@ -151,22 +136,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(traj2_1ring);
 
-            for(int i = 0; i < 2; i++)
-            {
-                shooter.Kick();
-
-                sleep(275);
-
-                shooter.Unkick();
-
-                sleep(275);
-            }
-
-            shooter.Kick();
-
-            sleep(275);
-
-            shooter.Unkick();
+            Shoot();
 
             driveBase.followTrajectory(traj3_1ring);
 
@@ -206,22 +176,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
             driveBase.followTrajectory(traj10_1ring);
             intake.SetIntake(0,0);
 
-            for(int i = 0; i < 2; i++)
-            {
-                shooter.Kick();
-
-                sleep(250);
-
-                shooter.Unkick();
-
-                sleep(250);
-            }
-
-            shooter.Kick();
-
-            sleep(250);
-
-            shooter.Unkick();
+            Shoot();
 
             intake.SetWallPosition(0.5, 0.3);
 
@@ -248,22 +203,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(traj2_4ring);
 
-            for(int i = 0; i < 2; i++)
-            {
-                shooter.Kick();
-
-                sleep(275);
-
-                shooter.Unkick();
-
-                sleep(275);
-            }
-
-            shooter.Kick();
-
-            sleep(275);
-
-            shooter.Unkick();
+            Shoot();
 
             driveBase.followTrajectory(traj3_4ring);
 
@@ -306,22 +246,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
             driveBase.followTrajectory(traj10_4ring);
             intake.SetIntake(0,0);
 
-            for(int i = 0; i < 2; i++)
-            {
-                shooter.Kick();
-
-                sleep(250);
-
-                shooter.Unkick();
-
-                sleep(250);
-            }
-
-            shooter.Kick();
-
-            sleep(250);
-
-            shooter.Unkick();
+            Shoot();
 
             intake.SetWallPosition(0.5, 0.3);
 
@@ -340,5 +265,23 @@ public class BlueRight_Autonomous extends LinearOpMode {
         }
 
         FtcDashboard.getInstance().stopCameraStream();
+    }
+
+    private void Shoot() {
+        for (int i = 0; i < 2; i++) {
+            shooter.Kick();
+
+            sleep(250);
+
+            shooter.UnKick();
+
+            sleep(250);
+        }
+
+        shooter.Kick();
+
+        sleep(250);
+
+        shooter.UnKick();
     }
 }
