@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths;
 
+import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
@@ -18,9 +19,8 @@ import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConsta
 import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.MAX_VEL;
 import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.TRACK_WIDTH;
 
+@Config
 public class BlueRight_1RingPath {
-
-    // 1 Ring Trajectories Start----------------------------------------------------------------
 
     public static Trajectory traj1_1ring = BuildTrajectory(new Pose2d())
             .lineToConstantHeading(new Vector2d(30, -18))
@@ -75,8 +75,6 @@ public class BlueRight_1RingPath {
     public static Trajectory traj12_1ring = BuildTrajectory(traj11_1ring.end())
             .lineToSplineHeading(new Pose2d(74.42439, 17.0, Math.toRadians(90)))
             .build();
-
-    // 1 Ring Trajectories End------------------------------------------------------------------
 
     public static TrajectoryBuilder BuildTrajectory(Pose2d startPose) {
         return new TrajectoryBuilder(startPose, new MinVelocityConstraint(Arrays.asList(
