@@ -58,7 +58,7 @@ public class TeleOpMain extends LinearOpMode {
             {
                 Pose2d poseEstimate = driveBase.getPoseEstimate();
 
-                if(!gamepad1.right_bumper)
+                if(!gamepad1.left_bumper)
                 {
                     Vector2d input = new Vector2d(
                             -gamepad1.left_stick_y,
@@ -146,7 +146,7 @@ public class TeleOpMain extends LinearOpMode {
 
             }
 
-            intake.setIntake(gamepad1.right_trigger, gamepad1.left_trigger);
+            intake.setIntake(gamepad1.right_trigger, gamepad1.left_trigger, gamepad1.right_bumper);
             wobbleGoal.moveWobbleGoalPosition(gamepad2.dpad_left, gamepad2.dpad_right);
             wobbleGoal.moveWobbleGoalManipulator(gamepad2.x, gamepad2.b);
         }

@@ -17,6 +17,8 @@ public class Intake {
     public Servo leftFunnel;
     public Servo rightFunnel;
 
+    boolean intakeHasBeenRun = false;
+
     public Intake(HardwareMap hardwareMap)
     {
         intake1 = hardwareMap.get(DcMotorEx.class, Constants.INTAKE_TOP_NAME);
@@ -52,6 +54,52 @@ public class Intake {
             intake2.setPower(-reverseIntakeSpeed);
         }
     }
+
+    public void setIntake(double intakeSpeed, double reverseIntakeSpeed, boolean intakeWithoutWallsButton)
+    {
+        if(intakeSpeed > 0.1)
+        {
+            intake1.setPower(intakeSpeed);
+            intake2.setPower(intakeSpeed);
+
+            setWallPosDown();
+
+            intakeHasBeenRun = true;
+        }
+
+        else if(intakeWithoutWallsButton)
+        {
+            setWallPosIn();
+
+            intake1.setPower(1);
+            intake2.setPower(1);
+
+            intakeHasBeenRun = true;
+        }
+
+        else if (reverseIntakeSpeed > 0.1)
+        {
+            intake1.setPower(-reverseIntakeSpeed);
+            intake2.setPower(-reverseIntakeSpeed);
+
+            intakeHasBeenRun = true;
+        }
+
+        else if (intakeSpeed < 0.1 && intakeHasBeenRun)
+        {
+            setWallPosIn();
+            intake1.setPower(0);
+            intake2.setPower(0);
+
+            intakeHasBeenRun = false;
+        }
+
+        else {
+            intake1.setPower(0);
+            intake2.setPower(0);
+        }
+    }
+
 
     public void setWallPosition(double leftWallPos, double rightWallPos)
     {
