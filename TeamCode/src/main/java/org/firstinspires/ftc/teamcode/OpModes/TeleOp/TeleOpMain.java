@@ -162,16 +162,16 @@ public class TeleOpMain extends LinearOpMode {
         for (int i = 0; i < 2; i++) {
             shooter.kick();
 
-            sleep(250);
+            sleep(175);
 
             shooter.unKick();
 
-            sleep(250);
+            sleep(175);
         }
 
         shooter.kick();
 
-        sleep(250);
+        sleep(175);
 
         shooter.unKick();
     }

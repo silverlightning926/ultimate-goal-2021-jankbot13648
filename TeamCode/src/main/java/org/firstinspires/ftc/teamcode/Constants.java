@@ -35,10 +35,10 @@ public class Constants {
 
     public static String KICKER_NAME = "kicker";
 
-    public static double KICKER_OPEN_POS = 0.35;
-    public static double KICKER_KICK_POS = 0.05;
+    public static double KICKER_OPEN_POS = 0.3;
+    public static double KICKER_KICK_POS = 0.1;
 
-    public static PIDFCoefficients SHOOTER_PID_COEFFICIENTS = new PIDFCoefficients(10, 1, 2, 0);
+    public static PIDFCoefficients SHOOTER_PID_COEFFICIENTS = new PIDFCoefficients(10, 1, 2, 9);
 
     // Intake Constants
     public static String INTAKE_TOP_NAME = "i1";
