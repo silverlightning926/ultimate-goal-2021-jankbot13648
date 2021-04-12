@@ -53,7 +53,7 @@ public class BlueRight_4RingPath {
     public static Trajectory traj8_4ring = BuildTrajectory(traj7_4ring.end())
             .lineToSplineHeading(new Pose2d(35.108323, 2.523665520064312, 5.85648), new MinVelocityConstraint(
                             Arrays.asList(
-                                    new AngularVelocityConstraint(25),
+                                    new AngularVelocityConstraint(Math.toRadians(25)),
                                     new MecanumVelocityConstraint(25, DriveConstants.TRACK_WIDTH)
                             )),
                     new ProfileAccelerationConstraint(DriveConstants.MAX_ACCEL)
