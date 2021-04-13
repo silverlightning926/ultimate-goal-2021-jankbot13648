@@ -65,8 +65,8 @@ public class DriveBase extends MecanumDrive {
 
     public static double LATERAL_MULTIPLIER = 1;
 
-    public static double VX_WEIGHT = 0.5;
-    public static double VY_WEIGHT = 0.5;
+    public static double VX_WEIGHT = 0.1;
+    public static double VY_WEIGHT = 0.1;
     public static double OMEGA_WEIGHT = 1;
 
     public static int POSE_HISTORY_LIMIT = 100;
@@ -189,6 +189,44 @@ public class DriveBase extends MecanumDrive {
 
     public void turn(double angle) {
         turnAsync(angle);
+        waitForIdle();
+    }
+
+    public void turnAimAngleAsync(double angle) {
+        double heading = getPoseEstimate().getHeading();
+
+        lastPoseOnTurn = getPoseEstimate();
+
+        turnProfile = MotionProfileGenerator.generateSimpleMotionProfile(
+                new MotionState(heading, 0, 0, 0),
+                new MotionState(heading + angle, 0, 0, 0),
+                Math.PI,
+                Math.PI
+        );
+
+        turnStart = clock.seconds();
+        mode = Mode.TURN;
+    }
+
+    public void turnAimAngle(double angle)
+    {
+        turnAimAngleAsync(angle);
+        waitForIdle();
+    }
+
+    public void turnToAimAngle(double angle) {
+
+        double heading = getPoseEstimate().getHeading();
+
+        if(angle - heading > Math.PI)
+        {
+            turnAimAngle((angle - heading) - 2*Math.PI);
+        }
+
+        else {
+            turnAimAngle(angle-heading);
+        }
+
         waitForIdle();
     }
 

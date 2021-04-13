@@ -24,7 +24,7 @@ public class Constants {
     public static String VERTICAL_RIGHT_NAME = FRONT_RIGHT_DRIVE_NAME;
     public static String HORIZONTAL_NAME = REAR_LEFT_DRIVE_NAME;
 
-    public static Vector2d GOAL_VECTOR2D = new Vector2d(132.989966, 0);
+    public static Vector2d GOAL_VECTOR2D = new Vector2d(145, 0);
 
     // Shooter Motor Names
     public static double SHOOTER_VELOCITY = 195;
@@ -36,7 +36,7 @@ public class Constants {
     public static String KICKER_NAME = "kicker";
 
     public static double KICKER_OPEN_POS = 0.3;
-    public static double KICKER_KICK_POS = 0.1;
+    public static double KICKER_KICK_POS = 0.0;
 
     public static PIDFCoefficients SHOOTER_PID_COEFFICIENTS = new PIDFCoefficients(10, 1, 2, 9);
 

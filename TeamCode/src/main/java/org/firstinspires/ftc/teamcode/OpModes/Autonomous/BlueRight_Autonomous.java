@@ -109,7 +109,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
             wobbleGoal.setWobbleGoalManipulatorOpen();
             sleep(500);
 
-            PoseStorage.currentPose = new Pose2d(70, 0, Math.toRadians(90));
+            //PoseStorage.currentPose = new Pose2d(driveBase.getPoseEstimate().getX(), driveBase.getPoseEstimate().getY(), Math.toRadians(90));
             requestOpModeStop();
         }
 
@@ -142,7 +142,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(traj6_1ring);
 
-            wobbleGoal.setWobbleGoalManipulatorOpen();
+            wobbleGoal.setWobbleGoalManipulatorClose();
 
             sleep(750);
 
@@ -157,7 +157,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
             driveBase.followTrajectory(traj8_1ring);
             driveBase.followTrajectory(traj09_1ring);
 
-            shooter.setShooter(Constants.SHOOTER_VELOCITY*1.01);
+            shooter.setShooter(Constants.SHOOTER_VELOCITY);
 
             driveBase.followTrajectory(traj10_1ring);
             intake.setIntake(0,0);
@@ -176,7 +176,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(traj12_1ring);
 
-            PoseStorage.currentPose = new Pose2d(94.42439, 17.0, Math.toRadians(180));
+            //PoseStorage.currentPose = new Pose2d(driveBase.getPoseEstimate().getX(), driveBase.getPoseEstimate().getY(), Math.toRadians(180));
             requestOpModeStop();
 
         }
@@ -212,7 +212,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(traj6_4ring);
 
-            wobbleGoal.setWobbleGoalManipulatorOpen();
+            wobbleGoal.setWobbleGoalManipulatorClose();
 
             sleep(750);
 
@@ -227,7 +227,7 @@ public class BlueRight_Autonomous extends LinearOpMode {
             driveBase.followTrajectory(traj8_4ring);
             driveBase.followTrajectory(traj09_4ring);
 
-            shooter.setShooter(Constants.SHOOTER_VELOCITY*1.01);
+            shooter.setShooter(Constants.SHOOTER_VELOCITY);
 
             driveBase.followTrajectory(traj10_4ring);
             intake.setIntake(0,0);
@@ -246,10 +246,10 @@ public class BlueRight_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(traj12_4ring);
 
-            PoseStorage.currentPose = new Pose2d(94.42439, 17.0, Math.toRadians(180));
             requestOpModeStop();
         }
 
+        PoseStorage.currentPose = driveBase.getPoseEstimate();
         FtcDashboard.getInstance().stopCameraStream();
     }
 

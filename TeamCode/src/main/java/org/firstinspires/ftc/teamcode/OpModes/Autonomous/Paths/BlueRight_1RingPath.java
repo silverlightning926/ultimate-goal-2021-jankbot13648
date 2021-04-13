@@ -43,7 +43,7 @@ public class BlueRight_1RingPath {
             .build();
 
     public static Trajectory traj6_1ring = BuildTrajectory(traj5_1ring.end())
-            .lineToSplineHeading(new Pose2d(26.585, 21.25, 4.6716))
+            .lineToSplineHeading(new Pose2d(26.585, 19.25, 4.6716))
             .build();
 
     public static Trajectory traj7_1ring = BuildTrajectory(traj6_1ring.end())
@@ -65,7 +65,7 @@ public class BlueRight_1RingPath {
             .build();
 
     public static Trajectory traj10_1ring = BuildTrajectory(traj09_1ring.end())
-            .lineToSplineHeading(new Pose2d(56.321, 20, 5.85))
+            .lineToSplineHeading(new Pose2d(56.321, 20, Math.toRadians(350)))
             .build();
 
     public static Trajectory traj11_1ring = BuildTrajectory(traj10_1ring.end())

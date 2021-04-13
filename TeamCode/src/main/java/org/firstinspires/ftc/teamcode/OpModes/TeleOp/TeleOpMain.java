@@ -39,15 +39,22 @@ public class TeleOpMain extends LinearOpMode {
         telemetry.clearAll();
         telemetry.update();
 
-        shooter.setShooter(Constants.SHOOTER_VELOCITY);
-
         if(isStopRequested()) return;
 
+        shooter.setShooter(Constants.SHOOTER_VELOCITY);
         shooter.unKick();
 
         while (!isStopRequested() && opModeIsActive())
         {
+
             if(gamepad1.a)
+            {
+                intake.setWallPosDown();
+
+                AutoAimShoot();
+            }
+
+            else if (gamepad1.b)
             {
                 intake.setWallPosDown();
 
@@ -61,8 +68,8 @@ public class TeleOpMain extends LinearOpMode {
                 if(!gamepad1.left_bumper)
                 {
                     Vector2d input = new Vector2d(
-                            -gamepad1.left_stick_y,
-                            -gamepad1.left_stick_x
+                            -gamepad1.left_stick_x,
+                            gamepad1.left_stick_y
                     ).rotated(-poseEstimate.getHeading());
 
                     driveBase.setWeightedDrivePower(
@@ -76,8 +83,8 @@ public class TeleOpMain extends LinearOpMode {
 
                 else {
                     Vector2d input = new Vector2d(
-                            -gamepad1.left_stick_y/2,
-                            -gamepad1.left_stick_x/2
+                            -gamepad1.left_stick_x/2,
+                            gamepad1.left_stick_y/2
                     ).rotated(-poseEstimate.getHeading());
 
                     driveBase.setWeightedDrivePower(
@@ -152,26 +159,41 @@ public class TeleOpMain extends LinearOpMode {
         }
     }
 
-    private void Shoot() {
+    private void AutoAimShoot() {
 
         /**
          * @todo Add Auto Aim
          * @body Turn the drive-base to correct heading automatically before shooting
          */
 
+        double xDistance = Constants.GOAL_VECTOR2D.getY() + driveBase.getPoseEstimate().getY();
+        double yDistance = Constants.GOAL_VECTOR2D.getX() - driveBase.getPoseEstimate().getX();
+
+        double aimAngle = ((2*Math.PI) - Math.atan2(xDistance, yDistance)) - Math.toRadians(7);
+
+        telemetry.addData("Aim Angle", aimAngle);
+        telemetry.update();
+
+        driveBase.turnToAimAngle(aimAngle-Math.toRadians(7.5));
+
+        Shoot();
+    }
+
+    private void Shoot() {
+
         for (int i = 0; i < 2; i++) {
             shooter.kick();
 
-            sleep(175);
+            sleep(200);
 
             shooter.unKick();
 
-            sleep(175);
+            sleep(200);
         }
 
         shooter.kick();
 
-        sleep(175);
+        sleep(200);
 
         shooter.unKick();
     }
