@@ -116,7 +116,7 @@ public class TeleOpMain extends LinearOpMode {
         telemetry.addData("Aim Angle", aimAngle);
         telemetry.update();
 
-        driveBase.turnToAimAngle(aimAngle-Math.toRadians(7.5));
+        driveBase.turnTo(aimAngle-Math.toRadians(7.5));
 
         Shoot();
     }
