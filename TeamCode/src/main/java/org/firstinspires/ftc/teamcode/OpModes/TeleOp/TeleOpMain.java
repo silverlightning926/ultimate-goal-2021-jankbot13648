@@ -96,50 +96,7 @@ public class TeleOpMain extends LinearOpMode {
                  * @body Use odometry to align with the first powershot and start the sequence automatically
                  */
 
-                shooter.setShooter(Constants.POWER_SHOT_VELOCITY);
-
-                Trajectory powerShot_traj1 = driveBase.trajectoryBuilder(new Pose2d(
-                        driveBase.getPoseEstimate().getX(),
-                        driveBase.getPoseEstimate().getY(),
-                        driveBase.getPoseEstimate().getHeading()
-                ))
-                        .strafeLeft(6.5)
-                        .build();
-
-                Trajectory powerShot_traj2 = driveBase.trajectoryBuilder(powerShot_traj1.end())
-                        .strafeLeft(7.5)
-                        .build();
-
-                Trajectory powerShot_traj3 = driveBase.trajectoryBuilder(powerShot_traj2.end())
-                        .strafeLeft(7.5)
-                        .build();
-
-                driveBase.followTrajectory(powerShot_traj1);
-
-                shooter.kick();
-
-                sleep(200);
-
-                shooter.unKick();
-
-                driveBase.followTrajectory(powerShot_traj2);
-
-                shooter.kick();
-
-                sleep(200);
-
-                shooter.unKick();
-
-                driveBase.followTrajectory(powerShot_traj3);
-
-                shooter.kick();
-
-                sleep(200);
-
-                shooter.unKick();
-
-                shooter.setShooter(Constants.SHOOTER_VELOCITY);
-
+                PowerShotTrajectory();
             }
 
             shooter.setShooter((84 - driveBase.getPoseEstimate().getX())/24);
@@ -183,5 +140,51 @@ public class TeleOpMain extends LinearOpMode {
         sleep(200);
 
         shooter.unKick();
+    }
+
+    private void PowerShotTrajectory() {
+        shooter.setShooter(Constants.POWER_SHOT_VELOCITY);
+
+        Trajectory powerShot_traj1 = driveBase.trajectoryBuilder(new Pose2d(
+                driveBase.getPoseEstimate().getX(),
+                driveBase.getPoseEstimate().getY(),
+                driveBase.getPoseEstimate().getHeading()
+        ))
+                .strafeLeft(6.5)
+                .build();
+
+        Trajectory powerShot_traj2 = driveBase.trajectoryBuilder(powerShot_traj1.end())
+                .strafeLeft(7.5)
+                .build();
+
+        Trajectory powerShot_traj3 = driveBase.trajectoryBuilder(powerShot_traj2.end())
+                .strafeLeft(7.5)
+                .build();
+
+        driveBase.followTrajectory(powerShot_traj1);
+
+        shooter.kick();
+
+        sleep(200);
+
+        shooter.unKick();
+
+        driveBase.followTrajectory(powerShot_traj2);
+
+        shooter.kick();
+
+        sleep(200);
+
+        shooter.unKick();
+
+        driveBase.followTrajectory(powerShot_traj3);
+
+        shooter.kick();
+
+        sleep(200);
+
+        shooter.unKick();
+
+        shooter.setShooter(Constants.SHOOTER_VELOCITY);
     }
 }
