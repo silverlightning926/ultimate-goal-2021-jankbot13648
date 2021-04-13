@@ -159,13 +159,8 @@ public class TeleOpMain extends LinearOpMode {
         }
     }
 
-    private void AutoAimShoot() {
-
-        /**
-         * @todo Add Auto Aim
-         * @body Turn the drive-base to correct heading automatically before shooting
-         */
-
+    private void AutoAimShoot()
+    {
         double xDistance = Constants.GOAL_VECTOR2D.getY() + driveBase.getPoseEstimate().getY();
         double yDistance = Constants.GOAL_VECTOR2D.getX() - driveBase.getPoseEstimate().getX();
 
