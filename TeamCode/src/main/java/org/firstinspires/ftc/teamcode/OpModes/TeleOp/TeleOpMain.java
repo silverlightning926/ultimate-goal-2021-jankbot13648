@@ -152,7 +152,7 @@ public class TeleOpMain extends LinearOpMode {
 
             }
 
-            shooter.setShooter(84 - driveBase.getPoseEstimate().getX());
+            shooter.setShooter((84 - driveBase.getPoseEstimate().getX())/24);
             intake.setIntake(gamepad1.right_trigger, gamepad1.left_trigger, gamepad1.right_bumper);
             wobbleGoal.moveWobbleGoalPosition(gamepad2.dpad_left, gamepad2.dpad_right);
             wobbleGoal.moveWobbleGoalManipulator(gamepad2.x, gamepad2.b);
