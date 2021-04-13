@@ -48,15 +48,11 @@ public class TeleOpMain extends LinearOpMode {
 
             if(gamepad1.a)
             {
-                intake.setWallPosDown();
-
                 AutoAimShoot();
             }
 
             else if (gamepad1.b)
             {
-                intake.setWallPosDown();
-
                 Shoot();
             }
 
@@ -185,6 +181,8 @@ public class TeleOpMain extends LinearOpMode {
 
             sleep(200);
         }
+
+        intake.setWallPosDown();
 
         shooter.kick();
 
