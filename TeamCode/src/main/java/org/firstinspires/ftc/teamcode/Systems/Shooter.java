@@ -39,8 +39,10 @@ public class Shooter {
         shooterMotor2.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, Constants.SHOOTER_PID_COEFFICIENTS);
     }
 
-    public void setShooter(double shooterSpeed)
+    public void setShooter(double distanceFromLine)
     {
+        double shooterSpeed = Math.min(Math.max(184.688 + (10.1651 * (Math.pow(Math.E, 0.208726 * distanceFromLine))), Constants.MIN_SHOOTER_VELOCITY), Constants.MAX_SHOOTER_VELOCITY);
+
         shooterMotor1.setVelocity(shooterSpeed, AngleUnit.DEGREES);
         shooterMotor2.setVelocity(shooterSpeed, AngleUnit.DEGREES);
     }

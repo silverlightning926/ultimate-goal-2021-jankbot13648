@@ -28,6 +28,9 @@ public class Constants {
 
     // Shooter Motor Names
     public static double SHOOTER_VELOCITY = 195;
+    public static double MIN_SHOOTER_VELOCITY = 195;
+    public static double MAX_SHOOTER_VELOCITY = 208;
+
     public static double POWER_SHOT_VELOCITY = 217 * (8.0/10.0);
 
     public static String SHOOTER_1_NAME = "s1";

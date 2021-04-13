@@ -41,7 +41,6 @@ public class TeleOpMain extends LinearOpMode {
 
         if(isStopRequested()) return;
 
-        shooter.setShooter(Constants.SHOOTER_VELOCITY);
         shooter.unKick();
 
         while (!isStopRequested() && opModeIsActive())
@@ -153,6 +152,7 @@ public class TeleOpMain extends LinearOpMode {
 
             }
 
+            shooter.setShooter(84 - driveBase.getPoseEstimate().getX());
             intake.setIntake(gamepad1.right_trigger, gamepad1.left_trigger, gamepad1.right_bumper);
             wobbleGoal.moveWobbleGoalPosition(gamepad2.dpad_left, gamepad2.dpad_right);
             wobbleGoal.moveWobbleGoalManipulator(gamepad2.x, gamepad2.b);
