@@ -60,36 +60,30 @@ public class TeleOpMain extends LinearOpMode {
             {
                 Pose2d poseEstimate = driveBase.getPoseEstimate();
 
+                Vector2d input;
+
                 if(!gamepad1.left_bumper)
                 {
-                    Vector2d input = new Vector2d(
+                    input = new Vector2d(
                             -gamepad1.left_stick_x,
                             gamepad1.left_stick_y
                     ).rotated(-poseEstimate.getHeading());
-
-                    driveBase.setWeightedDrivePower(
-                            new Pose2d(
-                                    input.getX(),
-                                    input.getY(),
-                                    -gamepad1.right_stick_x
-                            )
-                    );
                 }
 
                 else {
-                    Vector2d input = new Vector2d(
+                    input = new Vector2d(
                             -gamepad1.left_stick_x/2,
                             gamepad1.left_stick_y/2
                     ).rotated(-poseEstimate.getHeading());
-
-                    driveBase.setWeightedDrivePower(
-                            new Pose2d(
-                                    input.getX(),
-                                    input.getY(),
-                                    -gamepad1.right_stick_x/2
-                            )
-                    );
                 }
+
+                driveBase.setWeightedDrivePower(
+                        new Pose2d(
+                                input.getX(),
+                                input.getY(),
+                                -gamepad1.right_stick_x/2
+                        )
+                );
 
                 driveBase.update();
             }
