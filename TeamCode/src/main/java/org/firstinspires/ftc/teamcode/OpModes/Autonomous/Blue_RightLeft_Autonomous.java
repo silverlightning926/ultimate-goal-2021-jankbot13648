@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.OpModes.Autonomous;
 
 import com.acmerobotics.dashboard.FtcDashboard;
-import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.Constants;
@@ -12,12 +11,12 @@ import org.firstinspires.ftc.teamcode.Systems.Shooter;
 import org.firstinspires.ftc.teamcode.Systems.Vision;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
 
-import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.BlueRight_0RingPath.*;
-import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.BlueRight_1RingPath.*;
-import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.BlueRight_4RingPath.*;
+import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.RightLeft_Paths.Blue_RightLeft_0RingPath.*;
+import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.RightLeft_Paths.Blue_RightLeft_1RingPath.*;
+import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.RightLeft_Paths.Blue_RightLeft_4RingPath.*;
 
-@Autonomous(name = "BLUE - RIGHT")
-public class BlueRight_Autonomous extends LinearOpMode {
+@Autonomous(name = "BLUE (RIGHT >> LEFT)")
+public class Blue_RightLeft_Autonomous extends LinearOpMode {
 
     DriveBase driveBase;
     Shooter shooter;

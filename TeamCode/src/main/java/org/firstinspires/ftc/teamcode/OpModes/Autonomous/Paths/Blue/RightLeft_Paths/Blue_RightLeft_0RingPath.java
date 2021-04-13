@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths;
+package org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.RightLeft_Paths;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
@@ -17,7 +17,7 @@ import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConsta
 import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.TRACK_WIDTH;
 
 @Config
-public class BlueRight_0RingPath {
+public class Blue_RightLeft_0RingPath {
 
     public static Trajectory traj1_0ring = BuildTrajectory(new Pose2d())
             .lineToSplineHeading(new Pose2d(60, 0, Math.toRadians(0)))
