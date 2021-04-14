@@ -7,14 +7,14 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Constants;
+import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.PoseStorage;
 import org.firstinspires.ftc.teamcode.Systems.Intake;
 import org.firstinspires.ftc.teamcode.Systems.Shooter;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
-import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
 
-@TeleOp(name = "TeleOp - Main")
-public class TeleOpMain extends LinearOpMode {
+@TeleOp(name = "TeleOp - PreAligned")
+public class TeleOpPreAligned extends LinearOpMode {
 
     DriveBase driveBase;
     Shooter shooter;
@@ -28,8 +28,6 @@ public class TeleOpMain extends LinearOpMode {
         shooter = new Shooter(hardwareMap);
         intake = new Intake(hardwareMap);
         wobbleGoal = new WobbleGoal(hardwareMap);
-
-        driveBase.setPoseEstimate(PoseStorage.currentPose);
 
         telemetry.addLine("System Initialization Complete");
         telemetry.update();
