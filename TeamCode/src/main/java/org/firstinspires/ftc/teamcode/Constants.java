@@ -36,6 +36,9 @@ public class Constants {
     public static transient String SHOOTER_1_NAME = "s1";
     public static transient String SHOOTER_2_NAME = "s2";
 
+    public static int shooterDelay = 125;
+    public static int dropDelay = 140;
+
     public static transient String KICKER_NAME = "kicker";
 
     public static double KICKER_OPEN_POS = 0.13;
@@ -67,8 +70,8 @@ public class Constants {
     public static transient String WOBBLE_GOAL_SERVO2_NAME = "wg2";
 
     public static transient String AUTO_WOBBLE_CLAW = "awg";
-    public static double AUTO_WOBBLE_CLAW_OPEN_POS = 0;
-    public static double AUTO_WOBBLE_CLAW_CLOSE_POS = 1;
+    public static double AUTO_WOBBLE_CLAW_OPEN_POS = 1;
+    public static double AUTO_WOBBLE_CLAW_CLOSE_POS = 0;
 
     public static double[] WOBBLE_GOAL_POSITION_VALUES = {0.25, 0.5, 0.68};
 

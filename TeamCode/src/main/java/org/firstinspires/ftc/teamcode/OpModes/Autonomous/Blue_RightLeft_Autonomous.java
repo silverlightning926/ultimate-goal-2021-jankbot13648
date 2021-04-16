@@ -55,7 +55,7 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
 
         while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.NONE))
         {
-            driveBase.followTrajectory(traj1_0ring);
+            driveBase.followTrajectory(BRL0_traj1);
 
             intake.setWallPosIn();
 
@@ -63,7 +63,7 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
 
             Shoot();
 
-            driveBase.followTrajectory(traj2_0ring);
+            driveBase.followTrajectory(BRL0_traj2);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
@@ -73,36 +73,36 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
 
             sleep(500);
 
-            driveBase.followTrajectory(traj3_0ring);
+            driveBase.followTrajectory(BRL0_traj3);
 
-            driveBase.followTrajectory(traj4_0ring);
+            driveBase.followTrajectory(BRL0_traj4);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
-            driveBase.followTrajectory(traj5_0ring);
+            driveBase.followTrajectory(BRL0_traj5);
 
-            driveBase.followTrajectory(traj6_0ring);
+            driveBase.followTrajectory(BRL0_traj6);
 
             wobbleGoal.setWobbleGoalManipulatorClose();
 
             sleep(750);
 
-            driveBase.followTrajectory(traj7_0ring);
+            driveBase.followTrajectory(BRL0_traj7);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
-            driveBase.followTrajectory(traj8_0ring);
+            driveBase.followTrajectory(BRL0_traj8);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
             sleep(500);
             wobbleGoal.setWobbleGoalManipulatorOpen();
             sleep(500);
 
-            driveBase.followTrajectory(traj9_0ring);
+            driveBase.followTrajectory(BRL0_traj9);
 
-            driveBase.followTrajectory(traj10_0ring);
+            driveBase.followTrajectory(BRL0_traj10);
 
-            driveBase.followTrajectory(traj11_0ring);
+            driveBase.followTrajectory(BRL0_traj11);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
             wobbleGoal.setWobbleGoalManipulatorOpen();
@@ -115,15 +115,15 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
         while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.ONE))
         {
             // Follow Trajectories
-            driveBase.followTrajectory(traj1_1ring);
+            driveBase.followTrajectory(BRL1_traj1);
 
             intake.setWallPosIn();
 
-            driveBase.followTrajectory(traj2_1ring);
+            driveBase.followTrajectory(BRL1_traj2);
 
             Shoot();
 
-            driveBase.followTrajectory(traj3_1ring);
+            driveBase.followTrajectory(BRL1_traj3);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
@@ -135,11 +135,11 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
-            driveBase.followTrajectory(traj4_1ring);
+            driveBase.followTrajectory(BRL1_traj4);
 
-            driveBase.followTrajectory(traj5_1ring);
+            driveBase.followTrajectory(BRL1_traj5);
 
-            driveBase.followTrajectory(traj6_1ring);
+            driveBase.followTrajectory(BRL1_traj6);
 
             wobbleGoal.setWobbleGoalManipulatorClose();
 
@@ -147,25 +147,25 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
-            driveBase.followTrajectory(traj7_1ring);
+            driveBase.followTrajectory(BRL1_traj7);
 
             intake.setIntake(1, 0);
 
             intake.setWallPosIn();
 
-            driveBase.followTrajectory(traj8_1ring);
-            driveBase.followTrajectory(traj09_1ring);
+            driveBase.followTrajectory(BRL1_traj8);
+            driveBase.followTrajectory(BRL1_traj9);
 
             shooter.setShooter(Constants.SHOOTER_VELOCITY);
 
-            driveBase.followTrajectory(traj10_1ring);
+            driveBase.followTrajectory(BRL1_traj10);
             intake.setIntake(0,0);
 
             Shoot();
 
             intake.setWallPosition(0.5, 0.3);
 
-            driveBase.followTrajectory(traj11_1ring);
+            driveBase.followTrajectory(BRL1_traj11);
 
             wobbleGoal.setWobbleGoalManipulatorOpen();
 
@@ -173,7 +173,7 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
 
             intake.setWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
 
-            driveBase.followTrajectory(traj12_1ring);
+            driveBase.followTrajectory(BRL1_traj12);
 
             //PoseStorage.currentPose = new Pose2d(driveBase.getPoseEstimate().getX(), driveBase.getPoseEstimate().getY(), Math.toRadians(180));
             requestOpModeStop();
@@ -182,15 +182,15 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
 
         while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.FOUR))
         {
-            driveBase.followTrajectory(traj1_4ring);
+            driveBase.followTrajectory(BRL4_traj1);
 
             intake.setWallPosIn();
 
-            driveBase.followTrajectory(traj2_4ring);
+            driveBase.followTrajectory(BRL4_traj2);
 
             Shoot();
 
-            driveBase.followTrajectory(traj3_4ring);
+            driveBase.followTrajectory(BRL4_traj3);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
@@ -205,11 +205,11 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
             sleep(450);
 
 
-            driveBase.followTrajectory(traj4_4ring);
+            driveBase.followTrajectory(BRL4_traj4);
 
-            driveBase.followTrajectory(traj5_4ring);
+            driveBase.followTrajectory(BRL4_traj5);
 
-            driveBase.followTrajectory(traj6_4ring);
+            driveBase.followTrajectory(BRL4_traj6);
 
             wobbleGoal.setWobbleGoalManipulatorClose();
 
@@ -217,25 +217,25 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
-            driveBase.followTrajectory(traj7_4ring);
+            driveBase.followTrajectory(BRL4_traj7);
 
             intake.setIntake(1, 0);
 
             intake.setWallPosIn();
 
-            driveBase.followTrajectory(traj8_4ring);
-            driveBase.followTrajectory(traj09_4ring);
+            driveBase.followTrajectory(BRL4_traj8);
+            driveBase.followTrajectory(BRL4_traj9);
 
             shooter.setShooter(Constants.SHOOTER_VELOCITY);
 
-            driveBase.followTrajectory(traj10_4ring);
+            driveBase.followTrajectory(BRL4_traj10);
             intake.setIntake(0,0);
 
             Shoot();
 
             intake.setWallPosition(0.5, 0.3);
 
-            driveBase.followTrajectory(traj11_4ring);
+            driveBase.followTrajectory(BRL4_traj11);
 
             wobbleGoal.setWobbleGoalManipulatorOpen();
 
@@ -243,7 +243,7 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
 
             intake.setWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
 
-            driveBase.followTrajectory(traj12_4ring);
+            driveBase.followTrajectory(BRL4_traj12);
 
             requestOpModeStop();
         }

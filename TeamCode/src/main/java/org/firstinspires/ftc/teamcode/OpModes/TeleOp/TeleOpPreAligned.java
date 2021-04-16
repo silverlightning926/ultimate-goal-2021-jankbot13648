@@ -123,18 +123,18 @@ public class TeleOpPreAligned extends LinearOpMode {
         for (int i = 0; i < 2; i++) {
             shooter.kick();
 
-            sleep(125);
+            sleep(Constants.shooterDelay);
 
             shooter.unKick();
 
-            sleep(140);
+            sleep(Constants.dropDelay);
         }
 
         intake.setWallPosDown();
 
         shooter.kick();
 
-        sleep(125);
+        sleep(Constants.shooterDelay);
 
         shooter.unKick();
     }

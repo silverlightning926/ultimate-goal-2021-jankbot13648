@@ -100,6 +100,12 @@ public class Intake {
         }
     }
 
+    public void setIntakeWithoutWalls(double power)
+    {
+        intake1.setPower(power);
+        intake2.setPower(power);
+    }
+
 
     public void setWallPosition(double leftWallPos, double rightWallPos)
     {

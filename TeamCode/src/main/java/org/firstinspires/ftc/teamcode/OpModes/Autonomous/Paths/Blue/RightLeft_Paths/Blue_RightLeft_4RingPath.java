@@ -22,35 +22,35 @@ import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConsta
 @Config
 public class Blue_RightLeft_4RingPath {
 
-    public static Trajectory traj1_4ring = BuildTrajectory(new Pose2d())
+    public static Trajectory BRL4_traj1 = BuildTrajectory(new Pose2d())
             .lineToConstantHeading(new Vector2d(30, -18))
             .build();
 
-    public static Trajectory traj2_4ring = BuildTrajectory(traj1_4ring.end())
+    public static Trajectory BRL4_traj2 = BuildTrajectory(BRL4_traj1.end())
             .lineToConstantHeading(new Vector2d(55.5, -8))
             .build();
 
-    public static Trajectory traj3_4ring = BuildTrajectory(traj2_4ring.end())
+    public static Trajectory BRL4_traj3 = BuildTrajectory(BRL4_traj2.end())
             .lineToSplineHeading(new Pose2d(109.7, 18.8, 1.6292))
             .build();
 
-    public static Trajectory traj4_4ring = BuildTrajectory(traj3_4ring.end())
+    public static Trajectory BRL4_traj4 = BuildTrajectory(BRL4_traj3.end())
             .back(6)
             .build();
 
-    public static Trajectory traj5_4ring = BuildTrajectory(traj4_4ring.end())
+    public static Trajectory BRL4_traj5 = BuildTrajectory(BRL4_traj4.end())
             .lineToSplineHeading(new Pose2d(35.785, 22.014, 4.6716))
             .build();
 
-    public static Trajectory traj6_4ring = BuildTrajectory(traj5_4ring.end())
+    public static Trajectory BRL4_traj6 = BuildTrajectory(BRL4_traj5.end())
             .lineToSplineHeading(new Pose2d(26.585, 19.25, 4.6716))
             .build();
 
-    public static Trajectory traj7_4ring = BuildTrajectory(traj6_4ring.end())
+    public static Trajectory BRL4_traj7 = BuildTrajectory(BRL4_traj6.end())
             .lineToSplineHeading(new Pose2d(18.059586793191045, 5.124632812288327, Math.toRadians(357.66438090824806)))
             .build();
 
-    public static Trajectory traj8_4ring = BuildTrajectory(traj7_4ring.end())
+    public static Trajectory BRL4_traj8 = BuildTrajectory(BRL4_traj7.end())
             .lineToSplineHeading(new Pose2d(35.108323, 2.523665520064312, 5.85648), new MinVelocityConstraint(
                             Arrays.asList(
                                     new AngularVelocityConstraint(Math.toRadians(25)),
@@ -60,19 +60,19 @@ public class Blue_RightLeft_4RingPath {
             )
             .build();
 
-    public static Trajectory traj09_4ring = BuildTrajectory(traj8_4ring.end())
+    public static Trajectory BRL4_traj9 = BuildTrajectory(BRL4_traj8.end())
             .lineToSplineHeading(new Pose2d(41.321, 20.0, 0.0))
             .build();
 
-    public static Trajectory traj10_4ring = BuildTrajectory(traj09_4ring.end())
+    public static Trajectory BRL4_traj10 = BuildTrajectory(BRL4_traj9.end())
             .lineToSplineHeading(new Pose2d(56.321, 20, 5.85))
             .build();
 
-    public static Trajectory traj11_4ring = BuildTrajectory(traj10_4ring.end())
+    public static Trajectory BRL4_traj11 = BuildTrajectory(BRL4_traj10.end())
             .lineToSplineHeading(new Pose2d(98.42439, 15.0, Math.toRadians(90)))
             .build();
 
-    public static Trajectory traj12_4ring = BuildTrajectory(traj11_4ring.end())
+    public static Trajectory BRL4_traj12 = BuildTrajectory(BRL4_traj11.end())
             .lineToSplineHeading(new Pose2d(92.42439, 17.0, Math.toRadians(90)))
             .build();
 
