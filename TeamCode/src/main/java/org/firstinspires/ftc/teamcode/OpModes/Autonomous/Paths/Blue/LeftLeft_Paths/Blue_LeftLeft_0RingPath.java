@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Pa
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
+import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.acmerobotics.roadrunner.trajectory.TrajectoryBuilder;
 import com.acmerobotics.roadrunner.trajectory.constraints.AngularVelocityConstraint;
@@ -39,8 +40,12 @@ public class Blue_LeftLeft_0RingPath {
             .build();
 
 
-    public static Trajectory BLL0_traj4_0ring = BuildTrajectory(BLL0_traj2_0ring.end())
+    public static Trajectory BLL0_traj4_0ring = BuildTrajectory(BLL0_traj3_0ring.end())
             .lineToSplineHeading(new Pose2d(24,-18, Math.toRadians(0)))
+            .build();
+
+    public static Trajectory BLL0_traj5_0ring = BuildTrajectory(BLL0_traj4_0ring.end())
+            .lineToConstantHeading(new Vector2d(48,-18))
             .build();
 
     public static TrajectoryBuilder BuildTrajectory(Pose2d startPose) {
