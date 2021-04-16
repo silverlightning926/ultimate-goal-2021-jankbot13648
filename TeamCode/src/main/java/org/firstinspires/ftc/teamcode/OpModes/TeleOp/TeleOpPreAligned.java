@@ -43,7 +43,6 @@ public class TeleOpPreAligned extends LinearOpMode {
 
         while (!isStopRequested() && opModeIsActive())
         {
-
             if(gamepad1.a)
             {
                 AutoAimShoot();
@@ -82,10 +81,9 @@ public class TeleOpPreAligned extends LinearOpMode {
                                 -gamepad1.right_stick_x/2
                         )
                 );
-
-                driveBase.update();
             }
 
+            driveBase.update();
 
             if(gamepad1.dpad_up)
             {
@@ -101,6 +99,7 @@ public class TeleOpPreAligned extends LinearOpMode {
             intake.setIntake(gamepad1.right_trigger, gamepad1.left_trigger, gamepad1.right_bumper);
             wobbleGoal.moveWobbleGoalPosition(gamepad2.dpad_left, gamepad2.dpad_right);
             wobbleGoal.moveWobbleGoalManipulator(gamepad2.x, gamepad2.b);
+            driveBase.update();
         }
     }
 

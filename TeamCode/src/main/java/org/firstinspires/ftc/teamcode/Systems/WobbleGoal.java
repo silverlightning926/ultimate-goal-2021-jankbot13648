@@ -12,12 +12,16 @@ public class WobbleGoal {
 
     Servo wobbleGoalManipulatorServo;
 
+    Servo autoWobbleClaw;
+
     public WobbleGoal(HardwareMap hardwareMap)
     {
         wobbleGoal1 = hardwareMap.get(Servo.class, Constants.WOBBLE_GOAL_SERVO1_NAME);
         wobbleGoal2 = hardwareMap.get(Servo.class, Constants.WOBBLE_GOAL_SERVO2_NAME);
 
         wobbleGoalManipulatorServo = hardwareMap.get(Servo.class, Constants.WOBBLE_GOAL_MANIPULATOR_SERVO);
+
+        autoWobbleClaw = hardwareMap.get(Servo.class, Constants.AUTO_WOBBLE_CLAW);
     }
 
     public void moveWobbleGoalPosition(boolean wobbleGoalUpButton, boolean wobbleGoalDownButton)
@@ -62,5 +66,15 @@ public class WobbleGoal {
     public void setWobbleGoalManipulatorClose()
     {
         wobbleGoalManipulatorServo.setPosition(Constants.WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS);
+    }
+
+    public void setWobbleGoalAutoClawOpen()
+    {
+        autoWobbleClaw.setPosition(Constants.AUTO_WOBBLE_CLAW_OPEN_POS);
+    }
+
+    public void setWobbleGoalAutoClawClose()
+    {
+        autoWobbleClaw.setPosition(Constants.AUTO_WOBBLE_CLAW_CLOSE_POS);
     }
 }
