@@ -65,7 +65,10 @@ public class Constants {
     // Wobble Goal Constants
     public static transient String WOBBLE_GOAL_SERVO1_NAME = "wg1";
     public static transient String WOBBLE_GOAL_SERVO2_NAME = "wg2";
+
     public static transient String AUTO_WOBBLE_CLAW = "awg";
+    public static double AUTO_WOBBLE_CLAW_OPEN_POS = 0;
+    public static double AUTO_WOBBLE_CLAW_CLOSE_POS = 1;
 
     public static double[] WOBBLE_GOAL_POSITION_VALUES = {0.25, 0.5, 0.68};
 
