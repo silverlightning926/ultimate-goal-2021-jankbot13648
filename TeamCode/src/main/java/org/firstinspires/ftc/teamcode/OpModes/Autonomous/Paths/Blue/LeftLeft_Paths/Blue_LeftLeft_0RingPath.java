@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Pa
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
+import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.acmerobotics.roadrunner.trajectory.TrajectoryBuilder;
 import com.acmerobotics.roadrunner.trajectory.constraints.AngularVelocityConstraint;
@@ -42,7 +43,6 @@ public class Blue_LeftLeft_0RingPath {
             .lineToSplineHeading(new Pose2d(116,0, Math.toRadians(315)))
             .build();
 
-<<<<<<< HEAD
     public static Trajectory BLL0_traj4_0ring = BuildTrajectory(BLL0_traj3_0ring.end())
             .lineToConstantHeading(new Vector2d(112,-62))
             .build();
@@ -67,12 +67,6 @@ public class Blue_LeftLeft_0RingPath {
             .lineToSplineHeading(new Pose2d(87, -7, Math.toRadians(180)))
             .build();
 
-=======
-    public static Trajectory BLL0_traj4_0ring = BuildTrajectory(BLL0_traj2_0ring.end())
-            .lineToSplineHeading(new Pose2d(24,-18, Math.toRadians(0)))
-            .build();
-
->>>>>>> parent of 5206961... Finished Autonomous for LeftLeft Side 0 Ring Auto
     public static TrajectoryBuilder BuildTrajectory(Pose2d startPose) {
         return new TrajectoryBuilder(startPose, new MinVelocityConstraint(Arrays.asList(
                 new AngularVelocityConstraint(MAX_ANG_VEL),
