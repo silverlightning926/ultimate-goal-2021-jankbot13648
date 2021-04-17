@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Pa
 
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
+import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.acmerobotics.roadrunner.trajectory.TrajectoryBuilder;
 import com.acmerobotics.roadrunner.trajectory.constraints.AngularVelocityConstraint;
@@ -19,8 +20,9 @@ import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConsta
 import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.TRACK_WIDTH;
 
 @Config
-public class Blue_LeftLeft_0RingPath {
-    public static Trajectory BLL0_traj1_0ring = BuildTrajectory(new Pose2d())
+public class Blue_LeftLeft_1RingPath {
+
+    public static Trajectory BLL1_traj1 = BuildTrajectory(new Pose2d())
             .lineToSplineHeading(new Pose2d(60, 0, Math.toRadians(325.875)),
                     new MinVelocityConstraint(
                             Arrays.asList(
@@ -30,49 +32,26 @@ public class Blue_LeftLeft_0RingPath {
                     new ProfileAccelerationConstraint(DriveConstants.MAX_ACCEL))
             .build();
 
-    public static Trajectory BLL0_traj1_1_0ring = BuildTrajectory(BLL0_traj1_0ring.end())
-            .forward(5)
+    public static Trajectory BLL1_traj2 = BuildTrajectory(BLL1_traj1.end())
+            .lineToSplineHeading(new Pose2d(90,-40,0))
             .build();
 
-    public static Trajectory BLL0_traj2_0ring = BuildTrajectory(BLL0_traj1_1_0ring.end())
-            .strafeRight(12)
+    public static Trajectory BLL1_traj3 = BuildTrajectory(BLL1_traj2.end())
+            .lineToSplineHeading(new Pose2d(116,-40,Math.toRadians(315)))
             .build();
 
-    public static Trajectory BLL0_traj3_0ring = BuildTrajectory(BLL0_traj2_0ring.end())
-            .lineToSplineHeading(new Pose2d(116,0, Math.toRadians(315)))
-            .build();
-
-<<<<<<< HEAD
-    public static Trajectory BLL0_traj4_0ring = BuildTrajectory(BLL0_traj3_0ring.end())
+    public static Trajectory BLL1_traj4 = BuildTrajectory(BLL1_traj3.end())
             .lineToConstantHeading(new Vector2d(112,-62))
             .build();
 
-    public static Trajectory BLL0_traj5_0ring = BuildTrajectory(BLL0_traj4_0ring.end())
-            .lineToSplineHeading(new Pose2d(3.5,-16, Math.toRadians(0)))
+    public static Trajectory BLL1_traj5 = BuildTrajectory(BLL1_traj4.end())
+            .lineToSplineHeading(new Pose2d(7,-19, Math.toRadians(250)))
             .build();
 
-    public static Trajectory BLL0_traj6_0ring = BuildTrajectory(BLL0_traj5_0ring.end())
-            .lineToSplineHeading(new Pose2d(3.5,-22.5, Math.toRadians(0)))
+    public static Trajectory BLL1_traj6 = BuildTrajectory(BLL1_traj5.end())
+            .lineToSplineHeading(new Pose2d(5.5,-19, Math.toRadians(250)))
             .build();
 
-    public static Trajectory BLL0_traj7_0ring = BuildTrajectory(BLL0_traj6_0ring.end())
-            .lineToSplineHeading(new Pose2d(55, -19.5, Math.toRadians(353)))
-            .build();
-
-    public static Trajectory BLL0_traj8_0ring = BuildTrajectory(BLL0_traj7_0ring.end())
-            .lineToSplineHeading(new Pose2d(60, -19.5, Math.toRadians(180)))
-            .build();
-
-    public static Trajectory BLL0_traj9_0ring = BuildTrajectory(BLL0_traj8_0ring.end())
-            .lineToSplineHeading(new Pose2d(87, -7, Math.toRadians(180)))
-            .build();
-
-=======
-    public static Trajectory BLL0_traj4_0ring = BuildTrajectory(BLL0_traj2_0ring.end())
-            .lineToSplineHeading(new Pose2d(24,-18, Math.toRadians(0)))
-            .build();
-
->>>>>>> parent of 5206961... Finished Autonomous for LeftLeft Side 0 Ring Auto
     public static TrajectoryBuilder BuildTrajectory(Pose2d startPose) {
         return new TrajectoryBuilder(startPose, new MinVelocityConstraint(Arrays.asList(
                 new AngularVelocityConstraint(MAX_ANG_VEL),

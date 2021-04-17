@@ -73,7 +73,7 @@ public class Constants {
     public static double AUTO_WOBBLE_CLAW_OPEN_POS = 1;
     public static double AUTO_WOBBLE_CLAW_CLOSE_POS = 0;
 
-    public static double[] WOBBLE_GOAL_POSITION_VALUES = {0.25, 0.5, 0.68};
+    public static double[] WOBBLE_GOAL_POSITION_VALUES = {0.25, 0.6, 0.75};
 
     public static final String WOBBLE_GOAL_MANIPULATOR_SERVO = "wgm";
     public static double WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS = 1.0;

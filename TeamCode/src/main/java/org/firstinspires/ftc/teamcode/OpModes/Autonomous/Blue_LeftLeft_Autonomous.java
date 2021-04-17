@@ -12,6 +12,7 @@ import org.firstinspires.ftc.teamcode.Systems.Shooter;
 import org.firstinspires.ftc.teamcode.Systems.Vision;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
 import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_0RingPath.*;
+import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_1RingPath.*;
 
 @Autonomous(name = "BLUE (LEFT >> LEFT)")
 public class Blue_LeftLeft_Autonomous extends LinearOpMode {
@@ -47,7 +48,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
         shooter.unKick();
         wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
-        shooter.setShooter(180);
+        shooter.setShooter(180.5);
         intake.releaseFunnels();
         intake.setWallPosition(0.8, 0.3);
 
@@ -57,41 +58,133 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             intake.setWallPosIn();
 
             shooter.kick();
-            sleep(250);
+            sleep(170);
             shooter.unKick();
-            sleep(250);
+            sleep(170);
+
+            driveBase.turnTo(Math.toRadians(333));
+
+            shooter.kick();
+            sleep(170);
+            shooter.unKick();
+            sleep(170);
 
             shooter.setShooter(Constants.SHOOTER_VELOCITY);
-
-            wobbleGoal.setWobbleGoalAutoClawOpen();
 
             driveBase.turnTo(Math.toRadians(345));
 
             shooter.kick();
-            sleep(200);
+            sleep(170);
             shooter.unKick();
-            sleep(200);
-            shooter.kick();
-            sleep(200);
-            shooter.unKick();
-
-            driveBase.followTrajectory(BLL0_traj2_0ring);
 
             intake.setIntakeWithoutWalls(1);
 
+            driveBase.followTrajectory(BLL0_traj1_1_0ring);
+
+            wobbleGoal.setWobbleGoalAutoClawOpen();
+            sleep(1000);
+
+            driveBase.followTrajectory(BLL0_traj2_0ring);
             driveBase.followTrajectory(BLL0_traj3_0ring);
+            driveBase.followTrajectory(BLL0_traj4_0ring);
+
+            wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+            wobbleGoal.setWobbleGoalManipulatorOpen();
+
+            driveBase.followTrajectory(BLL0_traj5_0ring);
+
+            driveBase.followTrajectory(BLL0_traj6_0ring);
 
             intake.setIntakeWithoutWalls(0);
 
-            driveBase.followTrajectory(BLL0_traj4_0ring);
+            wobbleGoal.setWobbleGoalManipulatorClose();
+            sleep(1000);
+            wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
+            driveBase.followTrajectory(BLL0_traj7_0ring);
+
+            shooter.kick();
+            sleep(170);
+            shooter.unKick();
+            sleep(170);
+            shooter.kick();
+            sleep(170);
+            shooter.unKick();
+<<<<<<< HEAD
+            sleep(170);
+            shooter.kick();
+            sleep(170);
+            shooter.unKick();
+            sleep(170);
+
+            driveBase.followTrajectory(BLL0_traj8_0ring);
+            driveBase.followTrajectory(BLL0_traj9_0ring);
+            wobbleGoal.setWobbleGoalManipulatorOpen();
+            sleep(500);
+=======
+
+            driveBase.followTrajectory(BLL0_traj2_0ring);
+>>>>>>> parent of 5206961... Finished Autonomous for LeftLeft Side 0 Ring Auto
+
+            break;
+        }
+
+        while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.ONE)) {
+
+            driveBase.followTrajectory(BLL1_traj1);
+            intake.setWallPosIn();
+
+            shooter.kick();
+            sleep(170);
+            shooter.unKick();
+            sleep(170);
+
+<<<<<<< HEAD
+            driveBase.turnTo(Math.toRadians(333));
+
+            shooter.kick();
+            sleep(170);
+            shooter.unKick();
+            sleep(170);
+
+            shooter.setShooter(Constants.SHOOTER_VELOCITY);
+
+            driveBase.turnTo(Math.toRadians(345));
+
+            shooter.kick();
+            sleep(170);
+            shooter.unKick();
+
+            driveBase.followTrajectory(BLL1_traj2);
+
+            wobbleGoal.setWobbleGoalAutoClawOpen();
+            sleep(500);
+
+            intake.setIntakeWithoutWalls(1);
+            driveBase.followTrajectory(BLL1_traj3);
+            driveBase.followTrajectory(BLL1_traj4);
+
+            wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+            wobbleGoal.setWobbleGoalManipulatorOpen();
+
+            driveBase.followTrajectory(BLL1_traj5);
+
+            intake.setIntakeWithoutWalls(0);
+
+            driveBase.followTrajectory(BLL1_traj6);
+
+            wobbleGoal.setWobbleGoalManipulatorClose();
+            sleep(500);
+
+=======
+>>>>>>> parent of 5206961... Finished Autonomous for LeftLeft Side 0 Ring Auto
             break;
         }
 
         requestOpModeStop();
 
-        //PoseStorage.currentPose = driveBase.getPoseEstimate();
-        //FtcDashboard.getInstance().stopCameraStream();
+        PoseStorage.currentPose = driveBase.getPoseEstimate();
+        FtcDashboard.getInstance().stopCameraStream();
     }
 
 
