@@ -24,7 +24,7 @@ import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConsta
 @Config
 public class Blue_LeftLeft_4RingPath {
     public static Trajectory BLL4_traj1 = BuildTrajectory(new Pose2d())
-            .lineToSplineHeading(new Pose2d(60, 0, Math.toRadians(325.875)),
+            .lineToSplineHeading(new Pose2d(60, 0, Math.toRadians(353)),
                     new MinVelocityConstraint(
                             Arrays.asList(
                                     new AngularVelocityConstraint(Math.toRadians(60)),
