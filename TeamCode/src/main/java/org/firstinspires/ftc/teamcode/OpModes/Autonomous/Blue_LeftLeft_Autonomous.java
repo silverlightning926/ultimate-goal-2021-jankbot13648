@@ -35,6 +35,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
         vision = new Vision(hardwareMap);
 
         wobbleGoal.setWobbleGoalManipulatorClose();
+        wobbleGoal.setWobbleGoalAutoClawClose();
 
         telemetry.addLine("System Initialization Complete");
         telemetry.update();
@@ -162,7 +163,6 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
             wobbleGoal.setWobbleGoalManipulatorOpen();
-
             driveBase.followTrajectory(BLL1_traj5);
 
             intake.setIntakeWithoutWalls(0);
@@ -171,6 +171,36 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             wobbleGoal.setWobbleGoalManipulatorClose();
             sleep(500);
+
+            wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
+
+            driveBase.followTrajectory(BLL1_traj7);
+            driveBase.followTrajectory(BLL1_traj8);
+
+            intake.setIntakeWithoutWalls(1);
+            driveBase.followTrajectory(BLL1_traj9);
+
+            sleep(1000);
+
+            shooter.kick();
+            sleep(170);
+            shooter.unKick();
+            sleep(170);
+            shooter.kick();
+            sleep(170);
+            shooter.unKick();
+
+            intake.setIntakeWithoutWalls(0);
+
+            driveBase.followTrajectory(BLL1_traj10);
+            driveBase.followTrajectory(BLL1_traj10_1);
+
+            wobbleGoal.setWobbleGoalManipulatorOpen();
+            intake.setWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
+            sleep(500);
+
+            driveBase.followTrajectory(BLL1_traj11);
+
             break;
         }
 
@@ -179,27 +209,4 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
         PoseStorage.currentPose = driveBase.getPoseEstimate();
         FtcDashboard.getInstance().stopCameraStream();
     }
-
-
-    private void Shoot() {
-
-        for (int i = 0; i < 2; i++) {
-            shooter.kick();
-
-            sleep(Constants.shooterDelay);
-
-            shooter.unKick();
-
-            sleep(Constants.dropDelay);
-        }
-
-        intake.setWallPosDown();
-
-        shooter.kick();
-
-        sleep(Constants.shooterDelay);
-
-        shooter.unKick();
-    }
-
 }
