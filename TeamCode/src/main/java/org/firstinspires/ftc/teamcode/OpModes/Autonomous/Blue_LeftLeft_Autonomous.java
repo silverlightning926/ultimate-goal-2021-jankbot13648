@@ -13,6 +13,14 @@ import org.firstinspires.ftc.teamcode.Systems.Vision;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
 import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_0RingPath.*;
 import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_1RingPath.*;
+import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_4RingPath.BLL4_traj1;
+import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_4RingPath.BLL4_traj2;
+import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_4RingPath.BLL4_traj3;
+import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_4RingPath.BLL4_traj3_1;
+import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_4RingPath.BLL4_traj4;
+import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_4RingPath.BLL4_traj5;
+import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_4RingPath.BLL4_traj6;
+import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_4RingPath.BLL4_traj7;
 
 @Autonomous(name = "BLUE (LEFT >> LEFT)")
 public class Blue_LeftLeft_Autonomous extends LinearOpMode {
@@ -36,6 +44,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
         wobbleGoal.setWobbleGoalManipulatorClose();
         wobbleGoal.setWobbleGoalAutoClawClose();
+        intake.closeFunnels();
 
         telemetry.addLine("System Initialization Complete");
         telemetry.update();
@@ -49,7 +58,13 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
         shooter.unKick();
         wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
-        shooter.setShooter(180.5);
+
+        if (ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.FOUR)) {
+            shooter.setShooter(Constants.SHOOTER_VELOCITY);
+        } else {
+            shooter.setShooter(180.5);
+        }
+
         intake.releaseFunnels();
         intake.setWallPosition(0.8, 0.3);
 
@@ -204,9 +219,85 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             break;
         }
 
-        requestOpModeStop();
+        while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.FOUR))
+        {
+            driveBase.followTrajectory(BLL4_traj1);
+            intake.setWallPosIn();
+
+            shooter.kick();
+            sleep(250);
+            shooter.unKick();
+            sleep(250);
+            shooter.kick();
+            sleep(250);
+            shooter.unKick();
+            sleep(250);
+            shooter.kick();
+            sleep(250);
+            shooter.unKick();
+
+            driveBase.followTrajectory(BLL4_traj2);
+            wobbleGoal.setWobbleGoalAutoClawOpen();
+            sleep(1000);
+
+            shooter.setShooter(202);
+
+            wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+            wobbleGoal.setWobbleGoalManipulatorOpen();
+            driveBase.followTrajectory(BLL4_traj3);
+            driveBase.followTrajectory(BLL4_traj3_1);
+            wobbleGoal.setWobbleGoalManipulatorClose();
+            sleep(500);
+
+            wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
+            intake.setIntakeWithoutWalls(1);
+            driveBase.followTrajectory(BLL4_traj4);
+
+            sleep(1500);
+
+            shooter.kick();
+            sleep(170);
+            shooter.unKick();
+            sleep(170);
+            shooter.kick();
+            sleep(170);
+            shooter.unKick();
+            sleep(170);
+
+            shooter.setShooter(193);
+
+            driveBase.followTrajectory(BLL4_traj5);
+
+            sleep(1000);
+
+            intake.setIntakeWithoutWalls(0);
+
+            shooter.kick();
+            sleep(250);
+            shooter.unKick();
+            sleep(250);
+            shooter.kick();
+            sleep(250);
+            shooter.unKick();
+            sleep(250);
+            shooter.kick();
+            sleep(250);
+            shooter.unKick();
+
+            driveBase.followTrajectory(BLL4_traj6);
+            wobbleGoal.setWobbleGoalManipulatorOpen();
+
+            intake.setWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
+            driveBase.followTrajectory(BLL4_traj7);
+
+            break;
+        }
 
         PoseStorage.currentPose = driveBase.getPoseEstimate();
         FtcDashboard.getInstance().stopCameraStream();
+
+        requestOpModeStop();
+
+
     }
 }

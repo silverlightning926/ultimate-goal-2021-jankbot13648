@@ -130,4 +130,10 @@ public class Intake {
         leftFunnel.setPosition(Constants.LEFT_FUNNEL_RELEASE_POS);
         rightFunnel.setPosition(Constants.RIGHT_FUNNEL_RELEASE_POS);
     }
+
+    public void closeFunnels()
+    {
+        leftFunnel.setPosition(Constants.LEFT_FUNNEL_CLOSE_POS);
+        rightFunnel.setPosition(Constants.RIGHT_FUNNEL_CLOSE_POS);
+    }
 }

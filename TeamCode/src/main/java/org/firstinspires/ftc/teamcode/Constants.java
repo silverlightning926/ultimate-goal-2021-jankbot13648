@@ -42,7 +42,7 @@ public class Constants {
     public static final String KICKER_NAME = "kicker";
 
     public static double KICKER_OPEN_POS = 0.13;
-    public static double KICKER_KICK_POS = 0.28;
+    public static double KICKER_KICK_POS = 0.3;
 
     public static PIDFCoefficients SHOOTER_PID_COEFFICIENTS = new PIDFCoefficients(10, 1, 2, 9);
 
@@ -58,6 +58,9 @@ public class Constants {
 
     public static double LEFT_FUNNEL_RELEASE_POS = 0.5;
     public static double RIGHT_FUNNEL_RELEASE_POS = 0.5;
+
+    public static double LEFT_FUNNEL_CLOSE_POS = 0.4;
+    public static double RIGHT_FUNNEL_CLOSE_POS = 0.6;
 
     public static double LEFT_WALL_POS_OUT = 0.2;
     public static double RIGHT_WALL_POS_OUT = 0.9;
