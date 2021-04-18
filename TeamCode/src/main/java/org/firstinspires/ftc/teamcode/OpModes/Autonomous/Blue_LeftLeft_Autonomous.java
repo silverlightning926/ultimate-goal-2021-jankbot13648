@@ -68,7 +68,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
         intake.releaseFunnels();
         intake.setWallPosition(0.8, 0.3);
 
-        while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.NONE)) {
+        if (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.NONE)) {
 
             driveBase.followTrajectory(BLL0_traj1_0ring);
             intake.setWallPosIn();
@@ -138,11 +138,9 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             sleep(500);
 
             driveBase.followTrajectory(BLL0_traj2_0ring);
-
-            break;
         }
 
-        while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.ONE)) {
+        if (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.ONE)) {
 
             driveBase.followTrajectory(BLL1_traj1);
             intake.setWallPosIn();
@@ -215,11 +213,9 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             sleep(500);
 
             driveBase.followTrajectory(BLL1_traj11);
-
-            break;
         }
 
-        while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.FOUR))
+        if (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.FOUR))
         {
             driveBase.followTrajectory(BLL4_traj1);
             intake.setWallPosIn();
@@ -289,8 +285,6 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             intake.setWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
             driveBase.followTrajectory(BLL4_traj7);
-
-            break;
         }
 
         PoseStorage.currentPose = driveBase.getPoseEstimate();
