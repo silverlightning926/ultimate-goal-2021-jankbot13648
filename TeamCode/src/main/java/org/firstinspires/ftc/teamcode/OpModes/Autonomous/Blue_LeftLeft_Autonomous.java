@@ -73,25 +73,17 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             driveBase.followTrajectory(BLL0_traj1_0ring);
             intake.setWallPosIn();
 
-            shooter.kick();
-            sleep(170);
-            shooter.unKick();
-            sleep(170);
+            Shoot(1);
 
             driveBase.turnTo(Math.toRadians(333));
 
-            shooter.kick();
-            sleep(170);
-            shooter.unKick();
-            sleep(170);
+            Shoot(1);
 
             shooter.setShooter(Constants.SHOOTER_VELOCITY);
 
             driveBase.turnTo(Math.toRadians(345));
 
-            shooter.kick();
-            sleep(170);
-            shooter.unKick();
+            Shoot(1);
 
             intake.setIntakeWithoutWalls(1);
 
@@ -119,18 +111,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(BLL0_traj7_0ring);
 
-            shooter.kick();
-            sleep(170);
-            shooter.unKick();
-            sleep(170);
-            shooter.kick();
-            sleep(170);
-            shooter.unKick();
-            sleep(170);
-            shooter.kick();
-            sleep(170);
-            shooter.unKick();
-            sleep(170);
+            Shoot(3);
 
             driveBase.followTrajectory(BLL0_traj8_0ring);
             driveBase.followTrajectory(BLL0_traj9_0ring);
@@ -145,25 +126,17 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             driveBase.followTrajectory(BLL1_traj1);
             intake.setWallPosIn();
 
-            shooter.kick();
-            sleep(170);
-            shooter.unKick();
-            sleep(170);
+            Shoot(1);
 
             driveBase.turnTo(Math.toRadians(333));
 
-            shooter.kick();
-            sleep(170);
-            shooter.unKick();
-            sleep(170);
+            Shoot(1);
 
             shooter.setShooter(Constants.SHOOTER_VELOCITY);
 
             driveBase.turnTo(Math.toRadians(345));
 
-            shooter.kick();
-            sleep(170);
-            shooter.unKick();
+            Shoot(1);
 
             driveBase.followTrajectory(BLL1_traj2);
 
@@ -195,13 +168,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             sleep(1000);
 
-            shooter.kick();
-            sleep(170);
-            shooter.unKick();
-            sleep(170);
-            shooter.kick();
-            sleep(170);
-            shooter.unKick();
+            Shoot(3);
 
             intake.setIntakeWithoutWalls(0);
 
@@ -220,17 +187,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             driveBase.followTrajectory(BLL4_traj1);
             intake.setWallPosIn();
 
-            shooter.kick();
-            sleep(250);
-            shooter.unKick();
-            sleep(250);
-            shooter.kick();
-            sleep(250);
-            shooter.unKick();
-            sleep(250);
-            shooter.kick();
-            sleep(250);
-            shooter.unKick();
+            Shoot(3);
 
             driveBase.followTrajectory(BLL4_traj2);
             wobbleGoal.setWobbleGoalAutoClawOpen();
@@ -251,14 +208,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             sleep(1500);
 
-            shooter.kick();
-            sleep(170);
-            shooter.unKick();
-            sleep(170);
-            shooter.kick();
-            sleep(170);
-            shooter.unKick();
-            sleep(170);
+            Shoot(2);
 
             shooter.setShooter(193);
 
@@ -268,17 +218,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             intake.setIntakeWithoutWalls(0);
 
-            shooter.kick();
-            sleep(250);
-            shooter.unKick();
-            sleep(250);
-            shooter.kick();
-            sleep(250);
-            shooter.unKick();
-            sleep(250);
-            shooter.kick();
-            sleep(250);
-            shooter.unKick();
+            Shoot(3);
 
             driveBase.followTrajectory(BLL4_traj6);
             wobbleGoal.setWobbleGoalManipulatorOpen();
@@ -291,7 +231,20 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
         FtcDashboard.getInstance().stopCameraStream();
 
         requestOpModeStop();
+    }
 
+    public void Shoot(int numOfTimes)
+    {
+        for(int i = 0; i < numOfTimes - 1; i++)
+        {
+            shooter.kick();
+            sleep(180);
+            shooter.unKick();
+            sleep(180);
+        }
 
+        shooter.kick();
+        sleep(180);
+        shooter.unKick();
     }
 }
