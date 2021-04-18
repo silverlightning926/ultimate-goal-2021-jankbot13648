@@ -10,6 +10,7 @@ import com.acmerobotics.roadrunner.trajectory.constraints.MecanumVelocityConstra
 import com.acmerobotics.roadrunner.trajectory.constraints.MinVelocityConstraint;
 import com.acmerobotics.roadrunner.trajectory.constraints.ProfileAccelerationConstraint;
 
+import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants;
 
 import java.util.Arrays;
@@ -21,14 +22,11 @@ import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConsta
 
 @Config
 public class Blue_LeftLeft_0RingPath {
+
     public static Trajectory BLL0_traj1_0ring = BuildTrajectory(new Pose2d())
             .lineToSplineHeading(new Pose2d(60, 0, Math.toRadians(325.875)),
-                    new MinVelocityConstraint(
-                            Arrays.asList(
-                                    new AngularVelocityConstraint(Math.toRadians(60)),
-                                    new MecanumVelocityConstraint(MAX_VEL, DriveConstants.TRACK_WIDTH)
-                            )),
-                    new ProfileAccelerationConstraint(DriveConstants.MAX_ACCEL))
+                DriveBase.getVelocityConstraint(MAX_VEL, Math.toRadians(60), TRACK_WIDTH),
+                DriveBase.getAccelerationConstraint(MAX_ACCEL))
             .build();
 
     public static Trajectory BLL0_traj1_1_0ring = BuildTrajectory(BLL0_traj1_0ring.end())
