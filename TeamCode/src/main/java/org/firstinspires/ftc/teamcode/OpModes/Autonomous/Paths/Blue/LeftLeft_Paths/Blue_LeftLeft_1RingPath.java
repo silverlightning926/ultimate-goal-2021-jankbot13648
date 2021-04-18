@@ -11,7 +11,6 @@ import com.acmerobotics.roadrunner.trajectory.constraints.MinVelocityConstraint;
 import com.acmerobotics.roadrunner.trajectory.constraints.ProfileAccelerationConstraint;
 
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
-import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants;
 
 import java.util.Arrays;
 
@@ -65,11 +64,11 @@ public class Blue_LeftLeft_1RingPath {
             .lineToSplineHeading(new Pose2d(60,-35, Math.toRadians(90)))
             .build();
 
-    public static Trajectory BLL1_traj10_1 = BuildTrajectory(BLL1_traj10.end())
+    public static Trajectory BLL1_traj11 = BuildTrajectory(BLL1_traj10.end())
             .lineToSplineHeading(new Pose2d(94,-35, Math.toRadians(90)))
             .build();
 
-    public static Trajectory BLL1_traj11 = BuildTrajectory(BLL1_traj10_1.end())
+    public static Trajectory BLL1_traj12 = BuildTrajectory(BLL1_traj11.end())
             .lineToSplineHeading(new Pose2d(70,-35, Math.toRadians(90)))
             .build();
 

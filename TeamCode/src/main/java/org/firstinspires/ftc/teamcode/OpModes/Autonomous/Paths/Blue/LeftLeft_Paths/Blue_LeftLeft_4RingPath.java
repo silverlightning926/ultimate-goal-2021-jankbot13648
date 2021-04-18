@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Paths;
 
-import android.os.Build;
-
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
@@ -13,7 +11,6 @@ import com.acmerobotics.roadrunner.trajectory.constraints.MinVelocityConstraint;
 import com.acmerobotics.roadrunner.trajectory.constraints.ProfileAccelerationConstraint;
 
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
-import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants;
 
 import java.util.Arrays;
 
@@ -37,27 +34,27 @@ public class Blue_LeftLeft_4RingPath {
             .lineToSplineHeading(new Pose2d(11.5,1, 0))
             .build();
 
-    public static Trajectory BLL4_traj3_1 = BuildTrajectory(BLL4_traj3.end())
+    public static Trajectory BLL4_traj4 = BuildTrajectory(BLL4_traj3.end())
             .lineToConstantHeading(new Vector2d(11.5, -23.5))
             .build();
 
-    public static Trajectory BLL4_traj4 = BuildTrajectory(BLL4_traj3_1.end())
+    public static Trajectory BLL4_traj5 = BuildTrajectory(BLL4_traj4.end())
             .lineToSplineHeading(new Pose2d(29, -22.5, Math.toRadians(353)),
                     DriveBase.getVelocityConstraint(30, MAX_ANG_VEL, TRACK_WIDTH),
                     DriveBase.getAccelerationConstraint(MAX_ACCEL))
             .build();
 
-    public static Trajectory BLL4_traj5 = BuildTrajectory(BLL4_traj4.end())
+    public static Trajectory BLL4_traj6 = BuildTrajectory(BLL4_traj5.end())
             .lineToConstantHeading(new Vector2d(40, -22.5),
                     DriveBase.getVelocityConstraint(5, MAX_ANG_VEL, TRACK_WIDTH),
                     DriveBase.getAccelerationConstraint(MAX_ACCEL))
             .build();
 
-    public static Trajectory BLL4_traj6 = BuildTrajectory(BLL4_traj5.end())
+    public static Trajectory BLL4_traj7 = BuildTrajectory(BLL4_traj6.end())
             .lineToSplineHeading(new Pose2d(120.5, -10, Math.toRadians(90)))
             .build();
 
-    public static Trajectory BLL4_traj7 = BuildTrajectory(BLL4_traj6.end())
+    public static Trajectory BLL4_traj8 = BuildTrajectory(BLL4_traj7.end())
             .lineToSplineHeading(new Pose2d(90, -10, Math.toRadians(90)))
             .build();
 
