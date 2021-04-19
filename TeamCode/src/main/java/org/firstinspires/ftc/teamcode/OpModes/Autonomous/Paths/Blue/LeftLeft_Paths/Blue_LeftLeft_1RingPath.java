@@ -33,11 +33,11 @@ public class Blue_LeftLeft_1RingPath {
             .build();
 
     public static Trajectory BLL1_traj3 = BuildTrajectory(BLL1_traj2.end())
-            .lineToSplineHeading(new Pose2d(117,-41,Math.toRadians(315)))
+            .lineToSplineHeading(new Pose2d(116,-40, Math.toRadians(315)))
             .build();
 
     public static Trajectory BLL1_traj4 = BuildTrajectory(BLL1_traj3.end())
-            .lineToConstantHeading(new Vector2d(112.5,-62.5))
+            .lineToConstantHeading(new Vector2d(112.5,-63))
             .build();
 
     public static Trajectory BLL1_traj5 = BuildTrajectory(BLL1_traj4.end())
