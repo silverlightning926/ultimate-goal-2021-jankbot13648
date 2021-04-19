@@ -26,8 +26,8 @@ public class Shooter {
         shooterMotor1.setDirection(DcMotorEx.Direction.REVERSE);
         shooterMotor2.setDirection(DcMotorEx.Direction.REVERSE);
 
-        shooterMotor2.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
-        shooterMotor1.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+        shooterMotor2.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.FLOAT);
+        shooterMotor1.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.FLOAT);
 
         shooterMotor1.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
         shooterMotor2.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);

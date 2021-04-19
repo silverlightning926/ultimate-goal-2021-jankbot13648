@@ -27,8 +27,8 @@ public class Constants {
     public static Vector2d GOAL_VECTOR2D = new Vector2d(145, 0);
 
     // Shooter Motor Names
-    public static double SHOOTER_VELOCITY = 195;
-    public static double MIN_SHOOTER_VELOCITY = 195;
+    public static double SHOOTER_VELOCITY = 193;
+    public static double MIN_SHOOTER_VELOCITY = 193;
     public static double MAX_SHOOTER_VELOCITY = 208;
 
     public static double POWER_SHOT_VELOCITY = 217 * (8.0/10.0);
@@ -36,8 +36,8 @@ public class Constants {
     public static final String SHOOTER_1_NAME = "s1";
     public static final String SHOOTER_2_NAME = "s2";
 
-    public static int shooterDelay = 125;
-    public static int dropDelay = 140;
+    public static int shooterDelay = 170;
+    public static int dropDelay = 170;
 
     public static final String KICKER_NAME = "kicker";
 
