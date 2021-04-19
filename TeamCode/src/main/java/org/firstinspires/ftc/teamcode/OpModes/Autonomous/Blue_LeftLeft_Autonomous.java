@@ -68,6 +68,8 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             Shoot(1);
 
+            shooter.setShooter(179.5);
+
             driveBase.turnTo(Math.toRadians(333));
 
             Shoot(1);
@@ -120,6 +122,8 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             intake.setWallPosIn();
 
             Shoot(1);
+
+            shooter.setShooter(179.5);
 
             driveBase.turnTo(Math.toRadians(333));
 
