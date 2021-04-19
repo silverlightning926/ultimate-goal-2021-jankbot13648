@@ -46,7 +46,7 @@ public class Blue_LeftLeft_4RingPath {
 
     public static Trajectory BLL4_traj6 = BuildTrajectory(BLL4_traj5.end())
             .lineToConstantHeading(new Vector2d(40, -22.5),
-                    DriveBase.getVelocityConstraint(5, MAX_ANG_VEL, TRACK_WIDTH),
+                    DriveBase.getVelocityConstraint(5.5, MAX_ANG_VEL, TRACK_WIDTH),
                     DriveBase.getAccelerationConstraint(MAX_ACCEL))
             .build();
 
