@@ -36,8 +36,8 @@ public class Constants {
     public static final String SHOOTER_1_NAME = "s1";
     public static final String SHOOTER_2_NAME = "s2";
 
-    public static int shooterDelay = 125;
-    public static int dropDelay = 140;
+    public static int shooterDelay = 170;
+    public static int dropDelay = 170;
 
     public static final String KICKER_NAME = "kicker";
 
