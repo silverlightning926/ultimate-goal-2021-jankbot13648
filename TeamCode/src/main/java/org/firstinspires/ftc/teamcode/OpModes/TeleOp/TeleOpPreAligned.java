@@ -2,12 +2,12 @@ package org.firstinspires.ftc.teamcode.OpModes.TeleOp;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
-import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
+import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.PoseStorage;
 import org.firstinspires.ftc.teamcode.Systems.Intake;
 import org.firstinspires.ftc.teamcode.Systems.Shooter;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
@@ -39,9 +39,11 @@ public class TeleOpPreAligned extends LinearOpMode {
         if(isStopRequested()) return;
 
         shooter.unKick();
+        shooter.setShooter(Constants.SHOOTER_VELOCITY);
 
         while (!isStopRequested() && opModeIsActive())
         {
+
             if(gamepad1.a)
             {
                 AutoAimShoot();
@@ -94,12 +96,9 @@ public class TeleOpPreAligned extends LinearOpMode {
                 PowerShotTrajectory();
             }
 
-            //shooter.autoSetShooter((84 - driveBase.getPoseEstimate().getX())/24);
-            shooter.setShooter(Constants.SHOOTER_VELOCITY);
             intake.setIntake(gamepad1.right_trigger, gamepad1.left_trigger, gamepad1.right_bumper);
-            wobbleGoal.moveWobbleGoalPosition(gamepad2.dpad_left, gamepad2.dpad_right, gamepad2.dpad_right);
+            wobbleGoal.moveWobbleGoalPosition(gamepad2.dpad_up, gamepad2.dpad_right, gamepad2.dpad_down);
             wobbleGoal.moveWobbleGoalManipulator(gamepad2.x, gamepad2.b);
-            driveBase.update();
         }
     }
 
@@ -140,47 +139,21 @@ public class TeleOpPreAligned extends LinearOpMode {
     }
 
     private void PowerShotTrajectory() {
+
         shooter.setShooter(Constants.POWER_SHOT_VELOCITY);
 
-        Trajectory powerShot_traj1 = driveBase.trajectoryBuilder(new Pose2d(
-                driveBase.getPoseEstimate().getX(),
-                driveBase.getPoseEstimate().getY(),
-                driveBase.getPoseEstimate().getHeading()
-        ))
-                .strafeLeft(6.5)
-                .build();
+        driveBase.turn(-Math.toRadians(Constants.POWER_SHOT_TURN_OFFSET), Math.toRadians(60), Math.toRadians(60));
 
-        Trajectory powerShot_traj2 = driveBase.trajectoryBuilder(powerShot_traj1.end())
-                .strafeLeft(7.5)
-                .build();
+        for (int i = 0; i < 3; i++)
+        {
+            driveBase.turn(-Math.toRadians(Constants.POWER_SHOT_TURN), Math.toRadians(60), Math.toRadians(60));
 
-        Trajectory powerShot_traj3 = driveBase.trajectoryBuilder(powerShot_traj2.end())
-                .strafeLeft(7.5)
-                .build();
+            shooter.kick();
 
-        driveBase.followTrajectory(powerShot_traj1);
+            sleep(200);
 
-        shooter.kick();
-
-        sleep(200);
-
-        shooter.unKick();
-
-        driveBase.followTrajectory(powerShot_traj2);
-
-        shooter.kick();
-
-        sleep(200);
-
-        shooter.unKick();
-
-        driveBase.followTrajectory(powerShot_traj3);
-
-        shooter.kick();
-
-        sleep(200);
-
-        shooter.unKick();
+            shooter.unKick();
+        }
 
         shooter.setShooter(Constants.SHOOTER_VELOCITY);
     }
