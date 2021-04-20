@@ -54,15 +54,10 @@ public class DriveConstants {
      * inches.
      */
 
-    public static double MAX_VEL = 59.57470216843153; // 30;
-    public static double MAX_ACCEL = 59.57470216843153; // 30;
-    public static double MAX_ANG_VEL = Math.toRadians(235.4054482758621); // Math.toRadians(60);
-    public static double MAX_ANG_ACCEL = Math.toRadians(235.4054482758621); // Math.toRadians(60);
-
-    /*public static double MAX_VEL = ((MAX_RPM/60)*GEAR_RATIO*WHEEL_RADIUS*(2*Math.PI))*0.85;
-    public static double MAX_ACCEL = 40;
-    public static double MAX_ANG_VEL = Math.toRadians(60);
-    public static double MAX_ANG_ACCEL = Math.toRadians(60);*/
+    public static double MAX_VEL = 59.57470216843153;
+    public static double MAX_ACCEL = 59.57470216843153;
+    public static double MAX_ANG_VEL = Math.toRadians(235.4054482758621);
+    public static double MAX_ANG_ACCEL = Math.toRadians(235.4054482758621);
 
     public static double encoderTicksToInches(double ticks) {
         return WHEEL_RADIUS * 2 * Math.PI * GEAR_RATIO * ticks / TICKS_PER_REV;

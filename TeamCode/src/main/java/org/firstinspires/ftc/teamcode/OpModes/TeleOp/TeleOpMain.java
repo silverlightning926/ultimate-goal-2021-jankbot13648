@@ -142,57 +142,14 @@ public class TeleOpMain extends LinearOpMode {
     }
 
     private void PowerShotTrajectory() {
-        shooter.setShooter(Constants.POWER_SHOT_VELOCITY);
-/*
-        Trajectory powerShot_traj1 = driveBase.trajectoryBuilder(new Pose2d(
-                driveBase.getPoseEstimate().getX(),
-                driveBase.getPoseEstimate().getY(),
-                driveBase.getPoseEstimate().getHeading()
-        ))
-                .strafeLeft(6.5)
-                .build();
-
-        Trajectory powerShot_traj2 = driveBase.trajectoryBuilder(powerShot_traj1.end())
-                .strafeLeft(7.5)
-                .build();
-
-        Trajectory powerShot_traj3 = driveBase.trajectoryBuilder(powerShot_traj2.end())
-                .strafeLeft(7.5)
-                .build();
-
-        driveBase.followTrajectory(powerShot_traj1);
-
-        shooter.kick();
-
-        sleep(200);
-
-        shooter.unKick();
-
-        driveBase.followTrajectory(powerShot_traj2);
-
-        shooter.kick();
-
-        sleep(200);
-
-        shooter.unKick();
-
-        driveBase.followTrajectory(powerShot_traj3);
-
-        shooter.kick();
-
-        sleep(200);
-
-        shooter.unKick();
-
-        shooter.setShooter(Constants.SHOOTER_VELOCITY);*/
 
         shooter.setShooter(Constants.POWER_SHOT_VELOCITY);
 
-        driveBase.turn(-Math.toRadians(Constants.POWERSHOT_TURN_OFFSET));
+        driveBase.turn(-Math.toRadians(Constants.POWER_SHOT_TURN_OFFSET), Math.toRadians(60), Math.toRadians(60));
 
         for (int i = 0; i < 3; i++)
         {
-            driveBase.turn(-Math.toRadians(Constants.POWERSHOT_TURN));
+            driveBase.turn(-Math.toRadians(Constants.POWER_SHOT_TURN), Math.toRadians(60), Math.toRadians(60));
 
             shooter.kick();
 

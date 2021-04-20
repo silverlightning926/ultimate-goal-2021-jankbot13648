@@ -190,7 +190,28 @@ public class DriveBase extends MecanumDrive {
         waitForIdle();
     }
 
-    public void turnToAysnc(double angle) {
+    public void turnAsync(double angle, double maxAngVelocity, double maxAngAccel) {
+        double heading = getPoseEstimate().getHeading();
+
+        lastPoseOnTurn = getPoseEstimate();
+
+        turnProfile = MotionProfileGenerator.generateSimpleMotionProfile(
+                new MotionState(heading, 0, 0, 0),
+                new MotionState(heading + angle, 0, 0, 0),
+                maxAngVelocity,
+                maxAngAccel
+        );
+
+        turnStart = clock.seconds();
+        mode = Mode.TURN;
+    }
+
+    public void turn(double angle, double maxAngVelocity, double maxAngAccel) {
+        turnAsync(angle, maxAngVelocity, maxAngAccel);
+        waitForIdle();
+    }
+
+    public void turnToAsync(double angle) {
         double heading = getPoseEstimate().getHeading();
 
         lastPoseOnTurn = getPoseEstimate();
@@ -208,7 +229,7 @@ public class DriveBase extends MecanumDrive {
 
     public void turnToInefficient(double angle)
     {
-        turnToAysnc(angle);
+        turnToAsync(angle);
         waitForIdle();
     }
 

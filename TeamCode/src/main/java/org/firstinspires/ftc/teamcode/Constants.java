@@ -46,8 +46,8 @@ public class Constants {
 
     public static PIDFCoefficients SHOOTER_PID_COEFFICIENTS = new PIDFCoefficients(10, 1, 2, 9);
 
-    public static double POWERSHOT_TURN_OFFSET = 2;
-    public static double POWERSHOT_TURN = 7;
+    public static double POWER_SHOT_TURN_OFFSET = 2;
+    public static double POWER_SHOT_TURN = 7;
 
     // Intake Constants
     public static final String INTAKE_TOP_NAME = "i1";
