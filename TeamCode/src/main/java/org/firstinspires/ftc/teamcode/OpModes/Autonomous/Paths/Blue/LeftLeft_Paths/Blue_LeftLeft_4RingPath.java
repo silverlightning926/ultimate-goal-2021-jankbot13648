@@ -45,21 +45,21 @@ public class Blue_LeftLeft_4RingPath {
             .build();
 
 
-    public static Trajectory BLL4_traj5_1 = BuildTrajectory(BLL4_traj5.end())
+    public static Trajectory BLL4_traj6 = BuildTrajectory(BLL4_traj5.end())
             .back(2)
             .build();
 
-    public static Trajectory BLL4_traj6 = BuildTrajectory(BLL4_traj5_1.end())
+    public static Trajectory BLL4_traj7 = BuildTrajectory(BLL4_traj6.end())
             .lineToConstantHeading(new Vector2d(40, -22.5),
                     DriveBase.getVelocityConstraint(5.5, MAX_ANG_VEL, TRACK_WIDTH),
                     DriveBase.getAccelerationConstraint(MAX_ACCEL))
             .build();
 
-    public static Trajectory BLL4_traj7 = BuildTrajectory(BLL4_traj6.end())
+    public static Trajectory BLL4_traj8 = BuildTrajectory(BLL4_traj7.end())
             .lineToSplineHeading(new Pose2d(120.5, -10, Math.toRadians(90)))
             .build();
 
-    public static Trajectory BLL4_traj8 = BuildTrajectory(BLL4_traj7.end())
+    public static Trajectory BLL4_traj9 = BuildTrajectory(BLL4_traj8.end())
             .lineToSplineHeading(new Pose2d(90, -10, Math.toRadians(90)))
             .build();
 
