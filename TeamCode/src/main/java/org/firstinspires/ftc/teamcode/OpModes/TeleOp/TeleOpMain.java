@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.OpModes.TeleOp;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
-import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -101,7 +100,7 @@ public class TeleOpMain extends LinearOpMode {
             //shooter.autoSetShooter((84 - driveBase.getPoseEstimate().getX())/24);
             shooter.setShooter(Constants.SHOOTER_VELOCITY);
             intake.setIntake(gamepad1.right_trigger, gamepad1.left_trigger, gamepad1.right_bumper);
-            wobbleGoal.moveWobbleGoalPosition(gamepad2.dpad_left, gamepad2.dpad_right);
+            wobbleGoal.moveWobbleGoalPosition(gamepad2.dpad_up, gamepad2.dpad_right, gamepad2.dpad_down);
             wobbleGoal.moveWobbleGoalManipulator(gamepad2.x, gamepad2.b);
         }
     }
@@ -126,25 +125,25 @@ public class TeleOpMain extends LinearOpMode {
         for (int i = 0; i < 2; i++) {
             shooter.kick();
 
-            sleep(Constants.shooterDelay);
+            sleep(Constants.SHOOTER_DELAY);
 
             shooter.unKick();
 
-            sleep(Constants.dropDelay);
+            sleep(Constants.DROP_DELAY);
         }
 
         intake.setWallPosDown();
 
         shooter.kick();
 
-        sleep(Constants.shooterDelay);
+        sleep(Constants.SHOOTER_DELAY);
 
         shooter.unKick();
     }
 
     private void PowerShotTrajectory() {
         shooter.setShooter(Constants.POWER_SHOT_VELOCITY);
-
+/*
         Trajectory powerShot_traj1 = driveBase.trajectoryBuilder(new Pose2d(
                 driveBase.getPoseEstimate().getX(),
                 driveBase.getPoseEstimate().getY(),
@@ -184,6 +183,23 @@ public class TeleOpMain extends LinearOpMode {
         sleep(200);
 
         shooter.unKick();
+
+        shooter.setShooter(Constants.SHOOTER_VELOCITY);*/
+
+        shooter.setShooter(Constants.POWER_SHOT_VELOCITY);
+
+        driveBase.turn(-Math.toRadians(Constants.POWERSHOT_TURN_OFFSET));
+
+        for (int i = 0; i < 3; i++)
+        {
+            driveBase.turn(-Math.toRadians(Constants.POWERSHOT_TURN));
+
+            shooter.kick();
+
+            sleep(200);
+
+            shooter.unKick();
+        }
 
         shooter.setShooter(Constants.SHOOTER_VELOCITY);
     }

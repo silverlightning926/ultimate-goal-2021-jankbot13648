@@ -8,7 +8,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
-import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.PoseStorage;
 import org.firstinspires.ftc.teamcode.Systems.Intake;
 import org.firstinspires.ftc.teamcode.Systems.Shooter;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
@@ -98,7 +97,7 @@ public class TeleOpPreAligned extends LinearOpMode {
             //shooter.autoSetShooter((84 - driveBase.getPoseEstimate().getX())/24);
             shooter.setShooter(Constants.SHOOTER_VELOCITY);
             intake.setIntake(gamepad1.right_trigger, gamepad1.left_trigger, gamepad1.right_bumper);
-            wobbleGoal.moveWobbleGoalPosition(gamepad2.dpad_left, gamepad2.dpad_right);
+            wobbleGoal.moveWobbleGoalPosition(gamepad2.dpad_left, gamepad2.dpad_right, gamepad2.dpad_right);
             wobbleGoal.moveWobbleGoalManipulator(gamepad2.x, gamepad2.b);
             driveBase.update();
         }
@@ -124,18 +123,18 @@ public class TeleOpPreAligned extends LinearOpMode {
         for (int i = 0; i < 2; i++) {
             shooter.kick();
 
-            sleep(Constants.shooterDelay);
+            sleep(Constants.SHOOTER_DELAY);
 
             shooter.unKick();
 
-            sleep(Constants.dropDelay);
+            sleep(Constants.DROP_DELAY);
         }
 
         intake.setWallPosDown();
 
         shooter.kick();
 
-        sleep(Constants.shooterDelay);
+        sleep(Constants.SHOOTER_DELAY);
 
         shooter.unKick();
     }

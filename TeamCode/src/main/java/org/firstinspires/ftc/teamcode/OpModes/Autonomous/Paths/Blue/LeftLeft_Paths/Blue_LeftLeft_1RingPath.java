@@ -23,13 +23,13 @@ import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConsta
 public class Blue_LeftLeft_1RingPath {
 
     public static Trajectory BLL1_traj1 = BuildTrajectory(new Pose2d())
-            .lineToSplineHeading(new Pose2d(60, 0, Math.toRadians(325.875)),
+            .lineToSplineHeading(new Pose2d(60, 0, Math.toRadians(328.875)),
                 DriveBase.getVelocityConstraint(MAX_VEL, Math.toRadians(60), TRACK_WIDTH),
                 DriveBase.getAccelerationConstraint(MAX_ACCEL))
             .build();
 
     public static Trajectory BLL1_traj2 = BuildTrajectory(BLL1_traj1.end())
-            .lineToSplineHeading(new Pose2d(90,-42,0))
+            .lineToSplineHeading(new Pose2d(95,-42,0))
             .build();
 
     public static Trajectory BLL1_traj3 = BuildTrajectory(BLL1_traj2.end())
@@ -37,7 +37,7 @@ public class Blue_LeftLeft_1RingPath {
             .build();
 
     public static Trajectory BLL1_traj4 = BuildTrajectory(BLL1_traj3.end())
-            .lineToConstantHeading(new Vector2d(112.5,-63))
+            .lineToConstantHeading(new Vector2d(112.5,-68))
             .build();
 
     public static Trajectory BLL1_traj5 = BuildTrajectory(BLL1_traj4.end())
@@ -45,7 +45,7 @@ public class Blue_LeftLeft_1RingPath {
             .build();
 
     public static Trajectory BLL1_traj6 = BuildTrajectory(BLL1_traj5.end())
-            .lineToSplineHeading(new Pose2d(14.75,-22, Math.toRadians(250)))
+            .lineToSplineHeading(new Pose2d(16.75,-24, Math.toRadians(250)))
             .build();
 
     public static Trajectory BLL1_traj7 = BuildTrajectory(BLL1_traj6.end())
@@ -57,7 +57,7 @@ public class Blue_LeftLeft_1RingPath {
             .build();
 
     public static Trajectory BLL1_traj9 = BuildTrajectory(BLL1_traj8.end())
-            .lineToSplineHeading(new Pose2d(60,-6, Math.toRadians(343)))
+            .lineToSplineHeading(new Pose2d(60,-9, Math.toRadians(345)))
             .build();
 
     public static Trajectory BLL1_traj10 = BuildTrajectory(BLL1_traj9.end())
@@ -65,7 +65,7 @@ public class Blue_LeftLeft_1RingPath {
             .build();
 
     public static Trajectory BLL1_traj11 = BuildTrajectory(BLL1_traj10.end())
-            .lineToSplineHeading(new Pose2d(94,-35, Math.toRadians(90)))
+            .lineToSplineHeading(new Pose2d(94,-31, Math.toRadians(90)))
             .build();
 
     public static Trajectory BLL1_traj12 = BuildTrajectory(BLL1_traj11.end())

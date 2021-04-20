@@ -24,12 +24,18 @@ public class WobbleGoal {
         autoWobbleClaw = hardwareMap.get(Servo.class, Constants.AUTO_WOBBLE_CLAW);
     }
 
-    public void moveWobbleGoalPosition(boolean wobbleGoalUpButton, boolean wobbleGoalDownButton)
+    public void moveWobbleGoalPosition(boolean wobbleGoalUpButton, boolean wobbleMidButton, boolean wobbleGoalDownButton)
     {
         if(wobbleGoalUpButton)
         {
             wobbleGoal1.setPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
             wobbleGoal2.setPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
+        }
+
+        else if(wobbleMidButton)
+        {
+            wobbleGoal1.setPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
+            wobbleGoal2.setPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
         }
 
         else if(wobbleGoalDownButton)

@@ -55,7 +55,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
         if (ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.FOUR)) {
             shooter.setShooter(Constants.SHOOTER_VELOCITY);
         } else {
-            shooter.setShooter(180.5);
+            shooter.setShooter(178);
         }
 
         intake.releaseFunnels();
@@ -65,12 +65,13 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(BLL0_traj1);
             intake.setWallPosIn();
+            sleep(500);
 
             Shoot(1);
 
-            shooter.setShooter(179.5);
+            shooter.setShooter(177);
 
-            driveBase.turnTo(Math.toRadians(333));
+            driveBase.turnTo(Math.toRadians(333.5));
 
             Shoot(1);
 
@@ -89,6 +90,8 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(BLL0_traj3);
             driveBase.followTrajectory(BLL0_traj4);
+
+            driveBase.turnTo(Math.toRadians(315));
             driveBase.followTrajectory(BLL0_traj5);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
@@ -113,21 +116,24 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             wobbleGoal.setWobbleGoalManipulatorOpen();
             sleep(500);
 
-            driveBase.followTrajectory(BLL0_traj3);
+            driveBase.followTrajectory(BLL0_traj11);
         }
 
         if (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.ONE)) {
 
             driveBase.followTrajectory(BLL1_traj1);
             intake.setWallPosIn();
+            sleep(500);
 
             Shoot(1);
 
-            shooter.setShooter(179.5);
+            shooter.setShooter(177);
 
-            driveBase.turnTo(Math.toRadians(333));
+            driveBase.turnTo(Math.toRadians(333.5));
 
             Shoot(1);
+
+            sleep(500);
 
             shooter.setShooter(Constants.SHOOTER_VELOCITY);
 
@@ -183,6 +189,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
         {
             driveBase.followTrajectory(BLL4_traj1);
             intake.setWallPosIn();
+            sleep(500);
 
             Shoot(3);
 
@@ -202,6 +209,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
             intake.setIntakeWithoutWalls(1);
             driveBase.followTrajectory(BLL4_traj5);
+            driveBase.followTrajectory(BLL4_traj5_1);
 
             sleep(1500);
 
