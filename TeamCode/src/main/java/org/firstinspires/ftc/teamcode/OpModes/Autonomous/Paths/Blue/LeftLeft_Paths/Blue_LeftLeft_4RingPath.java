@@ -35,7 +35,7 @@ public class Blue_LeftLeft_4RingPath {
             .build();
 
     public static Trajectory BLL4_traj4 = BuildTrajectory(BLL4_traj3.end())
-            .lineToConstantHeading(new Vector2d(11.5, -24.5))
+            .lineToConstantHeading(new Vector2d(11.5, -25))
             .build();
 
     public static Trajectory BLL4_traj5 = BuildTrajectory(BLL4_traj4.end())

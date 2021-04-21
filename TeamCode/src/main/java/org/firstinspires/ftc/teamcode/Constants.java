@@ -31,7 +31,7 @@ public class Constants {
     public static double MIN_SHOOTER_VELOCITY = 193;
     public static double MAX_SHOOTER_VELOCITY = 208;
 
-    public static double POWER_SHOT_VELOCITY = 172;
+    public static double POWER_SHOT_VELOCITY = 171;
 
     public static final String SHOOTER_1_NAME = "s1";
     public static final String SHOOTER_2_NAME = "s2";

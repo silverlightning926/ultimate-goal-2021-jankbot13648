@@ -49,7 +49,7 @@ public class Blue_LeftLeft_0RingPath {
             .build();
 
     public static Trajectory BLL0_traj7 = BuildTrajectory(BLL0_traj6.end())
-            .lineToSplineHeading(new Pose2d(11.5,-13.5, Math.toRadians(0)))
+            .lineToSplineHeading(new Pose2d(11.5,-15, Math.toRadians(0)))
             .build();
 
     public static Trajectory BLL0_traj8 = BuildTrajectory(BLL0_traj7.end())
