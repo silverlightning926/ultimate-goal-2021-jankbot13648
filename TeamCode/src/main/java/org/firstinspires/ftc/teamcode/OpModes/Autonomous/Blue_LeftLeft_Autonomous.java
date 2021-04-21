@@ -81,7 +81,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             Shoot(1);
 
-            intake.setIntakeWithoutWalls(1);
+            intake.setIntakeWithoutWalls(1, 0.5);
 
             driveBase.followTrajectory(BLL0_traj2);
 
@@ -146,7 +146,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             wobbleGoal.setWobbleGoalAutoClawOpen();
             sleep(500);
 
-            intake.setIntakeWithoutWalls(1);
+            intake.setIntakeWithoutWalls(1, 0.5);
             driveBase.followTrajectory(BLL1_traj3);
             driveBase.followTrajectory(BLL1_traj4);
 
@@ -176,6 +176,9 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             intake.setIntakeWithoutWalls(0);
 
             driveBase.followTrajectory(BLL1_traj10);
+
+            wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+
             driveBase.followTrajectory(BLL1_traj11);
 
             wobbleGoal.setWobbleGoalManipulatorOpen();
@@ -215,7 +218,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             Shoot(2);
 
-            shooter.setShooter(193);
+            shooter.setShooter(192);
 
             driveBase.followTrajectory(BLL4_traj7);
 
@@ -226,6 +229,9 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             Shoot(3);
 
             driveBase.followTrajectory(BLL4_traj8);
+
+            wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+            sleep(250);
             wobbleGoal.setWobbleGoalManipulatorOpen();
 
             intake.setWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
@@ -243,13 +249,13 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
         for(int i = 0; i < numOfTimes - 1; i++)
         {
             shooter.kick();
-            sleep(180);
+            sleep(200);
             shooter.unKick();
-            sleep(180);
+            sleep(200);
         }
 
         shooter.kick();
-        sleep(180);
+        sleep(200);
         shooter.unKick();
     }
 }

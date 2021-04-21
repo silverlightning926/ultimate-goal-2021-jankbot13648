@@ -106,6 +106,12 @@ public class Intake {
         intake2.setPower(power);
     }
 
+    public void setIntakeWithoutWalls(double shooter1Power, double shooter2Power)
+    {
+        intake1.setPower(shooter1Power);
+        intake2.setPower(shooter2Power);
+    }
+
 
     public void setWallPosition(double leftWallPos, double rightWallPos)
     {

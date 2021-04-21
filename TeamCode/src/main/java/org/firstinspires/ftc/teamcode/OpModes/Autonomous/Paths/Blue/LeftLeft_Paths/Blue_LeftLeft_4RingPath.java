@@ -23,11 +23,11 @@ import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConsta
 public class Blue_LeftLeft_4RingPath {
 
     public static Trajectory BLL4_traj1 = BuildTrajectory(new Pose2d())
-            .lineToSplineHeading(new Pose2d(58, 0, Math.toRadians(342)))
+            .lineToSplineHeading(new Pose2d(58, 0, Math.toRadians(343)))
             .build();
 
     public static Trajectory BLL4_traj2 = BuildTrajectory(BLL4_traj1.end())
-            .lineToSplineHeading(new Pose2d(118.5, -8, 0))
+            .lineToSplineHeading(new Pose2d(120.5, -8, 0))
             .build();
 
     public static Trajectory BLL4_traj3 = BuildTrajectory(BLL4_traj2.end())
@@ -35,7 +35,7 @@ public class Blue_LeftLeft_4RingPath {
             .build();
 
     public static Trajectory BLL4_traj4 = BuildTrajectory(BLL4_traj3.end())
-            .lineToConstantHeading(new Vector2d(11.5, -23.5))
+            .lineToConstantHeading(new Vector2d(11.5, -24.5))
             .build();
 
     public static Trajectory BLL4_traj5 = BuildTrajectory(BLL4_traj4.end())
@@ -56,7 +56,7 @@ public class Blue_LeftLeft_4RingPath {
             .build();
 
     public static Trajectory BLL4_traj8 = BuildTrajectory(BLL4_traj7.end())
-            .lineToSplineHeading(new Pose2d(120.5, -10, Math.toRadians(90)))
+            .lineToSplineHeading(new Pose2d(118.5, -10, Math.toRadians(90)))
             .build();
 
     public static Trajectory BLL4_traj9 = BuildTrajectory(BLL4_traj8.end())

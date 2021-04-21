@@ -31,7 +31,7 @@ public class Constants {
     public static double MIN_SHOOTER_VELOCITY = 193;
     public static double MAX_SHOOTER_VELOCITY = 208;
 
-    public static double POWER_SHOT_VELOCITY = 216 * (8.0/10.0);
+    public static double POWER_SHOT_VELOCITY = 172;
 
     public static final String SHOOTER_1_NAME = "s1";
     public static final String SHOOTER_2_NAME = "s2";
@@ -47,7 +47,7 @@ public class Constants {
     public static PIDFCoefficients SHOOTER_PID_COEFFICIENTS = new PIDFCoefficients(10, 1, 2, 9);
 
     public static double POWER_SHOT_TURN_OFFSET = 2;
-    public static double POWER_SHOT_TURN = 7;
+    public static double POWER_SHOT_TURN = 7.25;
 
     // Intake Constants
     public static final String INTAKE_TOP_NAME = "i1";

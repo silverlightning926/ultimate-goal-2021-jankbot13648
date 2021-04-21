@@ -45,15 +45,15 @@ public class Blue_LeftLeft_0RingPath {
             .build();
 
     public static Trajectory BLL0_traj6 = BuildTrajectory(BLL0_traj5.end())
-            .lineToSplineHeading(new Pose2d(10.5,-7, Math.toRadians(0)))
+            .lineToSplineHeading(new Pose2d(12.5,-3, Math.toRadians(0)))
             .build();
 
     public static Trajectory BLL0_traj7 = BuildTrajectory(BLL0_traj6.end())
-            .lineToSplineHeading(new Pose2d(10.5,-15.5, Math.toRadians(0)))
+            .lineToSplineHeading(new Pose2d(11.5,-13.5, Math.toRadians(0)))
             .build();
 
     public static Trajectory BLL0_traj8 = BuildTrajectory(BLL0_traj7.end())
-            .lineToSplineHeading(new Pose2d(55, -19.5, Math.toRadians(353)))
+            .lineToSplineHeading(new Pose2d(55, -19.5, Math.toRadians(355)))
             .build();
 
     public static Trajectory BLL0_traj9 = BuildTrajectory(BLL0_traj8.end())
