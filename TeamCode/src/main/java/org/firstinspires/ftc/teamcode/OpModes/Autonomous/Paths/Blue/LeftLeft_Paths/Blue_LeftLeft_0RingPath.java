@@ -19,7 +19,6 @@ import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConsta
 import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.MAX_VEL;
 import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.TRACK_WIDTH;
 
-@Config
 public class Blue_LeftLeft_0RingPath {
 
     public static Trajectory BLL0_traj1 = BuildTrajectory(new Pose2d())
