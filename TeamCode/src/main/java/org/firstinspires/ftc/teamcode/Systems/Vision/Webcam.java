@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Systems;
+package org.firstinspires.ftc.teamcode.Systems.Vision;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -16,7 +16,7 @@ import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvPipeline;
 
-public class Vision
+public class Webcam
 {
 
     WebcamName webcamName;
@@ -25,7 +25,7 @@ public class Vision
 
     public RingDeterminationPipeline pipeline;
 
-    public Vision(HardwareMap hardwareMap)
+    public Webcam(HardwareMap hardwareMap)
     {
         cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcamName = hardwareMap.get(WebcamName.class, Constants.CAMERA_NAME);

@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.PoseStorage;
 import org.firstinspires.ftc.teamcode.Systems.Intake;
 import org.firstinspires.ftc.teamcode.Systems.Shooter;
-import org.firstinspires.ftc.teamcode.Systems.Vision;
+import org.firstinspires.ftc.teamcode.Systems.Vision.Webcam;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
 
 import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.RightLeft_Paths.Blue_RightLeft_0RingPath.*;
@@ -22,9 +22,9 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
     Shooter shooter;
     Intake intake;
     WobbleGoal wobbleGoal;
-    Vision vision;
+    Webcam webcam;
 
-    Vision.RingDeterminationPipeline.RingPosition ringPosition;
+    Webcam.RingDeterminationPipeline.RingPosition ringPosition;
 
     @Override
     public void runOpMode() {
@@ -33,7 +33,7 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
         shooter = new Shooter(hardwareMap);
         intake = new Intake(hardwareMap);
         wobbleGoal = new WobbleGoal(hardwareMap);
-        vision = new Vision(hardwareMap);
+        webcam = new Webcam(hardwareMap);
 
         wobbleGoal.setWobbleGoalManipulatorClose();
 
@@ -42,9 +42,9 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
 
         while (!isStarted())
         {
-            ringPosition = vision.pipeline.position;
+            ringPosition = webcam.pipeline.position;
             telemetry.addData("Amount Of Rings", ringPosition);
-            telemetry.addData("Analysis", vision.pipeline.getAnalysis());
+            telemetry.addData("Analysis", webcam.pipeline.getAnalysis());
             telemetry.update();
         }
 
@@ -53,7 +53,7 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
         intake.releaseFunnels();
         intake.setWallPosition(0.1, 0.3);
 
-        while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.NONE))
+        while (!isStopRequested() && ringPosition.equals(Webcam.RingDeterminationPipeline.RingPosition.NONE))
         {
             driveBase.followTrajectory(BRL0_traj1);
 
@@ -112,7 +112,7 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
             requestOpModeStop();
         }
 
-        while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.ONE))
+        while (!isStopRequested() && ringPosition.equals(Webcam.RingDeterminationPipeline.RingPosition.ONE))
         {
             // Follow Trajectories
             driveBase.followTrajectory(BRL1_traj1);
@@ -180,7 +180,7 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
 
         }
 
-        while (!isStopRequested() && ringPosition.equals(Vision.RingDeterminationPipeline.RingPosition.FOUR))
+        while (!isStopRequested() && ringPosition.equals(Webcam.RingDeterminationPipeline.RingPosition.FOUR))
         {
             driveBase.followTrajectory(BRL4_traj1);
 
