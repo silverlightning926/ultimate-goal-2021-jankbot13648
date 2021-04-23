@@ -8,6 +8,7 @@ import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.PoseStorage;
 import org.firstinspires.ftc.teamcode.Systems.Intake;
 import org.firstinspires.ftc.teamcode.Systems.Shooter;
+import org.firstinspires.ftc.teamcode.Systems.Vision.Pipelines.RingDeterminationPipeline;
 import org.firstinspires.ftc.teamcode.Systems.Vision.Webcam;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
 
@@ -24,7 +25,7 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
     WobbleGoal wobbleGoal;
     Webcam webcam;
 
-    Webcam.RingDeterminationPipeline.RingPosition ringPosition;
+    RingDeterminationPipeline.RingPosition ringPosition;
 
     @Override
     public void runOpMode() {
@@ -53,7 +54,7 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
         intake.releaseFunnels();
         intake.setWallPosition(0.1, 0.3);
 
-        while (!isStopRequested() && ringPosition.equals(Webcam.RingDeterminationPipeline.RingPosition.NONE))
+        while (!isStopRequested() && ringPosition.equals(RingDeterminationPipeline.RingPosition.NONE))
         {
             driveBase.followTrajectory(BRL0_traj1);
 
@@ -112,7 +113,7 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
             requestOpModeStop();
         }
 
-        while (!isStopRequested() && ringPosition.equals(Webcam.RingDeterminationPipeline.RingPosition.ONE))
+        while (!isStopRequested() && ringPosition.equals(RingDeterminationPipeline.RingPosition.ONE))
         {
             // Follow Trajectories
             driveBase.followTrajectory(BRL1_traj1);
@@ -180,7 +181,7 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
 
         }
 
-        while (!isStopRequested() && ringPosition.equals(Webcam.RingDeterminationPipeline.RingPosition.FOUR))
+        while (!isStopRequested() && ringPosition.equals(RingDeterminationPipeline.RingPosition.FOUR))
         {
             driveBase.followTrajectory(BRL4_traj1);
 
