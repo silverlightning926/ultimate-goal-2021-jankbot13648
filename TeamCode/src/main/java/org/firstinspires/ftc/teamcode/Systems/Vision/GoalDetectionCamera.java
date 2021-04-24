@@ -6,32 +6,26 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.Systems.Vision.Pipelines.RingDeterminationPipeline;
-import org.opencv.core.Core;
-import org.opencv.core.Mat;
-import org.opencv.core.Point;
-import org.opencv.core.Rect;
-import org.opencv.core.Scalar;
-import org.opencv.imgproc.Imgproc;
+import org.firstinspires.ftc.teamcode.Systems.Vision.Pipelines.UGBasicHighGoalPipeline;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
-import org.openftc.easyopencv.OpenCvPipeline;
 
-public class Webcam
+public class GoalDetectionCamera
 {
 
     WebcamName webcamName;
     int cameraMonitorViewId;
     OpenCvCamera camera;
 
-    public RingDeterminationPipeline pipeline;
+    public UGBasicHighGoalPipeline pipeline;
 
-    public Webcam(HardwareMap hardwareMap)
+    public GoalDetectionCamera(HardwareMap hardwareMap)
     {
         cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-        webcamName = hardwareMap.get(WebcamName.class, Constants.CAMERA_NAME);
+        webcamName = hardwareMap.get(WebcamName.class, Constants.GOAL_DETECTION_CAMERA_NAME);
         camera = OpenCvCameraFactory.getInstance().createWebcam(webcamName, cameraMonitorViewId);
-        pipeline = new RingDeterminationPipeline();
+        pipeline = new UGBasicHighGoalPipeline();
         camera.setPipeline(pipeline);
 
         camera.openCameraDeviceAsync(() -> {
