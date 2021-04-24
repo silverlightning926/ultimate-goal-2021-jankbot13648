@@ -11,7 +11,8 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 @Config
 public class Constants {
 
-    public static final String CAMERA_NAME = "Webcam 1";
+    public static final String RING_DETECTION_CAMERA_NAME = "Webcam 1";
+    public static final String GOAL_DETECTION_CAMERA_NAME = "Webcam 2";
     public static int CAMERA_RESOLUTION_WIDTH = 1280;
     public static int CAMERA_RESOLUTION_HEIGHT = 720;
 
