@@ -9,7 +9,7 @@ import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.PoseStorage;
 import org.firstinspires.ftc.teamcode.Systems.Intake;
 import org.firstinspires.ftc.teamcode.Systems.Shooter;
 import org.firstinspires.ftc.teamcode.Systems.Vision.Pipelines.RingDeterminationPipeline;
-import org.firstinspires.ftc.teamcode.Systems.Vision.Webcam;
+import org.firstinspires.ftc.teamcode.Systems.Vision.RingDetectionCamera;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
 
 import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.RightLeft_Paths.Blue_RightLeft_0RingPath.*;
@@ -23,7 +23,7 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
     Shooter shooter;
     Intake intake;
     WobbleGoal wobbleGoal;
-    Webcam webcam;
+    RingDetectionCamera ringDetectionCamera;
 
     RingDeterminationPipeline.RingPosition ringPosition;
 
@@ -34,7 +34,7 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
         shooter = new Shooter(hardwareMap);
         intake = new Intake(hardwareMap);
         wobbleGoal = new WobbleGoal(hardwareMap);
-        webcam = new Webcam(hardwareMap);
+        ringDetectionCamera = new RingDetectionCamera(hardwareMap);
 
         wobbleGoal.setWobbleGoalManipulatorClose();
 
@@ -43,9 +43,9 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
 
         while (!isStarted())
         {
-            ringPosition = webcam.pipeline.position;
+            ringPosition = ringDetectionCamera.pipeline.position;
             telemetry.addData("Amount Of Rings", ringPosition);
-            telemetry.addData("Analysis", webcam.pipeline.getAnalysis());
+            telemetry.addData("Analysis", ringDetectionCamera.pipeline.getAnalysis());
             telemetry.update();
         }
 
