@@ -123,8 +123,8 @@ public class AimingPipeline extends OpenCvPipeline {
         Imgproc.line(finalMat, new Point(0, MAX_Y), new Point(finalMat.width(), MAX_Y), new Scalar(255.0, 165.0, 0.0), 2);
 
         // initial noise reduction, bilateral is good for noise reduction while preserving boundaries
-        Imgproc.bilateralFilter(input, filteredMat, 5, 100, 100);
-//        input.copyTo(filteredMat);
+        //Imgproc.bilateralFilter(input, filteredMat, 5, 100, 100);
+        input.copyTo(filteredMat);
 
         // rgb -> hsv
         Imgproc.cvtColor(filteredMat, hsvMat, Imgproc.COLOR_RGB2HSV);
