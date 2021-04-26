@@ -46,7 +46,9 @@ public class Constants {
 
     public static PIDFCoefficients SHOOTER_PID_COEFFICIENTS = new PIDFCoefficients(10, 1, 2, 9);
 
-    public static PIDCoefficients AUTO_AIM_COEFFICIENTS = new PIDCoefficients(10,0,0);
+    public static PIDCoefficients AUTO_AIM_COEFFICIENTS = new PIDCoefficients(0.003,0,0.001);
+    public static double AUTO_AIM_SPEED = 0.2;
+    public static double AUTO_AIM_ALLOWABLE_ERROR = 30;
 
     public static double POWER_SHOT_TURN_OFFSET = 2;
     public static double POWER_SHOT_TURN = 7.25;
