@@ -3,10 +3,6 @@ package org.firstinspires.ftc.teamcode;
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.control.PIDCoefficients;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
-import com.arcrobotics.ftclib.geometry.Pose2d;
-import com.arcrobotics.ftclib.geometry.Rotation2d;
-import com.arcrobotics.ftclib.geometry.Transform2d;
-import com.arcrobotics.ftclib.geometry.Translation2d;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 @Config
@@ -16,10 +12,6 @@ public class Constants {
     public static final String GOAL_DETECTION_CAMERA_NAME = "Webcam 1";
     public static int CAMERA_RESOLUTION_WIDTH = 1280;
     public static int CAMERA_RESOLUTION_HEIGHT = 720;
-
-    // Intel T265 Constants
-    public static final Transform2d CAMERA_TO_ROBOT = new Transform2d();
-    public static final double ENCODER_MEASUREMENT_COVARIANCE = 0.8;
 
     // Drive Base Motor Names
     public static final String FRONT_LEFT_DRIVE_NAME = "fl";
