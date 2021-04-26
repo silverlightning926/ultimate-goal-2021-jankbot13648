@@ -22,7 +22,7 @@ import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConsta
 public class Blue_LeftLeft_4RingPath {
 
     public static Trajectory BLL4_traj1 = BuildTrajectory(new Pose2d())
-            .lineToSplineHeading(new Pose2d(58, 0, Math.toRadians(343)))
+            .lineToSplineHeading(new Pose2d(58, 0, Math.toRadians(342)))
             .build();
 
     public static Trajectory BLL4_traj2 = BuildTrajectory(BLL4_traj1.end())
@@ -38,7 +38,7 @@ public class Blue_LeftLeft_4RingPath {
             .build();
 
     public static Trajectory BLL4_traj5 = BuildTrajectory(BLL4_traj4.end())
-            .lineToSplineHeading(new Pose2d(29, -22.5, Math.toRadians(355)),
+            .lineToSplineHeading(new Pose2d(28, -22.5, Math.toRadians(356.5)),
                     DriveBase.getVelocityConstraint(30, MAX_ANG_VEL, TRACK_WIDTH),
                     DriveBase.getAccelerationConstraint(MAX_ACCEL))
             .build();
@@ -49,17 +49,17 @@ public class Blue_LeftLeft_4RingPath {
             .build();
 
     public static Trajectory BLL4_traj7 = BuildTrajectory(BLL4_traj6.end())
-            .lineToConstantHeading(new Vector2d(40, -22.5),
-                    DriveBase.getVelocityConstraint(5.5, MAX_ANG_VEL, TRACK_WIDTH),
+            .lineToConstantHeading(new Vector2d(42, -22.5),
+                    DriveBase.getVelocityConstraint(3.5, MAX_ANG_VEL, TRACK_WIDTH),
                     DriveBase.getAccelerationConstraint(MAX_ACCEL))
             .build();
 
     public static Trajectory BLL4_traj8 = BuildTrajectory(BLL4_traj7.end())
-            .lineToSplineHeading(new Pose2d(118.5, -10, Math.toRadians(90)))
+            .lineToSplineHeading(new Pose2d(118.5, 0, Math.toRadians(90)))
             .build();
 
     public static Trajectory BLL4_traj9 = BuildTrajectory(BLL4_traj8.end())
-            .lineToSplineHeading(new Pose2d(90, -10, Math.toRadians(90)))
+            .lineToSplineHeading(new Pose2d(90, 0, Math.toRadians(90)))
             .build();
 
     public static TrajectoryBuilder BuildTrajectory(Pose2d startPose) {

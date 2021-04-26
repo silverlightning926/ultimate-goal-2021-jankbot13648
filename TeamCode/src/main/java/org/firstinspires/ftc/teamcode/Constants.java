@@ -12,8 +12,8 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 @Config
 public class Constants {
 
-    public static final String RING_DETECTION_CAMERA_NAME = "Webcam 1";
-    public static final String GOAL_DETECTION_CAMERA_NAME = "Webcam 2";
+    public static final String RING_DETECTION_CAMERA_NAME = "Webcam 2";
+    public static final String GOAL_DETECTION_CAMERA_NAME = "Webcam 1";
     public static int CAMERA_RESOLUTION_WIDTH = 1280;
     public static int CAMERA_RESOLUTION_HEIGHT = 720;
 
@@ -54,6 +54,8 @@ public class Constants {
 
     public static PIDFCoefficients SHOOTER_PID_COEFFICIENTS = new PIDFCoefficients(10, 1, 2, 9);
 
+    public static PIDCoefficients AUTO_AIM_COEFFICIENTS = new PIDCoefficients(10,0,0);
+
     public static double POWER_SHOT_TURN_OFFSET = 2;
     public static double POWER_SHOT_TURN = 7.25;
 
@@ -90,6 +92,6 @@ public class Constants {
     public static double[] WOBBLE_GOAL_POSITION_VALUES = {0.25, 0.4, 0.75};
 
     public static final String WOBBLE_GOAL_MANIPULATOR_SERVO = "wgm";
-    public static double WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS = 1.0;
-    public static double WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS = 0;
+    public static double WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS = 0.25;
+    public static double WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS = 0.85;
 }
