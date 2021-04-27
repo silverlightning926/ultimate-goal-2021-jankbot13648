@@ -136,7 +136,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             Shoot(1);
 
-            sleep(500);
+            sleep(250);
 
             shooter.setShooter(Constants.AUTONOMOUS_SHOOTER_SPEED);
 
