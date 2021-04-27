@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
-import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.PoseStorage;
 import org.firstinspires.ftc.teamcode.Systems.Intake;
 import org.firstinspires.ftc.teamcode.Systems.Shooter;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
@@ -39,7 +38,7 @@ public class TeleOpPreAligned extends LinearOpMode {
         if(isStopRequested()) return;
 
         shooter.unKick();
-        shooter.setShooter(Constants.SHOOTER_VELOCITY);
+        shooter.setShooter(Constants.AUTONOMOUS_SHOOTER_SPEED);
 
         while (!isStopRequested() && opModeIsActive())
         {
@@ -155,6 +154,6 @@ public class TeleOpPreAligned extends LinearOpMode {
             shooter.unKick();
         }
 
-        shooter.setShooter(Constants.SHOOTER_VELOCITY);
+        shooter.setShooter(Constants.AUTONOMOUS_SHOOTER_SPEED);
     }
 }

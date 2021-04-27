@@ -27,7 +27,8 @@ public class Constants {
     public static Vector2d GOAL_VECTOR2D = new Vector2d(145, 0);
 
     // Shooter Motor Names
-    public static double SHOOTER_VELOCITY = 193;
+    public static double AUTONOMOUS_SHOOTER_SPEED = 193;
+    public static double TELEOP_SHOOTER_SPEED = 195;
     public static double MIN_SHOOTER_VELOCITY = 193;
     public static double MAX_SHOOTER_VELOCITY = 208;
 

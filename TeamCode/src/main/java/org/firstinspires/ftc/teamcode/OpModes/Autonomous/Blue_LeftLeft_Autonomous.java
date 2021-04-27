@@ -54,7 +54,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
         wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
         if (ringPosition.equals(RingDeterminationPipeline.RingPosition.FOUR)) {
-            shooter.setShooter(Constants.SHOOTER_VELOCITY);
+            shooter.setShooter(Constants.AUTONOMOUS_SHOOTER_SPEED);
         } else {
             shooter.setShooter(178.5);
         }
@@ -76,7 +76,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             Shoot(1);
 
-            shooter.setShooter(Constants.SHOOTER_VELOCITY);
+            shooter.setShooter(Constants.AUTONOMOUS_SHOOTER_SPEED);
             sleep(250);
 
             driveBase.turnTo(Math.toRadians(345));
@@ -138,7 +138,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             sleep(500);
 
-            shooter.setShooter(Constants.SHOOTER_VELOCITY);
+            shooter.setShooter(Constants.AUTONOMOUS_SHOOTER_SPEED);
 
             driveBase.turnTo(Math.toRadians(344));
 
