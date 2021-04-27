@@ -58,7 +58,7 @@ public class TeleOpMain extends LinearOpMode {
         if(isStopRequested()) return;
 
         shooter.unKick();
-        //shooter.setShooter(Constants.SHOOTER_VELOCITY);
+        shooter.setShooter(Constants.SHOOTER_VELOCITY);
 
         while (!isStopRequested() && opModeIsActive())
         {
@@ -126,6 +126,16 @@ public class TeleOpMain extends LinearOpMode {
                 PowerShotTrajectory();
             }
 
+            if(gamepad1.dpad_down)
+            {
+                driveBase.setPoseEstimate(
+                        new Pose2d(
+                                59.597240135489834,
+                                -41.06490535746197,
+                                0
+                        ));
+            }
+
             intake.setIntake(gamepad1.right_trigger, gamepad1.left_trigger, gamepad1.right_bumper);
             wobbleGoal.moveWobbleGoalPosition(gamepad2.dpad_up, gamepad2.dpad_right, gamepad2.dpad_down);
             wobbleGoal.moveWobbleGoalManipulator(gamepad2.x, gamepad2.b);
@@ -136,7 +146,19 @@ public class TeleOpMain extends LinearOpMode {
 
     private void AutoAimShoot()
     {
-        autoAimController.setTargetPosition(550);
+        double error_X = Constants.GOAL_X_COORD - driveBase.getPoseEstimate().getX();
+        double error_Y = Constants.GOAL_Y_COORD - driveBase.getPoseEstimate().getY();
+
+        double aimAngle = Math.toDegrees(Math.atan2(error_Y, error_X)) - 10;
+
+        telemetry.addData("Error X", error_X);
+        telemetry.addData("Error Y", error_Y);
+        telemetry.addData("Turning To", aimAngle);
+        telemetry.update();
+
+        driveBase.turnTo(Math.toRadians(aimAngle));
+
+        /*autoAimController.setTargetPosition(550);
 
         while (Math.abs(autoAimController.getLastError()) > Constants.AUTO_AIM_ALLOWABLE_ERROR)
         {
@@ -160,12 +182,15 @@ public class TeleOpMain extends LinearOpMode {
 
         driveBase.setWeightedDrivePower(
                 new Pose2d()
-        );
+        );*/
 
         Shoot();
     }
 
     private void Shoot() {
+
+        intake.setWallPosDown();
+
         for (int i = 0; i < 2; i++) {
             shooter.kick();
 
@@ -175,8 +200,6 @@ public class TeleOpMain extends LinearOpMode {
 
             sleep(Constants.DROP_DELAY);
         }
-
-        intake.setWallPosDown();
 
         shooter.kick();
 

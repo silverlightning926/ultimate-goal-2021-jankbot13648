@@ -34,6 +34,7 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.util.DashboardUtil;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.util.LynxModuleUtil;
@@ -218,7 +219,7 @@ public class DriveBase extends MecanumDrive {
 
         turnProfile = MotionProfileGenerator.generateSimpleMotionProfile(
                 new MotionState(heading, 0, 0, 0),
-                new MotionState(heading + angle, 0, 0, 0),
+                new MotionState(angle, 0, 0, 0),
                 Math.PI,
                 Math.PI
         );
@@ -227,26 +228,17 @@ public class DriveBase extends MecanumDrive {
         mode = Mode.TURN;
     }
 
-    public void turnToInefficient(double angle)
+    public void turnTo(double angle)
     {
-        turnToAsync(angle);
-        waitForIdle();
-    }
-
-    public void turnTo(double angle) {
-
-        double heading = getPoseEstimate().getHeading();
-
-        if(angle - heading > Math.PI)
+        if(Math.abs(angle - getPoseEstimate().getHeading()) > Math.PI)
         {
-            turnToInefficient((angle - heading) - 2*Math.PI);
+            turn(2*Math.PI + (angle - getPoseEstimate().getHeading()));
         }
 
-        else {
-            turnToInefficient(angle-heading);
+        else
+        {
+            turn(angle-getPoseEstimate().getHeading());
         }
-
-        waitForIdle();
     }
 
     public void followTrajectoryAsync(Trajectory trajectory) {
@@ -355,7 +347,7 @@ public class DriveBase extends MecanumDrive {
         fieldOverlay.setStroke("#3F51B5");
         DashboardUtil.drawRobot(fieldOverlay, currentPose);
 
-        //dashboard.sendTelemetryPacket(packet);
+        dashboard.sendTelemetryPacket(packet);
     }
 
     public void waitForIdle() {
