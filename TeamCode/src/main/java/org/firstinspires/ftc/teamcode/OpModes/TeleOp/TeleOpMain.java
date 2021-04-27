@@ -153,8 +153,6 @@ public class TeleOpMain extends LinearOpMode {
 
     private void Shoot() {
 
-        intake.setWallPosDown();
-
         for (int i = 0; i < 2; i++) {
             shooter.kick();
 
@@ -163,6 +161,8 @@ public class TeleOpMain extends LinearOpMode {
             shooter.unKick();
 
             sleep(Constants.DROP_DELAY);
+
+            intake.setWallPosDown();
         }
 
         shooter.kick();
