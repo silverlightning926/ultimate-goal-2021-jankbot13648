@@ -147,40 +147,14 @@ public class TeleOpMain extends LinearOpMode {
         double error_X = Constants.GOAL_X_COORD - driveBase.getPoseEstimate().getX();
         double error_Y = Constants.GOAL_Y_COORD - driveBase.getPoseEstimate().getY();
 
-        double aimAngle = Math.toDegrees(Math.atan2(error_Y, error_X)) - 10;
+        double aimAngle = Math.toDegrees(Math.atan2(error_Y, error_X)) - 7.5;
 
         telemetry.addData("Error X", error_X);
         telemetry.addData("Error Y", error_Y);
         telemetry.addData("Turning To", aimAngle);
         telemetry.update();
 
-        driveBase.turnTo(Math.toRadians(aimAngle));
-
-        /*autoAimController.setTargetPosition(550);
-
-        while (Math.abs(autoAimController.getLastError()) > Constants.AUTO_AIM_ALLOWABLE_ERROR)
-        {
-            driveBase.update();
-
-            double update = autoAimController.update(goalDetectionCamera.pipeline.getCenterofRect(goalDetectionCamera.pipeline.getRedRect()).x);
-
-            driveBase.setWeightedDrivePower(
-                    new Pose2d(
-                            0,
-                            0,
-                            update
-                    )
-            );
-
-            dashboardTelemetry.addData("Update", update);
-            dashboardTelemetry.addData("Position", goalDetectionCamera.pipeline.getCenterofRect(goalDetectionCamera.pipeline.getRedRect()).x);
-            dashboardTelemetry.addData("Target", 550);
-            dashboardTelemetry.update();
-        }
-
-        driveBase.setWeightedDrivePower(
-                new Pose2d()
-        );*/
+        driveBase.turnToAutoAim(Math.toRadians(aimAngle));
 
         Shoot();
     }

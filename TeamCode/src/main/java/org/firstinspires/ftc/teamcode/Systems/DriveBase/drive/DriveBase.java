@@ -219,7 +219,7 @@ public class DriveBase extends MecanumDrive {
 
         turnProfile = MotionProfileGenerator.generateSimpleMotionProfile(
                 new MotionState(heading, 0, 0, 0),
-                new MotionState(angle, 0, 0, 0),
+                new MotionState(heading + angle, 0, 0, 0),
                 Math.PI,
                 Math.PI
         );
@@ -228,7 +228,29 @@ public class DriveBase extends MecanumDrive {
         mode = Mode.TURN;
     }
 
-    public void turnTo(double angle)
+    public void turnToInefficient(double angle)
+    {
+        turnToAsync(angle);
+        waitForIdle();
+    }
+
+    public void turnTo(double angle) {
+
+        double heading = getPoseEstimate().getHeading();
+
+        if(angle - heading > Math.PI)
+        {
+            turnToInefficient((angle - heading) - 2*Math.PI);
+        }
+
+        else {
+            turnToInefficient(angle-heading);
+        }
+
+        waitForIdle();
+    }
+
+    public void turnToAutoAim(double angle)
     {
         if(Math.abs(angle - getPoseEstimate().getHeading()) > Math.PI)
         {

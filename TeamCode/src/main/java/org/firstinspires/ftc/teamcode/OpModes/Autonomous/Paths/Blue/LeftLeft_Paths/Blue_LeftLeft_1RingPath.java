@@ -36,7 +36,7 @@ public class Blue_LeftLeft_1RingPath {
             .build();
 
     public static Trajectory BLL1_traj4 = BuildTrajectory(BLL1_traj3.end())
-            .lineToConstantHeading(new Vector2d(112.5,-68))
+            .lineToConstantHeading(new Vector2d(112.5,-70))
             .build();
 
     public static Trajectory BLL1_traj5 = BuildTrajectory(BLL1_traj4.end())
@@ -44,7 +44,7 @@ public class Blue_LeftLeft_1RingPath {
             .build();
 
     public static Trajectory BLL1_traj6 = BuildTrajectory(BLL1_traj5.end())
-            .lineToSplineHeading(new Pose2d(19,-31, Math.toRadians(250)))
+            .lineToSplineHeading(new Pose2d(19,-32, Math.toRadians(250)))
             .build();
 
     public static Trajectory BLL1_traj7 = BuildTrajectory(BLL1_traj6.end())
@@ -64,7 +64,7 @@ public class Blue_LeftLeft_1RingPath {
             .build();
 
     public static Trajectory BLL1_traj11 = BuildTrajectory(BLL1_traj10.end())
-            .lineToSplineHeading(new Pose2d(90,-24, Math.toRadians(90)))
+            .lineToSplineHeading(new Pose2d(90,-25, Math.toRadians(90)))
             .build();
 
     public static Trajectory BLL1_traj12 = BuildTrajectory(BLL1_traj11.end())

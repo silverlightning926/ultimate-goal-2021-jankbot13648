@@ -25,11 +25,11 @@ public class Constants {
     public static final String HORIZONTAL_NAME = REAR_LEFT_DRIVE_NAME;
 
     public static double GOAL_X_COORD = 144;
-    public static double GOAL_Y_COORD = -20;
+    public static double GOAL_Y_COORD = -17;
 
     // Shooter Motor Names
     public static double AUTONOMOUS_SHOOTER_SPEED = 193;
-    public static double TELEOP_SHOOTER_SPEED = 195;
+    public static double TELEOP_SHOOTER_SPEED = 194;
     public static double MIN_SHOOTER_VELOCITY = 193;
     public static double MAX_SHOOTER_VELOCITY = 208;
 
