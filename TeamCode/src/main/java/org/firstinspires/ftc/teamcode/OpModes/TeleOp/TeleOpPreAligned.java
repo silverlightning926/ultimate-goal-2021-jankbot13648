@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.Systems.Vision.GoalDetectionCamera;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
 
 @TeleOp(name = "TeleOp - PreAligned")
-public class TeleOpPrealigned extends LinearOpMode {
+public class TeleOpPreAligned extends LinearOpMode {
 
     Telemetry dashboardTelemetry;
 
