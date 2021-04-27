@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.Systems.Vision.Pipelines.RingDeterminationPipeline;
+import org.firstinspires.ftc.teamcode.Systems.Vision.Pipelines.UGAdvancedHighGoalPipeline;
 import org.firstinspires.ftc.teamcode.Systems.Vision.Pipelines.UGBasicHighGoalPipeline;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
@@ -18,14 +19,14 @@ public class GoalDetectionCamera
     int cameraMonitorViewId;
     OpenCvCamera camera;
 
-    public UGBasicHighGoalPipeline pipeline;
+    public UGAdvancedHighGoalPipeline pipeline;
 
     public GoalDetectionCamera(HardwareMap hardwareMap)
     {
         cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcamName = hardwareMap.get(WebcamName.class, Constants.GOAL_DETECTION_CAMERA_NAME);
         camera = OpenCvCameraFactory.getInstance().createWebcam(webcamName, cameraMonitorViewId);
-        pipeline = new UGBasicHighGoalPipeline();
+        pipeline = new UGAdvancedHighGoalPipeline(68.5, 16);
         camera.setPipeline(pipeline);
 
         camera.openCameraDeviceAsync(() -> {
