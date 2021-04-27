@@ -17,8 +17,5 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: Gradle Debug Build
-        run: ./gradlew :TeamCode:assembleDebugUnitTest
-        
-      - name: Gradle Release Build
-        run: ./gradlew :TeamCode:assembleReleaseUnitTest
+      - name: Gradle Build
+        run: ./gradlew build -x lint
