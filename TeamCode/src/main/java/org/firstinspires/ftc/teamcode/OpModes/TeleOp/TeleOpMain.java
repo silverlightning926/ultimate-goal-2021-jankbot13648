@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.OpModes.TeleOp;
 
 import com.acmerobotics.dashboard.FtcDashboard;
-import com.acmerobotics.roadrunner.control.PIDCoefficients;
 import com.acmerobotics.roadrunner.control.PIDFController;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
@@ -10,7 +9,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.Constants;
-import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.PoseStorage;
 import org.firstinspires.ftc.teamcode.Systems.Intake;
 import org.firstinspires.ftc.teamcode.Systems.Shooter;
@@ -58,7 +56,7 @@ public class TeleOpMain extends LinearOpMode {
         if(isStopRequested()) return;
 
         shooter.unKick();
-        shooter.setShooter(Constants.SHOOTER_VELOCITY);
+        shooter.setShooter(Constants.TELEOP_SHOOTER_SPEED);
 
         while (!isStopRequested() && opModeIsActive())
         {
@@ -225,6 +223,6 @@ public class TeleOpMain extends LinearOpMode {
             shooter.unKick();
         }
 
-        shooter.setShooter(Constants.SHOOTER_VELOCITY);
+        shooter.setShooter(Constants.TELEOP_SHOOTER_SPEED);
     }
 }
