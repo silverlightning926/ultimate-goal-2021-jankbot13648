@@ -14,8 +14,6 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
-        with:
-          java-version: 1.8
 
       - name: Gradle Build
         run: ./gradlew build -x lint
