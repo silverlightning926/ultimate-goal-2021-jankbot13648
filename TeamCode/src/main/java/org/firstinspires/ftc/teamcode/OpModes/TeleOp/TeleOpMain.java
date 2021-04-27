@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.OpModes.TeleOp;
 
 import com.acmerobotics.dashboard.FtcDashboard;
-import com.acmerobotics.roadrunner.control.PIDFController;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -26,11 +25,8 @@ public class TeleOpMain extends LinearOpMode {
     Intake intake;
     WobbleGoal wobbleGoal;
     GoalDetectionCamera goalDetectionCamera;
-
-    PIDFController autoAimController;
-
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() {
 
         dashboardTelemetry = FtcDashboard.getInstance().getTelemetry();
 
@@ -39,9 +35,6 @@ public class TeleOpMain extends LinearOpMode {
         intake = new Intake(hardwareMap);
         wobbleGoal = new WobbleGoal(hardwareMap);
         goalDetectionCamera = new GoalDetectionCamera(hardwareMap);
-
-        autoAimController = new PIDFController(Constants.AUTO_AIM_COEFFICIENTS);
-        autoAimController.setOutputBounds(-Constants.AUTO_AIM_SPEED, Constants.AUTO_AIM_SPEED);
 
         driveBase.setPoseEstimate(PoseStorage.currentPose);
 
@@ -60,7 +53,6 @@ public class TeleOpMain extends LinearOpMode {
 
         while (!isStopRequested() && opModeIsActive())
         {
-            autoAimController.update(goalDetectionCamera.pipeline.getCenterofRect(goalDetectionCamera.pipeline.getRedRect()).x);
 
             if(gamepad1.a)
             {
