@@ -19,14 +19,14 @@ public class GoalDetectionCamera
     int cameraMonitorViewId;
     OpenCvCamera camera;
 
-    public UGAdvancedHighGoalPipeline pipeline;
+    public UGBasicHighGoalPipeline pipeline;
 
     public GoalDetectionCamera(HardwareMap hardwareMap)
     {
         cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         webcamName = hardwareMap.get(WebcamName.class, Constants.GOAL_DETECTION_CAMERA_NAME);
         camera = OpenCvCameraFactory.getInstance().createWebcam(webcamName, cameraMonitorViewId);
-        pipeline = new UGAdvancedHighGoalPipeline(68.5, 16);
+        pipeline = new UGAdvancedHighGoalPipeline(68.5, 16.5);
         camera.setPipeline(pipeline);
 
         camera.openCameraDeviceAsync(() -> {

@@ -38,7 +38,7 @@ public class Blue_LeftLeft_4RingPath {
             .build();
 
     public static Trajectory BLL4_traj5 = BuildTrajectory(BLL4_traj4.end())
-            .lineToSplineHeading(new Pose2d(28, -22.5, Math.toRadians(356.5)),
+            .lineToSplineHeading(new Pose2d(28, -22.5, Math.toRadians(357.5)),
                     DriveBase.getVelocityConstraint(30, MAX_ANG_VEL, TRACK_WIDTH),
                     DriveBase.getAccelerationConstraint(MAX_ACCEL))
             .build();
@@ -55,7 +55,7 @@ public class Blue_LeftLeft_4RingPath {
             .build();
 
     public static Trajectory BLL4_traj8 = BuildTrajectory(BLL4_traj7.end())
-            .lineToSplineHeading(new Pose2d(118.5, 0, Math.toRadians(90)))
+            .lineToSplineHeading(new Pose2d(121.5, 0, Math.toRadians(90)))
             .build();
 
     public static Trajectory BLL4_traj9 = BuildTrajectory(BLL4_traj8.end())
