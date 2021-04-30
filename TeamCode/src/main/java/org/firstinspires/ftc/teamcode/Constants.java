@@ -27,6 +27,8 @@ public class Constants {
     public static double GOAL_X_COORD = 144;
     public static double GOAL_Y_COORD = -17;
 
+    public static double AUTO_AIM_OFFSET = -6;
+
     // Shooter Motor Names
     public static double AUTONOMOUS_SHOOTER_SPEED = 193;
     public static double TELEOP_SHOOTER_SPEED = 194;
@@ -47,10 +49,6 @@ public class Constants {
     public static double KICKER_KICK_POS = 0.3;
 
     public static PIDFCoefficients SHOOTER_PID_COEFFICIENTS = new PIDFCoefficients(10, 1, 2, 9);
-
-    public static PIDCoefficients AUTO_AIM_COEFFICIENTS = new PIDCoefficients(0.0009,0.0005,0.001);
-    public static double AUTO_AIM_SPEED = 0.3;
-    public static double AUTO_AIM_ALLOWABLE_ERROR = 30;
 
     public static double POWER_SHOT_TURN_OFFSET = 4.5;
     public static double POWER_SHOT_TURN = 8;

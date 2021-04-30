@@ -9,6 +9,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
+import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.PoseStorage;
 import org.firstinspires.ftc.teamcode.Systems.Intake;
 import org.firstinspires.ftc.teamcode.Systems.Shooter;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
@@ -23,6 +24,8 @@ public class TeleOpPreAligned extends LinearOpMode {
     Intake intake;
     WobbleGoal wobbleGoal;
 
+    double autoAimOffset;
+
     @Override
     public void runOpMode() {
 
@@ -32,6 +35,8 @@ public class TeleOpPreAligned extends LinearOpMode {
         shooter = new Shooter(hardwareMap);
         intake = new Intake(hardwareMap);
         wobbleGoal = new WobbleGoal(hardwareMap);
+
+        autoAimOffset = Constants.AUTO_AIM_OFFSET;
 
         telemetry.addLine("System Initialization Complete");
         telemetry.update();
@@ -48,7 +53,6 @@ public class TeleOpPreAligned extends LinearOpMode {
 
         while (!isStopRequested() && opModeIsActive())
         {
-
             if(gamepad1.a)
             {
                 AutoAimShoot();
@@ -121,12 +125,20 @@ public class TeleOpPreAligned extends LinearOpMode {
                         ));
             }
 
+            if(gamepad2.left_bumper)
+            {
+                autoAimOffset += 0.5;
+            }
+
+            if(gamepad2.right_bumper)
+            {
+                autoAimOffset -= 0.5;
+            }
+
             intake.setIntake(gamepad1.right_trigger, gamepad1.left_trigger, gamepad1.right_bumper);
             wobbleGoal.moveWobbleGoalPosition(gamepad2.dpad_up, gamepad2.dpad_right, gamepad2.dpad_down);
             wobbleGoal.moveWobbleGoalManipulator(gamepad2.x, gamepad2.b);
         }
-
-        FtcDashboard.getInstance().stopCameraStream();
     }
 
     private void AutoAimShoot()
@@ -134,7 +146,7 @@ public class TeleOpPreAligned extends LinearOpMode {
         double error_X = Constants.GOAL_X_COORD - driveBase.getPoseEstimate().getX();
         double error_Y = Constants.GOAL_Y_COORD - driveBase.getPoseEstimate().getY();
 
-        double aimAngle = Math.toDegrees(Math.atan2(error_Y, error_X)) - 6;
+        double aimAngle = (Math.toDegrees(Math.atan2(error_Y, error_X)) + autoAimOffset) % 360;
 
         telemetry.addData("Error X", error_X);
         telemetry.addData("Error Y", error_Y);
