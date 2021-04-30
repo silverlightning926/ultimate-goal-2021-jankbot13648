@@ -44,7 +44,7 @@ public class TeleOpPreAligned extends LinearOpMode {
         if(isStopRequested()) return;
 
         shooter.unKick();
-        shooter.setShooter(Constants.AUTONOMOUS_SHOOTER_SPEED);
+        shooter.setShooter(Constants.TELEOP_SHOOTER_SPEED);
 
         while (!isStopRequested() && opModeIsActive())
         {
@@ -134,7 +134,7 @@ public class TeleOpPreAligned extends LinearOpMode {
         double error_X = Constants.GOAL_X_COORD - driveBase.getPoseEstimate().getX();
         double error_Y = Constants.GOAL_Y_COORD - driveBase.getPoseEstimate().getY();
 
-        double aimAngle = Math.toDegrees(Math.atan2(error_Y, error_X)) - 7.5;
+        double aimAngle = Math.toDegrees(Math.atan2(error_Y, error_X)) - 6;
 
         telemetry.addData("Error X", error_X);
         telemetry.addData("Error Y", error_Y);
@@ -147,6 +147,7 @@ public class TeleOpPreAligned extends LinearOpMode {
     }
 
     private void Shoot() {
+
         intake.setWallPosDown();
 
         for (int i = 0; i < 2; i++) {
@@ -170,19 +171,30 @@ public class TeleOpPreAligned extends LinearOpMode {
 
         shooter.setShooter(Constants.POWER_SHOT_VELOCITY);
 
-        driveBase.turn(-Math.toRadians(Constants.POWER_SHOT_TURN_OFFSET), Math.toRadians(60), Math.toRadians(30));
+        driveBase.turn(-Math.toRadians(Constants.POWER_SHOT_TURN_OFFSET), Math.toRadians(45), Math.toRadians(30));
 
-        for (int i = 0; i < 3; i++)
-        {
-            driveBase.turn(-Math.toRadians(Constants.POWER_SHOT_TURN), Math.toRadians(60), Math.toRadians(30));
+        shooter.kick();
 
-            shooter.kick();
+        sleep(200);
 
-            sleep(200);
+        shooter.unKick();
 
-            shooter.unKick();
-        }
+        driveBase.turn(-Math.toRadians(Constants.POWER_SHOT_TURN), Math.toRadians(60), Math.toRadians(30));
 
-        shooter.setShooter(Constants.AUTONOMOUS_SHOOTER_SPEED);
+        shooter.kick();
+
+        sleep(200);
+
+        shooter.unKick();
+
+        driveBase.turn(-Math.toRadians(Constants.POWER_SHOT_TURN), Math.toRadians(60), Math.toRadians(30));
+
+        shooter.kick();
+
+        sleep(200);
+
+        shooter.unKick();
+
+        shooter.setShooter(Constants.TELEOP_SHOOTER_SPEED);
     }
 }
