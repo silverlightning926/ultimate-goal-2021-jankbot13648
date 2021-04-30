@@ -11,7 +11,6 @@ import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
 import org.firstinspires.ftc.teamcode.Systems.Intake;
 import org.firstinspires.ftc.teamcode.Systems.Shooter;
-import org.firstinspires.ftc.teamcode.Systems.Vision.GoalDetectionCamera;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
 
 @TeleOp(name = "TeleOp - PreAligned")
@@ -23,7 +22,6 @@ public class TeleOpPreAligned extends LinearOpMode {
     Shooter shooter;
     Intake intake;
     WobbleGoal wobbleGoal;
-    GoalDetectionCamera goalDetectionCamera;
 
     @Override
     public void runOpMode() {
@@ -34,7 +32,6 @@ public class TeleOpPreAligned extends LinearOpMode {
         shooter = new Shooter(hardwareMap);
         intake = new Intake(hardwareMap);
         wobbleGoal = new WobbleGoal(hardwareMap);
-        goalDetectionCamera = new GoalDetectionCamera(hardwareMap);
 
         telemetry.addLine("System Initialization Complete");
         telemetry.update();

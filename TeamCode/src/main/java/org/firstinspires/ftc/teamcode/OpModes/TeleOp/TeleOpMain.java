@@ -11,7 +11,6 @@ import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.PoseStorage;
 import org.firstinspires.ftc.teamcode.Systems.Intake;
 import org.firstinspires.ftc.teamcode.Systems.Shooter;
-import org.firstinspires.ftc.teamcode.Systems.Vision.GoalDetectionCamera;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
 
@@ -24,7 +23,7 @@ public class TeleOpMain extends LinearOpMode {
     Shooter shooter;
     Intake intake;
     WobbleGoal wobbleGoal;
-    GoalDetectionCamera goalDetectionCamera;
+
     @Override
     public void runOpMode() {
 
@@ -34,7 +33,6 @@ public class TeleOpMain extends LinearOpMode {
         shooter = new Shooter(hardwareMap);
         intake = new Intake(hardwareMap);
         wobbleGoal = new WobbleGoal(hardwareMap);
-        goalDetectionCamera = new GoalDetectionCamera(hardwareMap);
 
         driveBase.setPoseEstimate(PoseStorage.currentPose);
 
