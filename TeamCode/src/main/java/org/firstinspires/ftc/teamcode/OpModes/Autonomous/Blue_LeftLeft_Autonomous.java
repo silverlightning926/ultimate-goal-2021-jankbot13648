@@ -70,9 +70,9 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             Shoot(1);
 
-            shooter.setShooter(177);
+            shooter.setShooter(176.5);
 
-            driveBase.turnTo(Math.toRadians(332));
+            driveBase.turnTo(Math.toRadians(332.5));
 
             Shoot(1);
 
@@ -115,8 +115,13 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(BLL0_traj9);
             driveBase.followTrajectory(BLL0_traj10);
+
+            wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
+            sleep(500);
             wobbleGoal.setWobbleGoalManipulatorOpen();
             sleep(250);
+            wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
+            sleep(500);
 
             PoseStorage.currentPose = driveBase.getPoseEstimate();
             driveBase.followTrajectory(BLL0_traj11);
@@ -130,9 +135,9 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             Shoot(1);
 
-            shooter.setShooter(177);
+            shooter.setShooter(176.5);
 
-            driveBase.turnTo(Math.toRadians(332));
+            driveBase.turnTo(Math.toRadians(332.5));
 
             Shoot(1);
 
@@ -186,6 +191,9 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(BLL1_traj12);
 
+            wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
+            sleep(250);
+
             PoseStorage.currentPose = driveBase.getPoseEstimate();
         }
 
@@ -201,7 +209,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             wobbleGoal.setWobbleGoalAutoClawOpen();
             sleep(1000);
 
-            shooter.setShooter(198);
+            shooter.setShooter(199);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
             wobbleGoal.setWobbleGoalManipulatorOpen();

@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.OpModes.Autonomous;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
@@ -16,6 +17,7 @@ import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.Right
 import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.RightLeft_Paths.Blue_RightLeft_1RingPath.*;
 import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.RightLeft_Paths.Blue_RightLeft_4RingPath.*;
 
+@Disabled
 @Autonomous(name = "BLUE (RIGHT >> LEFT)")
 public class Blue_RightLeft_Autonomous extends LinearOpMode {
 

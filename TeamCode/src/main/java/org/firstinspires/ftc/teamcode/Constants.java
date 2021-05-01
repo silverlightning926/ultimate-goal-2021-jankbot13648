@@ -27,15 +27,15 @@ public class Constants {
     public static double GOAL_X_COORD = 144;
     public static double GOAL_Y_COORD = -17;
 
-    public static double AUTO_AIM_OFFSET = -6;
+    public static double AUTO_AIM_OFFSET = -5.75;
 
     // Shooter Motor Names
     public static double AUTONOMOUS_SHOOTER_SPEED = 193;
-    public static double TELEOP_SHOOTER_SPEED = 194;
+    public static double TELEOP_SHOOTER_SPEED = 193;
     public static double MIN_SHOOTER_VELOCITY = 193;
     public static double MAX_SHOOTER_VELOCITY = 208;
 
-    public static double POWER_SHOT_VELOCITY = 171;
+    public static double POWER_SHOT_VELOCITY = 171.5;
 
     public static final String SHOOTER_1_NAME = "s1";
     public static final String SHOOTER_2_NAME = "s2";
@@ -86,6 +86,6 @@ public class Constants {
     public static double[] WOBBLE_GOAL_POSITION_VALUES = {0.25, 0.4, 0.75};
 
     public static final String WOBBLE_GOAL_MANIPULATOR_SERVO = "wgm";
-    public static double WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS = 0.25;
+    public static double WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS = 0.38;
     public static double WOBBLE_GOAL_MANIPULATOR_SERVO_CLOSE_POS = 0.85;
 }

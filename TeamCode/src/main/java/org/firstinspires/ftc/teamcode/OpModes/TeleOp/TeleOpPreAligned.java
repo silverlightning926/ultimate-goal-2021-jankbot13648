@@ -127,12 +127,12 @@ public class TeleOpPreAligned extends LinearOpMode {
 
             if(gamepad2.left_bumper)
             {
-                autoAimOffset += 0.5;
+                autoAimOffset += 0.125;
             }
 
             if(gamepad2.right_bumper)
             {
-                autoAimOffset -= 0.5;
+                autoAimOffset -= 0.125;
             }
 
             intake.setIntake(gamepad1.right_trigger, gamepad1.left_trigger, gamepad1.right_bumper);

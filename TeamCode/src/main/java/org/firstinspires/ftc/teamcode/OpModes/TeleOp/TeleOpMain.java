@@ -97,7 +97,7 @@ public class TeleOpMain extends LinearOpMode {
                             new Pose2d(
                                     input.getX(),
                                     input.getY(),
-                                    -gamepad1.right_stick_x * 0.3
+                                    -gamepad1.right_stick_x * 0.2
                             )
                     );
                 }
@@ -129,12 +129,12 @@ public class TeleOpMain extends LinearOpMode {
 
             if(gamepad2.left_bumper)
             {
-                autoAimOffset += 0.5;
+                autoAimOffset += 0.0625;
             }
 
             if(gamepad2.right_bumper)
             {
-                autoAimOffset -= 0.5;
+                autoAimOffset -= 0.0625;
             }
 
             intake.setIntake(gamepad1.right_trigger, gamepad1.left_trigger, gamepad1.right_bumper);
@@ -148,7 +148,7 @@ public class TeleOpMain extends LinearOpMode {
         double error_X = Constants.GOAL_X_COORD - driveBase.getPoseEstimate().getX();
         double error_Y = Constants.GOAL_Y_COORD - driveBase.getPoseEstimate().getY();
 
-        double aimAngle = (Math.toDegrees(Math.atan2(error_Y, error_X)) + autoAimOffset) % 360;
+        double aimAngle = Math.toDegrees(Math.atan2(error_Y, error_X)) + autoAimOffset;
 
         telemetry.addData("Error X", error_X);
         telemetry.addData("Error Y", error_Y);
@@ -184,6 +184,8 @@ public class TeleOpMain extends LinearOpMode {
     private void PowerShotTrajectory() {
 
         shooter.setShooter(Constants.POWER_SHOT_VELOCITY);
+
+        sleep(200);
 
         driveBase.turn(-Math.toRadians(Constants.POWER_SHOT_TURN_OFFSET), Math.toRadians(45), Math.toRadians(30));
 
