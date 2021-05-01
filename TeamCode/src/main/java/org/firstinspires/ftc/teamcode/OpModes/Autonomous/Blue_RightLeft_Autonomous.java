@@ -45,9 +45,9 @@ public class Blue_RightLeft_Autonomous extends LinearOpMode {
 
         while (!isStarted())
         {
-            ringPosition = ringDetectionCamera.pipeline.position;
+            ringPosition = ringDetectionCamera.getValue();
             telemetry.addData("Amount Of Rings", ringPosition);
-            telemetry.addData("Analysis", ringDetectionCamera.pipeline.getAnalysis());
+            telemetry.addData("Analysis", ringDetectionCamera.getAnalysis());
             telemetry.update();
         }
 

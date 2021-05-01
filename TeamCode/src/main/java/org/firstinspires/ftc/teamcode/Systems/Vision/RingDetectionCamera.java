@@ -17,7 +17,7 @@ public class RingDetectionCamera
     int cameraMonitorViewId;
     OpenCvCamera camera;
 
-    public RingDeterminationPipeline pipeline;
+    RingDeterminationPipeline pipeline;
 
     public RingDetectionCamera(HardwareMap hardwareMap)
     {
@@ -31,5 +31,15 @@ public class RingDetectionCamera
             camera.startStreaming(Constants.CAMERA_RESOLUTION_WIDTH, Constants.CAMERA_RESOLUTION_HEIGHT, OpenCvCameraRotation.UPRIGHT);
             FtcDashboard.getInstance().startCameraStream(camera, 0);
         });
+    }
+
+    public RingDeterminationPipeline.RingPosition getValue()
+    {
+        return pipeline.position;
+    }
+
+    public double getAnalysis()
+    {
+        return pipeline.getAnalysis();
     }
 }
