@@ -68,7 +68,7 @@ public class TeleOpMain extends LinearOpMode {
 
             else if (gamepad1.b)
             {
-                Shoot();
+                Shoot(3);
             }
 
             else
@@ -158,27 +158,21 @@ public class TeleOpMain extends LinearOpMode {
 
         driveBase.turnToAutoAim(Math.toRadians(aimAngle));
 
-        Shoot();
+        Shoot(3);
     }
 
-    private void Shoot() {
-
-        intake.setWallPosDown();
-
-        for (int i = 0; i < 2; i++) {
+    private void Shoot(int numOfTimes)
+    {
+        for(int i = 0; i < numOfTimes - 1; i++)
+        {
             shooter.kick();
-
-            sleep(Constants.SHOOTER_DELAY);
-
+            sleep(200);
             shooter.unKick();
-
-            sleep(Constants.DROP_DELAY);
+            sleep(200);
         }
 
         shooter.kick();
-
-        sleep(Constants.SHOOTER_DELAY);
-
+        sleep(200);
         shooter.unKick();
     }
 
@@ -210,33 +204,17 @@ public class TeleOpMain extends LinearOpMode {
 
         intake.setWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
 
-        shooter.kick();
-
-        sleep(Constants.SHOOTER_DELAY);
-
-        shooter.unKick();
-
-        sleep(100);
+        Shoot(1);
 
         driveBase.turn(Math.toRadians(Constants.POWER_SHOT_TURN-0.25), Math.toRadians(60), Math.toRadians(20));
 
-        shooter.kick();
+        Shoot(1);
 
-        sleep(Constants.SHOOTER_DELAY);
-
-        shooter.unKick();
-
-        sleep(100);
+        sleep(Constants.DROP_DELAY);
 
         driveBase.turn(Math.toRadians(Constants.POWER_SHOT_TURN - 0.0625), Math.toRadians(60), Math.toRadians(20));
 
-        shooter.kick();
-
-        sleep(Constants.SHOOTER_DELAY);
-
-        shooter.unKick();
-
-        sleep(100);
+        Shoot(1);
 
         shooter.setShooter(Constants.TELEOP_SHOOTER_SPEED);
     }
