@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.OpModes.TeleOp;
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
+import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -13,6 +14,11 @@ import org.firstinspires.ftc.teamcode.Systems.Intake;
 import org.firstinspires.ftc.teamcode.Systems.Shooter;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
+
+import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.MAX_ACCEL;
+import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.MAX_ANG_VEL;
+import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.MAX_VEL;
+import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.TRACK_WIDTH;
 
 @TeleOp(name = "TeleOp - Main")
 public class TeleOpMain extends LinearOpMode {
@@ -183,33 +189,59 @@ public class TeleOpMain extends LinearOpMode {
 
     private void PowerShotTrajectory() {
 
+        driveBase.setPoseEstimate(new Pose2d(
+                driveBase.getPoseEstimate().getX(),
+                driveBase.getPoseEstimate().getY(),
+                0
+        ));
+
+        autoAimOffset = Constants.AUTO_AIM_OFFSET;
+
         shooter.setShooter(Constants.POWER_SHOT_VELOCITY);
 
-        sleep(200);
+        Trajectory traj1 = driveBase.trajectoryBuilder(driveBase.getPoseEstimate())
+                .lineToConstantHeading(
+                        new Vector2d(
+                                driveBase.getPoseEstimate().getX(),
+                                driveBase.getPoseEstimate().getY()+11.375),
 
-        driveBase.turn(-Math.toRadians(Constants.POWER_SHOT_TURN_OFFSET), Math.toRadians(45), Math.toRadians(30));
+                        DriveBase.getVelocityConstraint(30, MAX_ANG_VEL, TRACK_WIDTH),
+                        DriveBase.getAccelerationConstraint(30)
+                )
 
-        shooter.kick();
+                .build();
 
-        sleep(200);
+        driveBase.followTrajectory(traj1);
 
-        shooter.unKick();
-
-        driveBase.turn(-Math.toRadians(Constants.POWER_SHOT_TURN), Math.toRadians(60), Math.toRadians(30));
-
-        shooter.kick();
-
-        sleep(200);
-
-        shooter.unKick();
-
-        driveBase.turn(-Math.toRadians(Constants.POWER_SHOT_TURN), Math.toRadians(60), Math.toRadians(30));
+        intake.setWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
 
         shooter.kick();
 
-        sleep(200);
+        sleep(Constants.SHOOTER_DELAY);
 
         shooter.unKick();
+
+        sleep(100);
+
+        driveBase.turn(Math.toRadians(Constants.POWER_SHOT_TURN-0.25), Math.toRadians(60), Math.toRadians(20));
+
+        shooter.kick();
+
+        sleep(Constants.SHOOTER_DELAY);
+
+        shooter.unKick();
+
+        sleep(100);
+
+        driveBase.turn(Math.toRadians(Constants.POWER_SHOT_TURN - 0.0625), Math.toRadians(60), Math.toRadians(20));
+
+        shooter.kick();
+
+        sleep(Constants.SHOOTER_DELAY);
+
+        shooter.unKick();
+
+        sleep(100);
 
         shooter.setShooter(Constants.TELEOP_SHOOTER_SPEED);
     }

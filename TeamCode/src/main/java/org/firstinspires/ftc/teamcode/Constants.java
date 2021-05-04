@@ -31,7 +31,7 @@ public class Constants {
 
     // Shooter Motor Names
     public static double AUTONOMOUS_SHOOTER_SPEED = 193;
-    public static double TELEOP_SHOOTER_SPEED = 193;
+    public static double TELEOP_SHOOTER_SPEED = 192;
     public static double MIN_SHOOTER_VELOCITY = 193;
     public static double MAX_SHOOTER_VELOCITY = 208;
 
@@ -51,7 +51,7 @@ public class Constants {
     public static PIDFCoefficients SHOOTER_PID_COEFFICIENTS = new PIDFCoefficients(10, 1, 2, 9);
 
     public static double POWER_SHOT_TURN_OFFSET = 4.5;
-    public static double POWER_SHOT_TURN = 8;
+    public static double POWER_SHOT_TURN = 7.875;
 
     // Intake Constants
     public static final String INTAKE_TOP_NAME = "i1";
@@ -73,7 +73,7 @@ public class Constants {
     public static double RIGHT_WALL_POS_OUT = 0.9;
 
     public static double LEFT_WALL_POS_IN = 0.5;
-    public static double RIGHT_WALL_POS_IN = 0.6;
+    public static double RIGHT_WALL_POS_IN = 0.5;
 
     // Wobble Goal Constants
     public static final String WOBBLE_GOAL_SERVO1_NAME = "wg1";
