@@ -151,11 +151,6 @@ public class TeleOpMain extends LinearOpMode {
 
         double aimAngle = Math.toDegrees(Math.atan2(error_Y, error_X)) + autoAimOffset;
 
-        telemetry.addData("Error X", error_X);
-        telemetry.addData("Error Y", error_Y);
-        telemetry.addData("Turning To", aimAngle);
-        telemetry.update();
-
         driveBase.turnToAutoAim(Math.toRadians(aimAngle));
 
         Shoot(3);
