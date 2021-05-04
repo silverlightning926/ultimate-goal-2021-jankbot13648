@@ -161,25 +161,25 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             driveBase.turnTo(Math.toRadians(270));
 
-            driveBase.followTrajectory(BLL1_traj3_1);
-
             driveBase.followTrajectory(BLL1_traj4);
 
-            wobbleGoal.setWobbleGoalManipulatorOpen();
             driveBase.followTrajectory(BLL1_traj5);
+
+            wobbleGoal.setWobbleGoalManipulatorOpen();
+            driveBase.followTrajectory(BLL1_traj6);
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
 
-            driveBase.followTrajectory(BLL1_traj6);
+            driveBase.followTrajectory(BLL1_traj7);
 
             wobbleGoal.setWobbleGoalManipulatorClose();
             sleep(350);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
-            driveBase.followTrajectory(BLL1_traj7);
             driveBase.followTrajectory(BLL1_traj8);
-
             driveBase.followTrajectory(BLL1_traj9);
+
+            driveBase.followTrajectory(BLL1_traj10);
 
             sleep(500);
 
@@ -187,15 +187,15 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             intake.setIntakeWithoutWalls(0);
 
-            driveBase.followTrajectory(BLL1_traj10);
             driveBase.followTrajectory(BLL1_traj11);
+            driveBase.followTrajectory(BLL1_traj12);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[2]);
             sleep(375);
             wobbleGoal.setWobbleGoalManipulatorOpen();
             intake.setWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
 
-            driveBase.followTrajectory(BLL1_traj12);
+            driveBase.followTrajectory(BLL1_traj13);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
             sleep(250);
