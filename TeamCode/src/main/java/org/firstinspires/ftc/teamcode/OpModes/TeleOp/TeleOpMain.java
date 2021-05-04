@@ -115,11 +115,6 @@ public class TeleOpMain extends LinearOpMode {
 
             if(gamepad1.dpad_up)
             {
-                /**
-                 * @todo Align Powershots Automatically
-                 * @body Use odometry to align with the first powershot and start the sequence automatically
-                 */
-
                 PowerShotTrajectory();
             }
 
