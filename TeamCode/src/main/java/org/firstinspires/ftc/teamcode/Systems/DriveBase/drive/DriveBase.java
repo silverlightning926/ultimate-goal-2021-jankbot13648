@@ -25,6 +25,7 @@ import com.acmerobotics.roadrunner.trajectory.constraints.ProfileAccelerationCon
 import com.acmerobotics.roadrunner.trajectory.constraints.TrajectoryAccelerationConstraint;
 import com.acmerobotics.roadrunner.trajectory.constraints.TrajectoryVelocityConstraint;
 import com.acmerobotics.roadrunner.util.NanoClock;
+import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
@@ -35,7 +36,10 @@ import com.qualcomm.robotcore.hardware.VoltageSensor;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.teamcode.Constants;
+import org.firstinspires.ftc.teamcode.Systems.DriveBase.util.AxesSigns;
+import org.firstinspires.ftc.teamcode.Systems.DriveBase.util.BNO055IMUUtil;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.util.DashboardUtil;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.util.LynxModuleUtil;
 
@@ -95,6 +99,7 @@ public class DriveBase extends MecanumDrive {
 
     private DcMotorEx leftFront, leftRear, rightRear, rightFront;
     private List<DcMotorEx> motors;
+    private BNO055IMU imu;
 
     private VoltageSensor batteryVoltageSensor;
 
@@ -117,7 +122,7 @@ public class DriveBase extends MecanumDrive {
         accelConstraint = getAccelerationConstraint(MAX_ACCEL);
 
         follower = new HolonomicPIDVAFollower(TRANSLATIONAL_PID, TRANSLATIONAL_PID, HEADING_PID,
-                new Pose2d(0.5, 0.25, Math.toRadians(0.5)), 0.5);
+                new Pose2d(0.5, 0.25, Math.toRadians(0.25)), 0.5);
 
         poseHistory = new LinkedList<>();
 
@@ -128,6 +133,12 @@ public class DriveBase extends MecanumDrive {
         for (LynxModule module : hardwareMap.getAll(LynxModule.class)) {
             module.setBulkCachingMode(LynxModule.BulkCachingMode.AUTO);
         }
+
+        imu = hardwareMap.get(BNO055IMU.class, "imu");
+        BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+        parameters.angleUnit = BNO055IMU.AngleUnit.RADIANS;
+        imu.initialize(parameters);
+        BNO055IMUUtil.remapAxes(imu, AxesOrder.XYZ, AxesSigns.NPN);
 
         leftFront = hardwareMap.get(DcMotorEx.class, Constants.FRONT_LEFT_DRIVE_NAME);
         leftRear = hardwareMap.get(DcMotorEx.class, Constants.REAR_LEFT_DRIVE_NAME);
@@ -289,6 +300,8 @@ public class DriveBase extends MecanumDrive {
         updatePoseEstimate();
 
         Pose2d currentPose = getPoseEstimate();
+        //Pose2d currentPose = new Pose2d(getPoseEstimate().getX(), getPoseEstimate().getY(), (getPoseEstimate().getHeading() + getRawExternalHeading())/2);
+
         Pose2d lastError = getLastError();
 
         poseHistory.add(currentPose);
@@ -369,7 +382,7 @@ public class DriveBase extends MecanumDrive {
         fieldOverlay.setStroke("#3F51B5");
         DashboardUtil.drawRobot(fieldOverlay, currentPose);
 
-        dashboard.sendTelemetryPacket(packet);
+        //dashboard.sendTelemetryPacket(packet);
     }
 
     public void waitForIdle() {
@@ -453,7 +466,7 @@ public class DriveBase extends MecanumDrive {
 
     @Override
     public double getRawExternalHeading() {
-        return 0;
+        return imu.getAngularOrientation().firstAngle;
     }
 
     public static TrajectoryVelocityConstraint getVelocityConstraint(double maxVel, double maxAngularVel, double trackWidth) {

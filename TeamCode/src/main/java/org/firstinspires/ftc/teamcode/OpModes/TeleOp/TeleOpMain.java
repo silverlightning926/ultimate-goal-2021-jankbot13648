@@ -57,6 +57,7 @@ public class TeleOpMain extends LinearOpMode {
         if(isStopRequested()) return;
 
         shooter.unKick();
+
         shooter.setShooter(Constants.TELEOP_SHOOTER_SPEED);
 
         while (!isStopRequested() && opModeIsActive())
@@ -69,6 +70,14 @@ public class TeleOpMain extends LinearOpMode {
             else if (gamepad1.b)
             {
                 Shoot(3);
+            }
+
+            else if(gamepad1.y)
+            {
+                shooter.setShooter(204);
+                sleep(500);
+                AutoAimShoot();
+                shooter.setShooter(Constants.TELEOP_SHOOTER_SPEED);
             }
 
             else
@@ -91,6 +100,8 @@ public class TeleOpMain extends LinearOpMode {
                                     -gamepad1.right_stick_x
                             )
                     );
+
+                    driveBase.update();
                 }
 
                 else {
@@ -106,6 +117,8 @@ public class TeleOpMain extends LinearOpMode {
                                     -gamepad1.right_stick_x * 0.2
                             )
                     );
+
+                    driveBase.update();
                 }
 
 
@@ -153,6 +166,8 @@ public class TeleOpMain extends LinearOpMode {
 
         driveBase.turnToAutoAim(Math.toRadians(aimAngle));
 
+        driveBase.update();
+
         Shoot(3);
     }
 
@@ -161,13 +176,16 @@ public class TeleOpMain extends LinearOpMode {
         for(int i = 0; i < numOfTimes - 1; i++)
         {
             shooter.kick();
-            sleep(200);
+            sleep(Constants.SHOOTER_DELAY);
+
+            intake.setWallPosDown();
+
             shooter.unKick();
-            sleep(200);
+            sleep(Constants.DROP_DELAY);
         }
 
         shooter.kick();
-        sleep(200);
+        sleep(Constants.SHOOTER_DELAY);
         shooter.unKick();
     }
 
@@ -199,17 +217,26 @@ public class TeleOpMain extends LinearOpMode {
 
         intake.setWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
 
-        Shoot(1);
-
-        driveBase.turn(Math.toRadians(Constants.POWER_SHOT_TURN-0.25), Math.toRadians(60), Math.toRadians(20));
-
-        Shoot(1);
-
+        shooter.kick();
+        sleep(Constants.SHOOTER_DELAY);
+        shooter.unKick();
         sleep(Constants.DROP_DELAY);
 
-        driveBase.turn(Math.toRadians(Constants.POWER_SHOT_TURN - 0.0625), Math.toRadians(60), Math.toRadians(20));
+        driveBase.turn(Math.toRadians(Constants.POWER_SHOT_TURN-0.375), Math.toRadians(60), Math.toRadians(20));
 
-        Shoot(1);
+        shooter.kick();
+        sleep(Constants.SHOOTER_DELAY);
+        shooter.unKick();
+        sleep(Constants.DROP_DELAY);
+
+        shooter.setShooter(Constants.POWER_SHOT_VELOCITY + 1);
+
+        driveBase.turn(Math.toRadians(Constants.POWER_SHOT_TURN + 0.0625), Math.toRadians(60), Math.toRadians(20));
+
+        shooter.kick();
+        sleep(Constants.SHOOTER_DELAY);
+        shooter.unKick();
+        sleep(Constants.DROP_DELAY);
 
         shooter.setShooter(Constants.TELEOP_SHOOTER_SPEED);
     }

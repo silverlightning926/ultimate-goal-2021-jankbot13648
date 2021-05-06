@@ -30,8 +30,8 @@ public class Constants {
     public static double AUTO_AIM_OFFSET = -5.75;
 
     // Shooter Motor Names
-    public static double AUTONOMOUS_SHOOTER_SPEED = 193;
-    public static double TELEOP_SHOOTER_SPEED = 192;
+    public static double AUTONOMOUS_SHOOTER_SPEED = 198;
+    public static double TELEOP_SHOOTER_SPEED = 198;
     public static double MIN_SHOOTER_VELOCITY = 193;
     public static double MAX_SHOOTER_VELOCITY = 208;
 
@@ -40,7 +40,7 @@ public class Constants {
     public static final String SHOOTER_1_NAME = "s1";
     public static final String SHOOTER_2_NAME = "s2";
 
-    public static int SHOOTER_DELAY = 170;
+    public static int SHOOTER_DELAY = 140;
     public static int DROP_DELAY = 170;
 
     public static final String KICKER_NAME = "kicker";
@@ -48,7 +48,7 @@ public class Constants {
     public static double KICKER_OPEN_POS = 0.13;
     public static double KICKER_KICK_POS = 0.3;
 
-    public static PIDFCoefficients SHOOTER_PID_COEFFICIENTS = new PIDFCoefficients(10, 1, 2, 9);
+    public static PIDFCoefficients SHOOTER_PID_COEFFICIENTS = new PIDFCoefficients(100, 1, 1, 12.5);
 
     public static double POWER_SHOT_TURN_OFFSET = 4.5;
     public static double POWER_SHOT_TURN = 7.875;
@@ -72,7 +72,7 @@ public class Constants {
     public static double LEFT_WALL_POS_OUT = 0.2;
     public static double RIGHT_WALL_POS_OUT = 0.9;
 
-    public static double LEFT_WALL_POS_IN = 0.5;
+    public static double LEFT_WALL_POS_IN = 0.4;
     public static double RIGHT_WALL_POS_IN = 0.5;
 
     // Wobble Goal Constants
@@ -83,7 +83,7 @@ public class Constants {
     public static double AUTO_WOBBLE_CLAW_OPEN_POS = 1;
     public static double AUTO_WOBBLE_CLAW_CLOSE_POS = 0;
 
-    public static double[] WOBBLE_GOAL_POSITION_VALUES = {0.25, 0.4, 0.75};
+    public static double[] WOBBLE_GOAL_POSITION_VALUES = {0.2, 0.4, 0.75};
 
     public static final String WOBBLE_GOAL_MANIPULATOR_SERVO = "wgm";
     public static double WOBBLE_GOAL_MANIPULATOR_SERVO_OPEN_POS = 0.38;
