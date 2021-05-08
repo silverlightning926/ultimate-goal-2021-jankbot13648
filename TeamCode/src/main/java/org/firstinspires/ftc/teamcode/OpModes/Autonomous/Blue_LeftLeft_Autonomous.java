@@ -72,7 +72,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             shooter.setShooter(176.5);
 
-            driveBase.turnTo(Math.toRadians(332.5));
+            driveBase.turnTo(Math.toRadians(330.65));
 
             Shoot(1);
 
@@ -93,7 +93,8 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             driveBase.followTrajectory(BLL0_traj3);
             driveBase.followTrajectory(BLL0_traj4);
 
-            driveBase.turnTo(Math.toRadians(300));
+            driveBase.turnTo(Math.toRadians(270));
+            driveBase.followTrajectory(BLL0_traj4_1);
             driveBase.followTrajectory(BLL0_traj5);
 
             wobbleGoal.setWobbleGoalManipulatorOpen();
@@ -138,7 +139,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             shooter.setShooter(176);
 
-            driveBase.turnTo(Math.toRadians(332.5));
+            driveBase.turnTo(Math.toRadians(330.65));
 
             Shoot(1);
 
@@ -172,7 +173,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             driveBase.followTrajectory(BLL1_traj7);
 
             wobbleGoal.setWobbleGoalManipulatorClose();
-            sleep(350);
+            sleep(250);
 
             wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[1]);
 
@@ -181,7 +182,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             driveBase.followTrajectory(BLL1_traj10);
 
-            sleep(500);
+            sleep(250);
 
             Shoot(3);
 
@@ -194,13 +195,11 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             sleep(375);
             wobbleGoal.setWobbleGoalManipulatorOpen();
             intake.setWallPosition(Constants.LEFT_WALL_POS_OUT, Constants.RIGHT_WALL_POS_IN);
+            wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
+
+            PoseStorage.currentPose = driveBase.getPoseEstimate();
 
             driveBase.followTrajectory(BLL1_traj13);
-
-            wobbleGoal.setWobbleGoalPosition(Constants.WOBBLE_GOAL_POSITION_VALUES[0]);
-            sleep(250);
-
-            driveBase.followTrajectory(BLL1_traj14);
 
             PoseStorage.currentPose = driveBase.getPoseEstimate();
         }

@@ -22,7 +22,7 @@ import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConsta
 public class Blue_LeftLeft_4RingPath {
 
     public static Trajectory BLL4_traj1 = BuildTrajectory(new Pose2d())
-            .lineToSplineHeading(new Pose2d(58, 0, Math.toRadians(340)))
+            .lineToSplineHeading(new Pose2d(58, 0, Math.toRadians(339.75)))
             .build();
 
     public static Trajectory BLL4_traj2 = BuildTrajectory(BLL4_traj1.end())
@@ -54,7 +54,7 @@ public class Blue_LeftLeft_4RingPath {
             .build();
 
     public static Trajectory BLL4_traj8 = BuildTrajectory(BLL4_traj7.end())
-            .lineToSplineHeading(new Pose2d(123.5, 1, Math.toRadians(90)))
+            .lineToSplineHeading(new Pose2d(123.5, 3, Math.toRadians(90)))
             .build();
 
     public static Trajectory BLL4_traj9 = BuildTrajectory(BLL4_traj8.end())

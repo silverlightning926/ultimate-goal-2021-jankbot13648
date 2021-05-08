@@ -69,7 +69,7 @@ public class Constants {
     public static double LEFT_FUNNEL_CLOSE_POS = 0.4;
     public static double RIGHT_FUNNEL_CLOSE_POS = 0.6;
 
-    public static double LEFT_WALL_POS_OUT = 0.2;
+    public static double LEFT_WALL_POS_OUT = 0.18;
     public static double RIGHT_WALL_POS_OUT = 0.9;
 
     public static double LEFT_WALL_POS_IN = 0.4;

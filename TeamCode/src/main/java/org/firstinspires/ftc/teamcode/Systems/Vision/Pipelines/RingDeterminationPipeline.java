@@ -34,8 +34,8 @@ public class RingDeterminationPipeline extends OpenCvPipeline
     static final int REGION_WIDTH = 85;
     static final int REGION_HEIGHT = 150;
 
-    final int FOUR_RING_THRESHOLD = 157;
-    final int ONE_RING_THRESHOLD = 133;
+    final int FOUR_RING_THRESHOLD = 153;
+    final int ONE_RING_THRESHOLD = 140;
 
     Point region1_pointA = new Point(
             REGION1_TOPLEFT_ANCHOR_POINT.x,
