@@ -34,7 +34,6 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.teamcode.Constants;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.util.AxesSigns;
@@ -59,9 +58,6 @@ import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConsta
 import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.kStatic;
 import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.kV;
 
-/*
- * Simple mecanum drive hardware implementation for REV hardware.
- */
 @Config
 public class DriveBase extends MecanumDrive {
     public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(1.6, 0.01, 0.5);
