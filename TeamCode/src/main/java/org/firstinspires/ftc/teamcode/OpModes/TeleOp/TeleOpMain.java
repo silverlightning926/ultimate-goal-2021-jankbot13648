@@ -159,6 +159,8 @@ public class TeleOpMain extends LinearOpMode {
 
     private void AutoAimShoot()
     {
+        intake.setIntakeWithoutWalls(0, 1);
+
         double error_X = Constants.GOAL_X_COORD - driveBase.getPoseEstimate().getX();
         double error_Y = Constants.GOAL_Y_COORD - driveBase.getPoseEstimate().getY();
 
@@ -169,6 +171,8 @@ public class TeleOpMain extends LinearOpMode {
         driveBase.update();
 
         Shoot(3);
+
+        intake.setIntakeWithoutWalls(0);
     }
 
     private void Shoot(int numOfTimes)
