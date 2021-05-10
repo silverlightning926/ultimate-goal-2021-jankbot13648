@@ -1,8 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.acmerobotics.dashboard.config.Config;
-import com.acmerobotics.roadrunner.control.PIDCoefficients;
-import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 @Config
@@ -32,8 +30,6 @@ public class Constants {
     // Shooter Motor Names
     public static double AUTONOMOUS_SHOOTER_SPEED = 198;
     public static double TELEOP_SHOOTER_SPEED = 198;
-    public static double MIN_SHOOTER_VELOCITY = 193;
-    public static double MAX_SHOOTER_VELOCITY = 208;
 
     public static double POWER_SHOT_VELOCITY = 171.5;
 
@@ -50,7 +46,6 @@ public class Constants {
 
     public static PIDFCoefficients SHOOTER_PID_COEFFICIENTS = new PIDFCoefficients(100, 1, 1, 12.5);
 
-    public static double POWER_SHOT_TURN_OFFSET = 4.5;
     public static double POWER_SHOT_TURN = 7.875;
 
     // Intake Constants

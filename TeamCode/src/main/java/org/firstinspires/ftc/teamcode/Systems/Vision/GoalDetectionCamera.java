@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.Constants;
-import org.firstinspires.ftc.teamcode.Systems.Vision.Pipelines.RingDeterminationPipeline;
 import org.firstinspires.ftc.teamcode.Systems.Vision.Pipelines.UGAdvancedHighGoalPipeline;
 import org.firstinspires.ftc.teamcode.Systems.Vision.Pipelines.UGBasicHighGoalPipeline;
 import org.openftc.easyopencv.OpenCvCamera;

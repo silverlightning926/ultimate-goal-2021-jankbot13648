@@ -15,10 +15,7 @@ import org.firstinspires.ftc.teamcode.Systems.Shooter;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
 import org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveBase;
 
-import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.MAX_ACCEL;
-import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.MAX_ANG_VEL;
-import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.MAX_VEL;
-import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.TRACK_WIDTH;
+import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConstants.*;
 
 @TeleOp(name = "TeleOp - Main")
 public class TeleOpMain extends LinearOpMode {
