@@ -72,14 +72,14 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             shooter.setShooter(176.5);
 
-            driveBase.turnTo(Math.toRadians(330.65));
+            driveBase.turnTo(Math.toRadians(330.5));
 
             Shoot(1);
 
             shooter.setShooter(Constants.AUTONOMOUS_SHOOTER_SPEED);
             sleep(250);
 
-            driveBase.turnTo(Math.toRadians(343));
+            driveBase.turnTo(Math.toRadians(344));
 
             Shoot(1);
 
@@ -139,7 +139,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             shooter.setShooter(176);
 
-            driveBase.turnTo(Math.toRadians(330.65));
+            driveBase.turnTo(Math.toRadians(330.5));
 
             Shoot(1);
 
@@ -147,7 +147,7 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
 
             shooter.setShooter(Constants.AUTONOMOUS_SHOOTER_SPEED);
 
-            driveBase.turnTo(Math.toRadians(343));
+            driveBase.turnTo(Math.toRadians(344));
 
             Shoot(1);
 
@@ -181,8 +181,6 @@ public class Blue_LeftLeft_Autonomous extends LinearOpMode {
             driveBase.followTrajectory(BLL1_traj9);
 
             driveBase.followTrajectory(BLL1_traj10);
-
-            sleep(250);
 
             Shoot(3);
 

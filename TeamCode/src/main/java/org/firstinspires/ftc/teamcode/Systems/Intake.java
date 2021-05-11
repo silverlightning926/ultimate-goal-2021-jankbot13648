@@ -108,8 +108,8 @@ public class Intake {
 
     public void setIntakeWithoutWalls(double intakePower, double conveyorPower)
     {
-        intake1.setPower(intakePower);
-        intake2.setPower(conveyorPower);
+        intake1.setPower(conveyorPower);
+        intake2.setPower(intakePower);
     }
 
 

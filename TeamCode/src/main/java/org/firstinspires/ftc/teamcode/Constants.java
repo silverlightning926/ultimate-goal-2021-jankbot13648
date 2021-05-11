@@ -28,7 +28,7 @@ public class Constants {
     public static double AUTO_AIM_OFFSET = -5.75;
 
     // Shooter Motor Names
-    public static double AUTONOMOUS_SHOOTER_SPEED = 198;
+    public static double AUTONOMOUS_SHOOTER_SPEED = 197;
     public static double TELEOP_SHOOTER_SPEED = 198;
 
     public static double POWER_SHOT_VELOCITY = 171.5;
@@ -67,7 +67,7 @@ public class Constants {
     public static double LEFT_WALL_POS_OUT = 0.18;
     public static double RIGHT_WALL_POS_OUT = 0.9;
 
-    public static double LEFT_WALL_POS_IN = 0.4;
+    public static double LEFT_WALL_POS_IN = 0.42;
     public static double RIGHT_WALL_POS_IN = 0.5;
 
     // Wobble Goal Constants

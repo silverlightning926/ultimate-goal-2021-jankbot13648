@@ -21,21 +21,21 @@ import static org.firstinspires.ftc.teamcode.Systems.DriveBase.drive.DriveConsta
 public class Blue_LeftLeft_1RingPath {
 
     public static Trajectory BLL1_traj1 = BuildTrajectory(new Pose2d())
-            .lineToSplineHeading(new Pose2d(60, 0, Math.toRadians(324.1)),
+            .lineToSplineHeading(new Pose2d(60, 0, Math.toRadians(323.98125)),
                 DriveBase.getVelocityConstraint(60, Math.toRadians(60), TRACK_WIDTH),
                 DriveBase.getAccelerationConstraint(50))
             .build();
 
     public static Trajectory BLL1_traj2 = BuildTrajectory(BLL1_traj1.end())
-            .lineToSplineHeading(new Pose2d(95,-50,0))
+            .lineToSplineHeading(new Pose2d(94,-47,0))
             .build();
 
     public static Trajectory BLL1_traj3 = BuildTrajectory(BLL1_traj2.end())
-            .lineToSplineHeading(new Pose2d(119,-35, Math.toRadians(0)))
+            .lineToSplineHeading(new Pose2d(120,-35, Math.toRadians(0)))
             .build();
 
     public static Trajectory BLL1_traj4 = BuildTrajectory(new Pose2d(BLL1_traj2.end().getX(), BLL1_traj2.end().getY(), Math.toRadians(270)))
-            .lineToConstantHeading(new Vector2d(121, -40))
+            .lineToConstantHeading(new Vector2d(122, -40))
             .build();
 
     public static Trajectory BLL1_traj5 = BuildTrajectory(BLL1_traj4.end())
@@ -59,7 +59,7 @@ public class Blue_LeftLeft_1RingPath {
             .build();
 
     public static Trajectory BLL1_traj10 = BuildTrajectory(BLL1_traj9.end())
-            .lineToSplineHeading(new Pose2d(60,-9, Math.toRadians(352)))
+            .lineToSplineHeading(new Pose2d(60,-9, Math.toRadians(351)))
             .build();
 
     public static Trajectory BLL1_traj11 = BuildTrajectory(BLL1_traj10.end())
@@ -67,7 +67,7 @@ public class Blue_LeftLeft_1RingPath {
             .build();
 
     public static Trajectory BLL1_traj12 = BuildTrajectory(BLL1_traj11.end())
-            .lineToSplineHeading(new Pose2d(94,-22, Math.toRadians(90)))
+            .lineToSplineHeading(new Pose2d(90,-22, Math.toRadians(90)))
             .build();
 
     public static Trajectory BLL1_traj13 = BuildTrajectory(BLL1_traj12.end())
