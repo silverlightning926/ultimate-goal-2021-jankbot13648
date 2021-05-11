@@ -3,8 +3,6 @@
 
 This is the repository that holds the code for the 2020 Ultimate Goal Season for FTC Team #7760 - Jankbot.
 
-⚠️ Code Is Stil Under Development ⚠️
-
 ### Mechanisms
 #### Drivebase 
 The drivebase is currently a 4-wheel drive with mecanum wheels. The drivebase currently is fitted with three odometery pods: a vertical left one, a vertical right one, and horzontal one. Using these encoders the robot finds its 2D location on the field relative to its starting postion. 
