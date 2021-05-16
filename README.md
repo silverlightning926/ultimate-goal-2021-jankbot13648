@@ -1,7 +1,7 @@
 # Ultimate Goal Code
 ## Jankbot - FTC #7760
 
-This is the repository that holds the code for the 2020 Ultimate Goal Season for FTC Team #7760 - Jankbot.
+This is the repository that holds the code for the 2020 Ultimate Goal Season for FTC Team #13648 - Jankbot.
 
 ### Mechanisms
 #### Drivebase 
