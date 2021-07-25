@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.RightLeft_Paths;
+package org.firstinspires.ftc.teamcode.OpModes.Autonomous.RemoteEvents.Paths.Blue.RightLeft_Paths;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;

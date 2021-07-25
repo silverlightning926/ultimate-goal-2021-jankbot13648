@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.OpModes.Autonomous;
+package org.firstinspires.ftc.teamcode.OpModes.Autonomous.RemoteEvents;
 
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -12,9 +12,9 @@ import org.firstinspires.ftc.teamcode.Systems.Shooter;
 import org.firstinspires.ftc.teamcode.Systems.Vision.Pipelines.RingDeterminationPipeline;
 import org.firstinspires.ftc.teamcode.Systems.Vision.RingDetectionCamera;
 import org.firstinspires.ftc.teamcode.Systems.WobbleGoal;
-import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_0RingPath.*;
-import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_1RingPath.*;
-import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_4RingPath.*;
+import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.RemoteEvents.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_0RingPath.*;
+import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.RemoteEvents.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_1RingPath.*;
+import static org.firstinspires.ftc.teamcode.OpModes.Autonomous.RemoteEvents.Paths.Blue.LeftLeft_Paths.Blue_LeftLeft_4RingPath.*;
 
 @Autonomous(name = "BLUE (LEFT >> LEFT)")
 public class Blue_LeftLeft_Autonomous extends LinearOpMode {
