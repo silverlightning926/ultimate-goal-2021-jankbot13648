@@ -68,7 +68,7 @@ public class Blue_LeftLeft_IPAutonomous extends LinearOpMode {
         intake.setWallPosition(0.8, 0.3);
 
         Trajectory traj1 = BuildTrajectory(new Pose2d())
-                .lineToSplineHeading(new Pose2d(64, 0, Math.toRadians(339.75)))
+                .lineToSplineHeading(new Pose2d(58, 0, Math.toRadians(339.75)))
                 .build();
 
         driveBase.followTrajectory(traj1);
@@ -77,6 +77,12 @@ public class Blue_LeftLeft_IPAutonomous extends LinearOpMode {
 
         if (!isStopRequested() && ringPosition.equals(RingDeterminationPipeline.RingPosition.NONE))
         {
+            Trajectory IPBLL0_traj1 = BuildTrajectory(traj1.end())
+                    .lineToSplineHeading(new Pose2d(64, 0, Math.toRadians(339.75)))
+                    .build();
+
+            driveBase.followTrajectory(IPBLL0_traj1);
+
             wobbleGoal.setWobbleGoalAutoClawOpen();
         }
 
