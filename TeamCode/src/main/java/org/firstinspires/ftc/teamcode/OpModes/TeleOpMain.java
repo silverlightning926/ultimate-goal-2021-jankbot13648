@@ -17,32 +17,17 @@
 
  @TeleOp(name = "TeleOp - Main")
 public class TeleOpMain extends LinearOpMode {
+     
+     @Override
+     public void runOpMode() {
 
-    Telemetry dashboardTelemetry;
+         waitForStart();
 
-    MecanumDrive driveBase;
+         if (isStopRequested()) return;
 
+         while (!isStopRequested() && opModeIsActive())
+         {
 
-    @Override
-    public void runOpMode() {
-
-        dashboardTelemetry = FtcDashboard.getInstance().getTelemetry();
-
-        driveBase = new MecanumDrive(hardwareMap);
-
-
-        telemetry.addLine("System Initialization Complete");
-        telemetry.update();
-
-        waitForStart();
-
-        telemetry.clearAll();
-        telemetry.update();
-
-        List<Double> positions = driveBase.getWheelPositions();
-        telemetry.addData("Right front encoder", positions.get(0));
-        telemetry.addData("Right back encoder", positions.get(1));
-        telemetry.addData("Left front encoder", positions.get(2));
-        telemetry.addData("Left back encoder", positions.get(3));
-        }
-    };
+         }
+     }
+ }
