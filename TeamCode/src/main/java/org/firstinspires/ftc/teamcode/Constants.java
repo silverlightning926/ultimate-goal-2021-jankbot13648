@@ -13,4 +13,6 @@ public class Constants {
 
     //Subsysystem Motors
     public static final String INTAKE_MOTOR_NAME = "im";
+    public static final String CLAW_SERVO_NAME ="cs";
+    public static final String EXTENDER_SERVO_NAME ="es"
  }
