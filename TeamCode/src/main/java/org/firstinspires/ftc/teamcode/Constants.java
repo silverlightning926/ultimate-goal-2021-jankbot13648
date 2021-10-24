@@ -11,8 +11,11 @@ public class Constants {
     public static final String REAR_LEFT_DRIVE_NAME = "rl";
     public static final String REAR_RIGHT_DRIVE_NAME = "rr";
 
-    //Subsysystem Motors
+    //Subsysystem
     public static final String INTAKE_MOTOR_NAME = "im";
     public static final String CLAW_SERVO_NAME ="cs";
-    public static final String EXTENDER_SERVO_NAME ="es"
+    public static final String EXTENDER_SERVO_NAME ="es";
+    public static final String QUACK_SPINNER_NAME = "qs";
+    public static final String ELEVATOR_MOTOR_NAME = "em";
+
  }
